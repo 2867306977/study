@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var price = +prompt("请输入单价");
+    var count = +prompt("请输入数量");
+    var finallyPri;
+    if (price * count > 500) {
+      finallyPri = (price * count * 0.8);
+    } else {
+      finallyPri = price * count;
+    }
+    // 创建函数
+    function money() {
+      var userPay = prompt("你本次消费" + finallyPri + "元，请付款（输入付钱的面额即可，稍后给您找零）");
+      if (userPay < finallyPri) {
+        alert("您付的钱不够！");
+        // 递归调用
+        money();
+      } else {
+        alert("找零" + (userPay - finallyPri) + "元，请收好");
+        alert("欢迎下次光临");
+      }
+    }
+    money();
+  </script>
+
+</body>
+
+</html>

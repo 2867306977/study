@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      /* 移除系统滚动条 */
+      overflow: hidden;
+    }
+
+    /*     #con {
+      position: absolute;
+      top: 0;
+      left: 0;
+    } */
+
+    #bar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 20px;
+      background-color: antiquewhite;
+    }
+
+    #box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="con">
+    <span></span>
+  </div>
+  <div id="bar">
+    <div id="box"></div>
+  </div>
+  <script>
+    var oCon = document.getElementById('con');
+    var oBox = document.getElementById('box');
+    var oBar = document.getElementById('bar');
+    //给con添加内容
+    for (var i = 0; i < 300; i++) {
+      oCon.innerHTML += i + '<br>';
+    }
+
+    //按下滚动条沿着上下动
+    oBox.onmousedown = function (e) {
+      //因为鼠标按下移动有一个选中默认事件 所以得取消该默认事件
+      e.preventDefault();
+      //获取鼠标距离最上方的的高度
+      var y = e.clientY;
+      //当鼠标移动时获取鼠标移动的距离上方的高度
+      document.onmousemove = function (e) {
+        var oBoxToTop = e.clientY;
+        //获取滚动条最终位置
+        var oBoxLocation = e.clientY - y;
+        //判断临界值 如果最终位置小于0则等于0
+        if (oBoxLocation <= 0) {
+          oBoxLocation = 0;
+        } else if (oBoxLocation >= oBar.clientHeight - oBox.offsetHeight) {
+          //如果大于可走距离则等于可以走的距离
+          oBoxLocation = oBar.clientHeight - oBox.offsetHeight;
+        }
+        //赋值
+        oBox.style.top = oBoxLocation + 'px';
+      }
+      //鼠标抬起移除鼠标移动事件
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        //每次鼠标按下则创建一个抬起事件,需抬起时也要把抬起事件移除
+        document.onmouseup = null;
+      }
+    }
+  </script>
+</body>
+
+</html>

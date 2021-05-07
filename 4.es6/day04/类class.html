@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*     //手写继承
+        function Person(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+        Person.prototype.sayName = function () {
+          console.log(this.name);
+        }
+        function Student(name, age, score) {
+          this.score = score
+          Person.call(this, name, age)
+        }
+        Student.prototype = new Person();
+        Student.prototype.constructor = Student */
+    class Person {
+      constructor(name, age) {
+        //主要给实例上添加属性
+        this.name = name
+        this.age = age
+      }
+
+      //简写给实例添加属性  但是该属性只能被写死
+      sex = 'nan'
+      //给原型添加方法
+      sayName() {
+        console.log(this.name);
+      }
+
+      //该方法是添加在实例上的
+      sayhi = () => {
+        console.log(this.age);
+      }
+    }
+    //extends继承
+    class Student extends Person {
+      //可以省略constructor 后台会给你自动添加constructor super  
+      //如果写了constructor super必须写在constructor最前边
+      constructor(name, age, className) {
+        super(name, age)//代表从Person上面继承了的属性
+        this.className = className
+      }
+    }
+
+    Person.six = function () {
+      console.log('构造函数静态方法');
+    }
+    let p1 = new Person('zs', 17)
+    let st1 = new Student('ls', 20, 320)
+    console.log(p1);
+    console.log(st1);
+    p1.sayName()
+    st1.sayName()
+    Person.six()
+    // console.log(Student.prototype);//它是Person实例化对象
+    // console.log(Student.prototype.__proto__ === Student.__proto__.prototype);
+    // console.log(Student.__proto__.prototype);//实例对象隐性原型指向person
+    // console.log(Student.prototype.constructor);//原型对象构造器指向student
+    // console.log(st1.__proto__);
+
+  </script>
+</body>
+
+</html>

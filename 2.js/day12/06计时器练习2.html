@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      position: absolute;
+      top: 40px;
+      left: 40px;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+  <div id="box"></div>
+  <script>
+    var oBtn = document.getElementById('btn');
+    var oBox = document.getElementById('box');
+    var l = 40;
+    var timer = null;
+    oBtn.onclick = function () {
+      timer = setInterval(function () {
+        l += 3;
+        if (l >= 800) {
+          l = 800;
+          clearInterval(timer);
+        }
+        oBox.style.left = l + 'px';
+      }, 1)
+    }
+  </script>
+</body>
+
+</html>

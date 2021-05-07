@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+
+
+    async function async1() {
+      try {
+        await new Promise((resolve, reject) => {
+          console.log(a);//这里状态是 reject
+          setTimeout(() => {
+            //为什么这里是pending  因为上面报错是在promise中修改了Promise的状态 这行代码因为是定时器的回调 所以浏览器直接报错
+            // console.log(a);//pending
+            // reject();//这里是因为是修改了promise的状态 而上面的是报错
+            resolve(1)
+          }, 1000);
+        })
+      } catch (error) {
+        console.log('err');
+      }
+    }
+    async1()
+
+
+
+    // function fn() {
+    //   return new Promise(resolve => {
+    //     setTimeout(() => {
+    //       console.log(a);
+    //       resolve(1)
+    //     }, 1000);
+    //   })
+    // }
+  </script>
+</body>
+
+</html>

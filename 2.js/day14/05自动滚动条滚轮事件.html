@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      /* 移除系统滚动条 */
+      overflow: hidden;
+    }
+
+    #con {
+      position: absolute;
+      top: 0;
+      left: 20px;
+    }
+
+    #bar {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100%;
+      width: 20px;
+      background-color: antiquewhite;
+    }
+
+    #box {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="con">
+    <span></span>
+  </div>
+  <div id="bar">
+    <div id="box"></div>
+  </div>
+  <script>
+    var oCon = document.getElementById('con');
+    var oBox = document.getElementById('box');
+    var oBar = document.getElementById('bar');
+    //给con添加内容
+    for (var i = 0; i < 300; i++) {
+      oCon.innerHTML += i + '<br>';
+    }
+
+    //滑条的自动高度
+    /* 
+    视口高度 / 文档高度 = 滑条高度 / 滑槽高度
+    滑条的高度 = 视口高度 / 文档高度 * 滑槽高度
+     */
+    //求一个比例
+    var scale = document.documentElement.clientHeight / oCon.offsetHeight;
+    //求滑条高度
+    var oBoxHeight = scale * oBar.clientHeight;
+    //赋值
+    oBox.style.height = oBoxHeight + 'px';
+
+    //鼠标按下移动抬起事件   按下滚动条沿着上下动
+    oBox.onmousedown = function (e) {
+      //因为鼠标按下移动有一个选中默认事件 所以得取消该默认事件
+      e.preventDefault();
+      //获取鼠标距离目标边缘的高度
+      var y = e.offsetY;
+      //当鼠标移动时获取鼠标移动的距离上方的高度
+      document.onmousemove = function (e) {
+        //取消默认事件
+        e.preventDefault();
+        //获取盒子边缘到视口的距离 
+        var oBoxToTop = e.clientY;
+        //获取滚动条最终位置
+        var oBoxLocation = e.clientY - y;
+        //判断临界值 如果最终位置小于0则等于0
+        if (oBoxLocation <= 0) {
+          oBoxLocation = 0;
+        } else if (oBoxLocation >= oBar.clientHeight - oBox.offsetHeight) {
+          //如果大于可走距离则等于可以走的距离
+          oBoxLocation = oBar.clientHeight - oBox.offsetHeight;
+        }
+        //赋值
+        oBox.style.top = oBoxLocation + 'px';
+
+        // 当鼠标按下移动 内容也跟着移动 设置内容的top值
+        /* 
+        求出文档可以走的距离
+        计算比例: 文档可以走的距离 = 文档高度 - 视口高度
+                 滑条可以走的距离 = 滑槽高度 - 滑条高度
+                文档走的距离 = 滑条走的距离 / 滑条可以走的距离 * 文档可以走的距离
+         */
+        /* //文档可以走的距离
+        var oConMove = oCon.clientHeight - document.documentElement.clientHeight;
+        //滑条可以走的距离
+        var oBoxMove = oBar.clientHeight - oBox.offsetHeight;
+        //文档走的距离
+        var oConGo = oBoxLocation / oBoxMove * oConMove; */
+
+        //赋值给内容的top值  oBoxLocation是滑条的距离  根据比例来设置内容的距离
+        oCon.style.top = -oBoxLocation / scale + 'px';
+      }
+      //鼠标抬起移除鼠标移动事件
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        //每次鼠标按下则创建一个抬起事件,需抬起时也要把抬起事件移除
+        document.onmouseup = null;
+      }
+    }
+
+
+    //滚轮事件
+    //谷歌
+    document.onmousewheel = scroll;
+    //IE
+    document.addEventListener('DOMMouseScroll', scroll);
+    //兼容谷歌 火狐
+    function scroll(e) {
+      //每次滚动时获取滑条的位置
+      var oBoxT = oBox.offsetTop;
+      //谷歌/IE
+      if (e.wheelDelta) {
+        //小于0就是向下滚 否则就是向上滚
+        if (e.wheelDelta < 0) {
+          //滚轮向下滚 滑条向下移动
+          oBoxT += 10;
+        } else {
+          // 滑条向上移动
+          oBoxT -= 10;
+        }
+      } else {
+        //火狐
+        if (e.detail > 0) {
+          //滚轮向下滚 滑条向下移动
+          oBoxT += 10;
+        } else {
+          // 滑条向上移动
+          oBoxT -= 10;
+        }
+      }
+      //判断临界值 
+      if (oBoxT <= 0) {
+        //如果小于0 就等于0
+        oBoxT = 0;
+      } else if (oBoxT >= oBar.clientHeight - oBox.offsetHeight) {
+        //如果大于可以走的距离那么就等于最大可以走的距离
+        oBoxT = oBar.clientHeight - oBox.offsetHeight;
+      }
+      //赋值给滑条的top值
+      oBox.style.top = oBoxT + 'px';
+      //改变内容的top值 根据滑条的位置 和比例求出内容top值
+      oCon.style.top = -oBoxT / scale + 'px';
+    }
+  </script>
+</body>
+
+</html>

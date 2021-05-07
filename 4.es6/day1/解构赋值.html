@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // const arr = [1, 2, 3, 3, 4, 5, 6]
+    // arr[4] = 9;
+    //...rest剩余参数
+    // let [a, b, c, ...rest] = arr;
+    // console.log(a, b, c, ...rest);
+
+    /* const obj = {
+      name: 'zhangsan',
+      age: 20,
+      sex: 'nan'
+    }
+    //对象中的属性得和变量名一一对应  如不想对应那么 就把对象属性值赋值给新命名的变量
+    let { name: firstName, age: old, sex } = obj;
+    console.log(firstName, old, sex); */
+    // let a = 1, b = 2, c = 3
+    // let { a, b, c } = { a: a, b: b, c: c }
+    //key和value是一样的那么可以简写下列方式 
+    /* const obj = { a, b, c }
+    let { a: s, b: d, c: f } = obj;//abc变量名已经被声明了
+    console.log(s, d, f); */
+
+    /* //可以设置默认值 
+    const { a = 3, b = 9 } = {};
+    console.log(a, b); */
+
+    //交换两个变量
+    let a = 2;
+    let b = 5;
+    [b, a] = [a, b] //这个[a,b]是[2,5] 赋值给新的变量[b,a]对应的是 [2,5]
+    console.log(a, b);//最后b = 2 ,a = 5
+  </script>
+</body>
+
+</html>

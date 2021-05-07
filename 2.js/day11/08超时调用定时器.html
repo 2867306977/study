@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 超时调用计时器：
+        //     window对象的setTimeout() 方法
+        //     两个参数： 1. 被执行的代码 字符串 参数
+        //               2. 延迟的时间
+        //函数调用 先计算好参数后，然后开始传参的
+        //这个方法先执行的alert
+        setTimeout(alert(1), 3000);
+        //这个代码则3秒后执行alert，因为会使用eval类似的方法调用第一个参数代码
+        setTimeout("alert(1)", 3000);
+        //eval方法可以吧字符串类型的代码进行执行
+        var str = "var a = 2;console.log(a)";
+        eval(str);
+    </script>
+</body>
+
+</html>

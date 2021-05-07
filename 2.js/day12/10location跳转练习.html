@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #p {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">注册成功</button>
+  <p id="p"><span id="con">3</span>秒后跳转</p>
+  <script>
+    var oBtn = document.getElementById('btn');
+    var oCon = document.getElementById('con');
+    var oP = document.getElementById('p');
+    oBtn.onclick = function () {
+      oP.style.display = 'block';
+      setInterval(function () {
+        var i = oCon.textContent;
+        i--;
+        if (i <= 0) {
+          // window.open('http://www.baidu.com');
+          // location.href = 'http://www.baidu.com';
+          location.assign('http://www.baidu.com');
+          // location.replace('http://www.baidu.com');//没有历史记录
+        }
+        oCon.textContent = i;
+      }, 1000)
+    }
+  </script>
+</body>
+
+</html>

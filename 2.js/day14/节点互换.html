@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .outer {
+      display: flex;
+      justify-content: space-between;
+      width: 500px;
+      border: 1px solid;
+      padding: 20px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    li {
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="outer">
+    <ul id="left">
+      <li>11111111111111</li>
+      <li>22222222222222</li>
+      <li>33333333333333</li>
+      <li>44444444444444</li>
+      <li>55555555555555</li>
+      <li>66666666666666</li>
+    </ul>
+    <button id="btnLeft">&Ll;</button>
+    <button id="btnRight">&ggg;</button>
+    <ul id="right">
+      <li>77777777777777</li>
+      <li>88888888888888</li>
+      <li>99999999999999</li>
+      <li>10101010101010</li>
+      <li>11111111111111</li>
+      <li>12121212121212</li>
+    </ul>
+  </div>
+
+  <script>
+    var allUl = document.querySelectorAll('ul');
+    var oRight = document.getElementById('right');
+    var oLeft = document.getElementById('left');
+    //左边的li
+    var oLeftLis = document.querySelectorAll('#left>li');
+    //右边的li
+    var oRightLis = document.querySelectorAll('#right>li');
+    //左边按钮
+    var oBtnLeft = document.getElementById('btnLeft');
+    //右边按钮
+    var oBtnRight = document.getElementById('btnRight');
+
+    //添加标记  使用事件委托绑定
+    //绑定给ul
+    allUl.forEach(function (item) {
+      item.onclick = function (e) {
+        //传递一个形参e 为event事件
+        //e.target 该点击事件触发的目标元素  目标元素为li
+        //如果目标元素是li则给该目标元素标记并且添加背景色
+        if (e.target.nodeName.toLowerCase() === 'li') {
+          e.target.dataset.click = true;
+          e.target.style.backgroundColor = 'red';
+        }
+      }
+    })
+
+
+    //把左边有标记的元素添加到右边
+    //绑定点击事件
+    oBtnRight.onclick = function () {
+      //每次点击时重新获取最新的li元素合集
+      var oLeftLis = document.querySelectorAll('#left>li');
+      oLeftLis.forEach(function (item, index) {
+        //判断有没有标记如果有则添加到右边
+        if (item.dataset.click) {
+          oRight.appendChild(item);
+          delete item.dataset.click;
+          //清除背景色
+          item.style.backgroundColor = '';
+        }
+      })
+    }
+
+    //把右边有标记的元素添加到左边
+    oBtnLeft.onclick = function () {
+      //每次点击时重新获取最新的li元素合集
+      var oRightLis = document.querySelectorAll('#right>li');
+      oRightLis.forEach(function (item, index) {
+        //判断有没有标记如果有则添加到左边
+        if (item.dataset.click) {
+          //给left添加子元素
+          oLeft.appendChild(item);
+          delete item.dataset.click;
+          //清除背景色
+          item.style.backgroundColor = '';
+        }
+      })
+    }
+
+  </script>
+</body>
+
+</html>

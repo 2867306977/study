@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    async是*的语法糖 用于声明一个异步函数,await是yield语法糖  是等待一个异步方法执行完成
+    返回的是一个Promise对象
+    注意事项: 如果等待的不是一个promise对象那么就会直接得到结果 不会等待
+            如果是一个promise对象,那么它就会阻塞代码执行,等待它返回一个resolve状态,并且获取resolve的值,作为返回值返回出去
+            如果返回的是reject状态,那么没有返回值直接退出函数
+     */
+    async function fn() {
+      await setTimeout(() => {
+        console.log('执行a');
+      });
+      await console.log('里边代码');
+      await setTimeout(() => {
+        console.log('执行b');
+      }, 1000);
+      await setTimeout(() => {
+        console.log('执行c');
+      }, 0);
+    }
+    console.log(fn());
+    console.log('外部代码');
+
+    //上面的代码是下面代码的语法糖  下面代码需要next才能执行下一步  上面代码不需要
+    /*  function* gen() {
+       yield setTimeout(() => {
+         console.log('执行a');
+       });
+       yield console.log('里边代码');
+       yield setTimeout(() => {
+         console.log('执行b');
+       }, 1000);
+       yield setTimeout(() => {
+         console.log('执行c');
+       }, 0);
+     }
+     let it = gen()
+     console.log(it);
+     console.log('外边代码');
+     it.next()
+     it.next()
+     it.next()
+     it.next() */
+  </script>
+</body>
+
+</html>

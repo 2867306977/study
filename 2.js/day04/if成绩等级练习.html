@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  请输入成绩（数字）：
+  <input type="text" id="ipt">
+  <p>等级：<span id="level"></span></p>
+
+  <script>
+    // 用户输入成绩 然后弹出成绩的等级
+    // 获取元素
+    var oIpt = document.getElementById("ipt");
+    var oLevel = document.getElementById("level");
+    // 绑定onchange方法，监控表单内容是否改变，改变则调用函数
+    oIpt.onchange = function () {
+      //获取表单内容
+      var score = +oIpt.value;
+      // 判断输入的字符如果不为1--100的数且不是数字，则会弹出警告框
+      if (score < 0 || score > 100 || isNaN(score)) {
+        alert("请输入有效数字");
+        oIpt.value = "";
+        oLevel.innerText = "";
+        // 返回出去，退出函数，就不会继续下面的判断；
+        return;
+      }
+      // 判断成绩等级
+      if (score >= 90 && score <= 100) {
+        oLevel.innerText = "S";
+      } else if (score >= 80 && score < 90) {
+        oLevel.innerText = "A";
+      } else if (score >= 70 && score < 80) {
+        oLevel.innerText = "B";
+      } else if (score >= 60 && score < 70) {
+        oLevel.innerText = "C";
+      } else {
+        oLevel.innerText = "Z";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

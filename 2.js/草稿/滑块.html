@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    #outer {
+      position: relative;
+      width: 800px;
+      height: 25px;
+      margin: 100px auto;
+      background-color: gray;
+    }
+
+    #inner {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 30px;
+      height: 50px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <div id="inner"></div>
+  </div>
+  <script>
+    //按下移动滑块
+    var oOuter = document.getElementById('outer');
+    var oInner = document.getElementById('inner');
+
+    oInner.onmousedown = function (e) {
+      //在这阻止传播只是阻止了onmousedown事件传播
+      //e.stopPropagation()
+
+      var oInTo = e.offsetX;
+      document.onmousemove = function (e) {
+        //得减去oOuter.offsetLeft  该e.clientX是距离视口边缘位置
+        var left = e.clientX - oInTo - oOuter.offsetLeft;
+        if (left <= 0) {
+          left = 0;
+        } else if (left >= oOuter.clientWidth - oInner.offsetWidth) {
+          left = oOuter.clientWidth - oInner.offsetWidth;
+        }
+        oInner.style.left = left + 'px';
+      }
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null;
+      }
+    }
+
+    //阻止滑块点击事件的传播   inner因为有按下抬起事件 冒泡到了outer的onclick事件 所以得阻止inner的onclick事件传播
+    oInner.onclick = function (e) {
+      e.stopPropagation();
+    }
+
+    //点击滑槽某个位置滑块定位过去
+    oOuter.onclick = function (e) {
+      var cli = e.offsetX;
+      //获取滑块的宽度
+      var innerWidth = parseInt(getComputedStyle(oInner, null).width);
+      var innerLocation = cli - innerWidth / 2;
+      oInner.style.left = innerLocation + 'px';
+    }
+
+  </script>
+</body>
+
+</html>

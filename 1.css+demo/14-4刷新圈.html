@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 660px;
+      height: 100px;
+      box-sizing: border-box;
+      border: 1px solid;
+      margin: 100px auto;
+      line-height: 100px;
+      padding: 15px 0;
+    }
+
+    div ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    div ul li {
+      float: left;
+      position: relative;
+      width: 50px;
+      height: 50px;
+      margin: 0 30px;
+      border-radius: 50%;
+    }
+
+    div ul li:first-of-type {
+      border: 10px dotted #a8a8a8;
+      animation: right 2s linear infinite;
+    }
+
+    div ul li:nth-of-type(2) {
+      border: 10px solid #a8a8a8;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      animation: right 2s linear infinite;
+    }
+
+    div ul li:nth-of-type(3) {
+      border: 10px solid #a8a8a8;
+      border-bottom-color: transparent;
+      animation: right 2s linear infinite;
+    }
+
+    div ul li:nth-of-type(4)::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 10px solid transparent;
+      border-top-color: #a8a8a8;
+      border-radius: 50%;
+      animation: right 2s linear infinite;
+    }
+
+    div ul li:nth-of-type(4)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -10px;
+      margin-left: -15px;
+      width: 10px;
+      height: 10px;
+      border: 10px solid transparent;
+      border-top-color: #a8a8a8;
+      border-radius: 50%;
+      animation: right 2s linear infinite reverse;
+    }
+
+    div ul li:nth-of-type(5) {
+      width: 50px;
+      height: 60px;
+      border: 10px solid #a8a8a8;
+      border-right-color: transparent;
+      border-bottom: 0;
+      animation: right 2s linear infinite;
+    }
+
+    @keyframes right {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div>
+    <ul>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

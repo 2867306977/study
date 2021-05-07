@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+  需求： 同时请求三个数据，全部请求成功了，才OK，只要有一个失败，就失败
+    */
+    let promise1 = new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('a');
+        resolve()
+      }, 1000);
+    })
+
+    let promise2 = new Promise((resolve) => {
+      setTimeout(() => {
+        console.log('b');
+        resolve()
+      }, 1000);
+    })
+    let promise3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        console.log('c');
+        resolve()
+      }, 1000);
+    })
+
+    //Promise.all 传入n个promise对象,如果所有的promise对象都返回成功  那么就是个成功的promise 只要有一个失败那么就是个失败的promise
+    let res = Promise.all([promise1, promise2, promise3])
+    //Promise.allSettled 传入n个对象,全部promise状态都改变了,那么就得到所有结果的值 (PromiseResult)
+    // let res2 = Promise.allSettled([promise1, promise2, promise3])
+
+    res.then(() => {
+      console.log('全部成功');
+    }, () => {
+      console.log('失败了');
+    })
+
+    /* res2.then(() => {
+      console.log('全部成功');
+    }, () => {
+      console.log('失败了');
+    }) */
+  </script>
+</body>
+
+</html>

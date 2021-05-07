@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <style>
+    .f {
+      display: flex;
+      flex-wrap: wrap;
+      align-content: space-evenly;
+      height: 500px;
+      width: 500px;
+      border: 1px solid;
+    }
+
+    .f>div {
+      width: 100px;
+      height: 100px;
+    }
+
+    .f>div:first-child {
+      background-color: red;
+    }
+
+    .f>div:nth-child(2) {
+      background-color: orange;
+      order: 1;
+    }
+
+    .f>div:nth-child(3) {
+      background-color: yellow;
+      order: -1;
+    }
+
+    .f>div:nth-child(4) {
+      background-color: green;
+    }
+
+    .f>div:nth-child(5) {
+      background-color: #00e1ff;
+    }
+
+    .f>div:last-child {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="f">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+  </div>
+</body>
+
+</html>

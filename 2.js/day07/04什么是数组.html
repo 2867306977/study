@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    数组：
+      1.是有序数据的集合
+      2.数组的每个内容都称为元素，数组的key是从0开始自然递增的，也是它的下标
+      3.数组可以保存任何值
+      4.数组拥有length属性，可以获取数组的长度
+      定义数组：
+          1.字面量 var arr = [];
+          2.实例化创建 var arr = new Array();
+              当Array()小括号中只有一个数值时，则代表的是数组的长度
+     */
+    // 字面量创建
+    var arr = [1, 2, 3, 4];
+    console.log(arr);//0:1,1:2,2:3,3:4,length:4
+    var arr1 = [1,];
+    console.log(arr1);//0:1,length:1  最后一个逗号后没有元素则忽略
+    var arr2 = [1, , 3];
+    console.log(arr2);//0:1,1:empty,2:3,length:3 空元素可以读写的 逗号与逗号之间元素为空时也会表示有个空位留在那
+    console.log(arr2[1]);//没有元素则返回undefined
+
+    //实例化创建
+    var arr3 = new Array(1, 2, 3, 4, 5);
+    var arr4 = new Array(5);
+    console.log(arr3);
+    console.log(arr4);//数组长度为5，但都为空empty
+
+    //多维数组  数组里面也可以包含多个数组
+    var arr5 = [1, 2, 3, [4, 5, 6], 7, 8]; //二维数组，该数组长度为6  里面的数组算一个整体
+    var arr6 = [1, 2, 3, [4, 5, [6, 7]], 7];//三维数组  数组长度为5
+
+    //关联数组  1.数组  按有序方式保存数组内部的值  2.对象  可以扩展方法和属性 但不影响保存的值
+    var arr7 = [1, 2, 3, 4, 5];
+    arr7[2] = 10;
+    arr7[2.3] = 11;
+    arr7['a'] = 12;
+    console.log(arr7);//0: 1, 1: 2, 2: 10, 2.3: 11, 3: 4, 4: 5, a: 12,length: 5
+    console.log(arr7['a']);//12
+
+    //给数组扩展方法和属性，并不影响数组内部的值  遍历之后还是数组原本的值
+    for (var i = 0; i < arr7.length; i++) {
+      console.log(arr7[i]);
+    }
+    arr7.forEach(function (value, index) {
+      console.log(value);
+    })
+
+    // 伪类数组  1.不是数组，而是类似数组，实际上是个对象，满足两个条件1.key从0开始自然递增 2.拥有length属性
+    var likeArr = {
+      0: '你',
+      1: '是',
+      2: '个',
+      3: '对',
+      4: '像'
+    }
+    console.log(likeArr);//object
+
+
+
+  </script>
+</body>
+
+</html>

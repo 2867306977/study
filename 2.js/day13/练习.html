@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+  <script>
+    var oList = document.getElementById('list');
+    var oListLis = document.querySelectorAll('#list li');
+    /*
+    增删改查
+    插入:appendChild()
+        insertAfter(new,old)
+    删除:removeChild()
+        remove()
+    替换:replaceChild(new,old)
+    复制节点:cloneNode()true为深复制 false为浅复制
+    查询:循环遍历
+     */
+    var newLis = document.createElement('li');
+    //添加文本节点  第一种方法
+    // var newText = document.createTextNode('我是新的li');
+    // newLis.appendChild(newText);
+
+    //添加文本节点的第二种方法
+    newLis.innerHTML = '我是新的li';
+
+    //在元素末尾添加新的子元素
+    // oList.appendChild(newLis);
+
+    //在元素前面添加新的兄弟元素
+    oList.insertBefore(newLis, oListLis[1]);
+
+    //删除元素  删除元素里面原来的子元素的下标为1的元素
+    oList.removeChild(oListLis[1]);
+    //删除元素  删除元素里面原来的子元素的下标为2的元素
+    oListLis[2].remove();
+
+    oList.replaceChild(newLis, oListLis[5]);
+  </script>
+</body>
+
+</html>

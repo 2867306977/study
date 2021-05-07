@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 500px;
+      height: 500px;
+      background-color: green;
+    }
+
+    #son {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+  <div id="box">
+    <div id="son"></div>
+  </div>
+
+  <script src="./js/jquery.js"></script>
+  <script>
+    $('#son').on('click', function () {
+      console.log('son');
+    })
+    $('#box').on('click', function () {
+      console.log('box');
+    });
+    $('#btn').click(function () {
+      // $('#son').click();//触发son  冒泡给box
+      // $('#son').trigger('click')//触发son  冒泡给box
+      $('#son').triggerHandler('click')//触发了son  不冒泡
+    })
+
+    //js原生
+    /* var btn = document.getElementById('btn')
+    var son = document.getElementById('son')
+    son.onclick = function () {
+      console.log('son');
+    }
+    son.addEventListener('click', function () {
+      console.log('son2');
+    })
+    btn.onclick = function () {
+      // son.onclick();//只触发on绑定的事件
+      son.click();//触发on绑定的事件也触发addEventListener绑定的事件
+    } */
+  </script>
+
+</body>
+
+</html>

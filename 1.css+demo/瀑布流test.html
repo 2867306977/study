@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .f {
+      /* 容器本身是按照正常文档流显示 */
+      column-count: 5;
+      column-gap: 0;
+      column-rule: 2px solid pink;
+    }
+
+    .z1 {
+      break-inside: avoid;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .s1 {
+      height: 200px;
+      background-color: blue;
+    }
+
+    .f {
+      column-count: 1;
+    }
+
+    @media (min-width: 400px) {
+      .f {
+        column-count: 3;
+      }
+    }
+
+    @media (min-width: 1200px) {
+      .f {
+        column-count: 5;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="f">
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+    <div class="z1">
+      <div class="s1"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>

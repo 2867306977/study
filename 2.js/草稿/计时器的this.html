@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //this指向的是object
+    var obj = {
+      name: function () {
+        setTimeout(() => {
+          console.log(this);
+        }, 1000)
+      }
+    }
+    obj.name();
+    //this指向的是window
+    var obj = {
+      name: function () {
+        //相当于是调用了name(),打开了这个函数,计时器自己调用的
+        setTimeout(function () {
+          console.log(this);
+        }, 1000)
+      }
+    }
+    obj.name();
+    //for循环是同步的,但是计时器是异步的
+    for (var i = 0; i < 5; i++) {
+      // 计时器已经执行了5次,因为里面没有i,去外边找i,这时候循环已经执行完成,i=5
+      setInterval(function () {
+        console.log(i);//55555
+      }, 1000)
+    }
+  </script>
+</body>
+
+</html>

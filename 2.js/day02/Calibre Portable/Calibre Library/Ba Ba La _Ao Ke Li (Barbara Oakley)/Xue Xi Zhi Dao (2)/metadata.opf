@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<package xmlns="http://www.idpf.org/2007/opf" unique-identifier="uuid_id" version="2.0">
+    <metadata xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:opf="http://www.idpf.org/2007/opf">
+        <dc:identifier opf:scheme="calibre" id="calibre_id">2</dc:identifier>
+        <dc:identifier opf:scheme="uuid" id="uuid_id">95642af6-ed8c-47f8-a0d4-af6d4c36f3fb</dc:identifier>
+        <dc:title>学习之道</dc:title>
+        <dc:creator opf:file-as="Oakley）, 芭芭拉·奥克利（Barbara" opf:role="aut">芭芭拉·奥克利（Barbara Oakley）</dc:creator>
+        <dc:contributor opf:file-as="calibre" opf:role="bkp">calibre (5.14.0) [https://calibre-ebook.com]</dc:contributor>
+        <dc:date>2016-09-30T16:00:00+00:00</dc:date>
+        <dc:publisher>北京华章图文信息有限公司</dc:publisher>
+        <dc:identifier opf:scheme="MOBI-ASIN">f91e4499-5142-4c25-8aae-d44fe9353e5e</dc:identifier>
+        <dc:language>zho</dc:language>
+        <meta name="calibre:author_link_map" content="{&quot;芭芭拉·奥克利（Barbara Oakley）&quot;: &quot;&quot;}"/>
+        <meta name="calibre:timestamp" content="2021-03-27T08:01:23+00:00"/>
+        <meta name="calibre:title_sort" content="学习之道"/>
+    </metadata>
+    <guide>
+        <reference type="cover" title="Bìa sách" href="cover.jpg"/>
+    </guide>
+</package>

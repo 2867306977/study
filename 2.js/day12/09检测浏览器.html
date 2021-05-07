@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+
+  <script>
+    /*
+    BOM是window的顶层对象
+      navigator:客户端信息
+      location:页面地址URL信息
+      history:浏览器历史记录信息
+      document:文档信息(dom的顶层对象)
+
+    window.navigator:
+          userAgent:客户端信息
+          platform:操作系统
+          onLine:是否连接网络
+     */
+    //Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.182 Safari/537.36   谷歌浏览器识别码
+
+    // Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:85.0) Gecko/20100101 Firefox/85.0  火狐浏览器
+
+    // Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; Tablet PC 2.0; McAfee; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; rv:11.0) like Gecko  IE11浏览器
+
+    // Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; InfoPath.3; Tablet PC 2.0; McAfee; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729)  IE8浏览器
+
+    // Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.90 Safari/537.36 Edg/89.0.774.63  Edge浏览器
+
+    console.log(navigator.userAgent);
+    console.log(navigator.platform);//win32 浏览器操作系统
+    console.log(navigator.onLine);//false 返回的是布尔值
+
+    /*
+    检测浏览器一般为了兼容:
+        特征检测法:不管什么浏览器只需要考虑是否兼容就可
+        字符串检测法:
+     */
+    // 检测操作系统:
+    var isWin = (navigator.userAgent.indexOf('Win') != -1);
+    var isMac = (navigator.userAgent.indexOf('Mac') != -1);
+    var isUnix = (navigator.userAgent.indexOf('X11') != -1);
+    var isLinux = (navigator.userAgent.indexOf('Linux') != -1);
+  </script>
+
+</body>
+
+</html>

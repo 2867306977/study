@@ -1,0 +1,19 @@
+{
+  "add books dialog dir": "D:\\资源",
+  "catalog_window_geom": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAABFAAAADAAAB4AAAAQSAAAARgAAADIAAAd/AAAEEQAAAAAAAAAAB4AAAABGAAAAMgAAB38AAAQR"
+  },
+  "sort_history": [
+    [
+      "timestamp",
+      false
+    ],
+    [
+      "timestamp",
+      false
+    ]
+  ],
+  "welcome_wizard_device": "default",
+  "welcome_wizard_was_run": true
+}

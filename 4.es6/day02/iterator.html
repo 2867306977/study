@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <script>
+    let arr = [1, 2, 3]
+    //封装一个函数 iterator内部是怎么操作
+    function iterator(arr) {
+      //用一个计时器保存执行到哪一步了
+      let count = 0;
+      //返回的是一个对象
+      return {
+        //这个对象有个next方法 使用这个方法返回一个对象 {value: 值,done: true/false}
+        next: () => {
+          //如果执行的次数小于该长度那么有value值返回
+          if (count < arr.length) {
+            return {
+              //每调用一次 count++,
+              value: arr[count++],
+              done: false
+            }
+          } else {
+            return {
+              value: arr[count],
+              done: true
+            }
+          }
+        }
+      }
+    }
+    let it = iterator(arr);
+    console.log(it);
+    console.log(it.next().value);
+    console.log(it.next());
+    console.log(it.next());
+    console.log(it.next());
+    console.log(it.next());
+    /*
+    一种数据部署了iterator接口,我们就称该数据结构是可迭代的
+    在es6中该数据结构拥有Symbol.iterator属性,那么该数据结构就是可迭代的
+    继承了iterator接口的数据结构有(map,set,string,array...)
+    1.解构赋值是默认调用了iterator接口
+    2.扩展运算符也默认调用的iterator接口
+    3.for...of使用的就是iterator接口
+    4.对象没有iterator接口,所以不能使用for...of
+     */
+    //若想让对象使用for..of,我们可以手动给这个对象部署iterator接口
+    let obj = {
+      name: 'zs',
+      age: 17,
+      sex: 'nan'
+    };
+    //执行generator返回的是一个iterator迭代对象
+    obj[Symbol.iterator] = function* () {
+      yield this.name
+      yield this.age
+      yield this.sex
+    };
+    for (const iterator of obj) {
+      console.log(iterator);
+    }
+
+    // //for...of可以遍历DOM NodeList对象 (类似数组的)
+    // var lis = document.getElementsByTagName('li')
+    // for (const iterator of lis) {
+    //   console.log(iterator);
+    // }
+  </script>
+</body>
+
+</html>

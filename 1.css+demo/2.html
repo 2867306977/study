@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./appleHeader/iconfont.css">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: #666;
+    }
+
+    a:hover {
+      color: #0000ff;
+    }
+
+    .w {
+      width: 1200px;
+      margin: 0 auto;
+    }
+
+    .header {
+      height: 100px;
+      border-bottom: 1px solid #d7d7d7;
+    }
+
+    .head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-evenly;
+      width: 100%;
+    }
+
+    .nav li {
+      float: left;
+      height: 100px;
+      line-height: 100px;
+      padding: 0 10px;
+    }
+
+    .nav li a {
+      display: block;
+    }
+
+    .user {
+      width: 100px;
+    }
+
+    .user>div {
+      display: inline-block;
+    }
+
+    .my {
+      float: left;
+      position: relative;
+    }
+
+    .shopcar {
+      float: right;
+    }
+
+    .user>div>a {
+      font-size: 30px;
+    }
+
+    .login {
+      display: none;
+      position: absolute;
+      top: 65px;
+      left: -35px;
+      width: 100px;
+      padding: 10px;
+      border: 1px solid #d7d7d7;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    .login::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 42px;
+      border: 10px solid transparent;
+      border-bottom-color: #d7d7d7;
+    }
+
+    .login li {
+      padding: 5px 0;
+    }
+
+    .my>a {
+      display: block;
+    }
+
+    .my:hover .login {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="header">
+    <div class="w head">
+      <!-- log -->
+      <a href="#"><img src="./img/logo.png" alt=""></a>
+      <!-- nav -->
+      <ul class="nav">
+        <li>
+          <a href="#">插线板</a>
+        </li>
+        <li>
+          <a href="#">音箱耳机</a>
+        </li>
+        <li>
+          <a href="#">手机配件</a>
+        </li>
+        <li>
+          <a href="#">电脑办公</a>
+        </li>
+        <li>
+          <a href="#">电池电源</a>
+        </li>
+        <li>
+          <a href="#">生活电器</a>
+        </li>
+        <li>
+          <a href="#">个户健康</a>
+        </li>
+      </ul>
+      <!-- user -->
+      <div class="user">
+        <div class="my">
+          <a href="#" class="iconfont icon-pingguo "></a>
+          <ul class="login">
+            <li><a href="#">登录</a></li>
+            <li><a href="#">注册</a></li>
+          </ul>
+        </div>
+        <div class="shopcar">
+          <a href="#" class="iconfont icon-gouwudai"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

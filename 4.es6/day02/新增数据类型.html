@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //Symbol()  枚举(表示独一无二的值), 给对象创建一个独一无二的属性名 为了保证和其他属性名不冲突
+    //对象的属性名es5之前一直都是只能是字符串类型 es6新增了一个Symbol类型
+    //需求：让新增的属性和方法不和之前的冲突
+    //Symbol()中传入字符串是没有任何意义的,只是用来描述Symbol的
+    let name = Symbol('name');
+    const obj = {
+      name: 'zs',
+      age: 19
+    }
+    obj[name] = 'ls'
+    obj[Symbol()] = 'nv'
+    console.log(obj[name]);
+    console.log(obj[Symbol()]);//undefined 不能直接给对象添加Symbol没有办法获取 需要赋值给变量
+    for (let key in obj) {
+      console.log(key);//for in没有办法遍历Symbol数据类型
+    }
+    //使用Object.getOwnPropertySymbols 遍历Symbol数据类型
+    let res = Object.getOwnPropertySymbols(obj);
+    console.log(res);
+
+    // BigInt 精确表示整数  后面添加后缀n
+    console.log(23323n);
+
+
+    //新增的数据结构
+    // Set 类似于数组,但值都是唯一的 没有重复的值
+    //只接受一个数组或者具有iterable接口的其他数据结构作为参数
+    let st = new Set([2, 3, 5, 6, 2, 4, 3])
+    // let sto = new Set({ a: 3, d: 5, a: 3, d: 2, e: 6 })
+    console.log(st);//{2, 3, 5, 6, 4}
+    // console.log(sto);//报错 对象不具有iterable接口
+
+    //Set其他应用 1.数组去重
+    let arr = [1, 2, 4, 6, 2, 4, 6]
+    console.log([...new Set(arr)]);
+    // 2.字符串去重
+    let str = 'asffdhgdsa'
+    console.log([...new Set(str)].join(''));
+
+    //Map 类似于对象
+
+
+
+    Set, Map  //数据结构  存储数据的类型
+
+    //对象不能使用for...of遍历 因为没有继承iterator
+    // 字符串和数组继承了iterator接口 for...of可以遍历数组,字符串,set,map
+
+  </script>
+</body>
+
+</html>

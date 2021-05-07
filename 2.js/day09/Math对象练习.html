@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 100px;
+      height: 100px;
+      background-color: rgb(111, 222, 255);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    /*
+    求10-20之间的随机数
+
+        随机生成颜色RGB
+
+        模拟实现max()/min()
+     */
+    //求10-20之间的随机数
+    var num = Math.random() * 10 + 10;
+    console.log(num);
+
+
+    //随机生成颜色RGB [0-255)
+    var oBox = document.getElementById('box');
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    // 点击盒子随机变颜色
+    oBox.onclick = function () {
+      //随机生成 [0-255)的数字
+      a = Math.floor(Math.random() * 256);
+      b = Math.floor(Math.random() * 256);
+      c = Math.floor(Math.random() * 256);
+      //把随机数字拼串起来
+      oBox.style.backgroundColor = "rgb" + "(" + a + "," + b + "," + c + ")";
+    }
+
+    //模拟实现max()/min()
+    // console.log(Math.max(1, 3, 1, 12, 4, 5));
+    //模拟max()
+    function max() {
+      var max = 0;
+      for (var i = 0; i < arguments.length; i++) {
+        // 如果实参中有比max大的数则覆盖原来的最大数
+        if (arguments[i] > max) {
+          max = arguments[i];
+        }
+      }
+      return max;
+    }
+    var re = max(2, 4, 5, 66, 1, 4, 11);
+    console.log(re);
+
+    //模拟min()
+    function min() {
+      var min = 100;
+      for (var i = 0; i < arguments.length; i++) {
+        // 如果实参中有比min小的数则覆盖原来的最小数
+        if (arguments[i] < min) {
+          min = arguments[i];
+        }
+      }
+      return min;
+    }
+    var re = min(2, 4, 5, -6, 66, 1, 4, 11);
+    console.log(re);
+  </script>
+</body>
+
+</html>

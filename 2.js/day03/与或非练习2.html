@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <label for="ipt1">第一个数</label>
+  <input type="text" id="ipt1">
+  <label for="ipt2">第二个数</label>
+  <input type="text" id="ipt2">
+  <button id="btn">按钮</button>
+
+  <script>
+    // 点击按钮判断两个数，如果有一个是非数字，那么就提示用户，否则就计算两个数字的和
+    var oIpt1 = document.getElementById("ipt1");
+    var oIpt2 = document.getElementById("ipt2");
+    var oBtn = document.getElementById("btn");
+    oBtn.onclick = function () {
+      // 先获取表单里的内容
+      var oIpt1Val = oIpt1.value;
+      var oIpt2Val = oIpt2.value;
+      // 表单1内容不是数字或者表单2内容不是数字则进入判断
+      if (isNaN(oIpt1Val) || isNaN(oIpt2Val)) {
+        // 为true说明至少有一个不是数字
+        alert("至少有一个非法数字");
+      } else {
+        alert(+oIpt1Val + +oIpt2Val);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

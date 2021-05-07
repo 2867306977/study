@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      position: relative;
+      width: 300px;
+      height: 300px;
+      margin: 100px auto;
+      animation: div .8s infinite;
+    }
+
+    @keyframes div {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.1);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    div::before,
+    div::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      width: 200px;
+      height: 300px;
+      border-radius: 50% 50% 0 0;
+      background-color: red;
+
+    }
+
+    div::before {
+      left: 0;
+      transform: rotate(-50deg);
+    }
+
+    div::after {
+      right: 0;
+      transform: rotate(50deg);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div></div>
+
+</body>
+
+</html>

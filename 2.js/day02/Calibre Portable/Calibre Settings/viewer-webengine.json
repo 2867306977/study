@@ -1,0 +1,32 @@
+{
+  "main_window_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAJ/AAAA8wAABQAAAAPpAAACgAAAARkAAAT/AAAD6AAAAAAAAAAAB4AAAAKAAAABGQAABP8AAAPo"
+  },
+  "main_window_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAAAAAAAAPwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAJ8A////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAArAD///8AAAABAAAAAAAAAAD8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACFAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAP8A////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAEwD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAAOQA////AAACgAAAAtAAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+  },
+  "old_prefs_migrated": true,
+  "session_data": {
+    "controls_help_shown_count": 1,
+    "standalone_font_settings": {},
+    "standalone_misc_settings": {
+      "remember_last_read": true,
+      "remember_window_geometry": false,
+      "save_annotations_in_ebook": true,
+      "singleinstance": false
+    },
+    "standalone_recently_opened": [
+      {
+        "authors": [
+          "芭芭拉·奥克利（Barbara Oakley）"
+        ],
+        "key": "C:\\Users\\28673\\Desktop\\class0223\\day02\\Calibre Portable\\Calibre Library\\Ba Ba La _Ao Ke Li (Barbara Oakley)\\Xue Xi Zhi Dao (2)\\Xue Xi Zhi Dao - Ba Ba La _Ao Ke Li (Barbara Oak.mobi",
+        "pathtoebook": "C:\\Users\\28673\\Desktop\\class0223\\day02\\Calibre Portable\\Calibre Library\\Ba Ba La _Ao Ke Li (Barbara Oakley)\\Xue Xi Zhi Dao (2)\\Xue Xi Zhi Dao - Ba Ba La _Ao Ke Li (Barbara Oak.mobi",
+        "timestamp": "2021-03-27T08:01:58.672Z",
+        "title": "学习之道"
+      }
+    ]
+  }
+}

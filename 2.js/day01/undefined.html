@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    var a;
+    console.log(a);//undefined  （a声明但未赋值所以返回undefined）
+
+    function test(name, age, add) {
+      console.log("我是" + name);
+      console.log("我年龄" + age)
+      console.log("我来自" + add);//undefined  （函数传参没有传实参，则返回undefined）
+    }
+    test("张三", 20);
+
+    var obj = {
+      name: "张三",
+      age: 20,
+      gender: "男"
+    }
+    console.log(obj.add);//undefined （因为对象中没有该属性，则返回undefined）
+
+    function test2(a, b) {
+      var num = a + b;
+    }
+    var result = test2(2, 3);
+    console.log(result);//undefined  （函数没有返回值，则返回undefined）
+  </script>
+</body>
+
+</html>

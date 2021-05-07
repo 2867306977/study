@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+  </style>
+</head>
+
+<body>
+  <script>
+    /* 
+    手写call
+      call方法第一参数分3类:1.window(null,undefined)  2.基本类型(number,string,boolean) 3.对象
+     */
+    Function.prototype.myApply = function (context) {
+      //先判断context是什么类型
+      //判断是否是null和undefined直接用全等判断 它们只有一个值
+      if (context === null || context === undefined) {
+        context = window;
+      }
+      //判断是否为基本类型,基本类型太多了,直接反向判断 如果typeof检测出来不是对象不是函数则是基本类型,undefined在上边已经检测了把context变成了window 不会进入判断
+      if (typeof context != 'object' && typeof context != 'function') {
+        //把context包装成对象
+        context = Object(context);
+      }
+      //打印context是什么
+      // console.log(context);
+
+      //传参 
+      //arguments是伪数组没有数组方法  通过Array.from()把伪数组转为数组
+      var argArr = Array.from(arguments).slice(1);
+
+
+      var f = Date.now();//保证f变量名的唯一性
+      //改变this指向
+      //当前myApply中的this指向的是调用myCall的函数,把this代表的这个函数当成context对象的方法
+      //当context调用了f方法,那么这个this指向了context对象,因为f和之前this所代表的函数是同一个函数,所以fn的this也是指向context
+      context[f] = this;
+      //call函数立即调用
+      // context.f(...argArr);ES6写法
+      //eval()可以解析字符串代码并执行
+      eval('context[f](' + argArr + ')');
+      //用完后,清除该方法
+      delete context[f];
+    }
+    function fn(a, b, c) {
+      console.log(this);
+      console.log(a + b + c);
+    }
+    // fn.apply(null, [1, 2, 3]);
+    fn.myApply(Symbol(), [1, 2, 3]);
+    fn.myApply(1n, [1, 2, 3]);
+    fn.myApply(null, [1, 2, 3]);
+    fn.myApply(undefined, [1, 2, 3]);
+    fn.myApply('1', [1, 2, 3]);
+    fn.myApply(1, [1, 2, 3]);
+    fn.myApply(true, [1, 2, 3]);
+    fn.myApply([], [1, 2, 3]);
+  </script>
+</body>
+
+</html>

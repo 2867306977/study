@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    img {
+      vertical-align: top;
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      padding-top: 10px;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="top" id="topPart">
+    <img src="images/top.png" alt="" />
+  </div>
+  <div class="nav" id="navBar">
+    <img src="images/nav.png" alt="" />
+  </div>
+  <div class="main" id="mainPart">
+    <img src="images/main.png" alt="" />
+  </div>
+
+  <script>
+    //监听滚动条事件  当滚动条到达了指定位置则把导航栏固定
+    var oNav = document.getElementById('navBar')
+    var oTop = document.getElementById('topPart')
+    var oMain = document.getElementById('mainPart')
+    window.onscroll = function () {
+      var oTopTo = oTop.offsetHeight;
+      if (document.documentElement.scrollTop >= oTopTo) {
+        oNav.classList.add('fixed');
+        //添加marginTop 
+        oMain.style.marginTop = oNav.offsetHeight + 'px';
+      } else {
+        oNav.classList.remove('fixed');
+        oMain.style.marginTop = 0;
+      }
+    }
+  </script>
+
+</body>
+
+</html>

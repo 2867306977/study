@@ -1,0 +1,147 @@
+i, em {
+  font-style: normal;
+}
+
+.box {
+  height: 2200px;
+}
+
+.aside {
+  position: fixed;
+  top: 0;
+  right: -290px;
+  width: 300px;
+  height: 100%;
+  background-color: #7a6e6e;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 290px;
+  height: 100%;
+  background-color: #ffe4c4;
+  z-index: 99;
+}
+
+.wrap {
+  position: absolute;
+  top: 0;
+  right: 290px;
+  width: 35px;
+  height: 35px;
+  background: #7a6e6e url(../img/list.png) no-repeat center;
+  background-size: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.toolist {
+  position: absolute;
+  top: 50%;
+  margin-top: -108px;
+  right: 290px;
+  width: 35px;
+  height: 216px;
+  z-index: 9;
+}
+
+.toolist .pull {
+  position: relative;
+  width: 35px;
+  height: 35px;
+  margin-bottom: 1px;
+  background-color: #7a6e6e;
+  border-radius: 3px 0 0 3px;
+}
+
+.toolist .pull i {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 35px;
+  height: 35px;
+  z-index: 3;
+  cursor: pointer;
+}
+
+.toolist .pull:first-of-type i {
+  background: url(../img/toolbars.png) no-repeat -86px -175px;
+}
+
+.toolist .pull:nth-of-type(2) i {
+  background: url(../img/toolbars.png) no-repeat -48px 0px;
+}
+
+.toolist .pull:nth-of-type(3) i {
+  background: url(../img/toolbars.png) no-repeat -48px -50px;
+}
+
+.toolist .pull:nth-of-type(4) i {
+  background: url(../img/toolbars.png) no-repeat -48px -100px;
+}
+
+.toolist .pull:nth-of-type(5) i {
+  background: url(../img/toolbars.png) no-repeat -188px -150px;
+}
+
+.toolist .pull:last-of-type i {
+  background: url(../img/toolbars.png) no-repeat -48px -150px;
+}
+
+.toolist .pull em {
+  position: absolute;
+  top: 0;
+  left: 35px;
+  width: 62px;
+  height: 35px;
+  background-color: #7a6e6e;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.back {
+  position: absolute;
+  bottom: 0px;
+  right: 290px;
+  width: 35px;
+  height: 35px;
+  background-color: #7a6e6e;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+}
+
+.back i {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background: url(../img/toolbars.png) no-repeat -48px -250px;
+  z-index: 3;
+}
+
+.back em {
+  position: absolute;
+  left: 35px;
+  top: 0;
+  width: 62px;
+  height: 35px;
+  background-color: #7a6e6e;
+  font-size: 12px;
+  text-align: center;
+  line-height: 35px;
+  cursor: pointer;
+  z-index: -1;
+}
+
+.pull:hover, .pull:hover em, .back:hover, .back:hover em {
+  background-color: #cc0000;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // for (let i = 0; i < 5; i++) {
+    //   setTimeout(function () {
+
+    //     console.log(i);//0,1,2,3,4
+
+    //   }, 0)
+    // }
+    // for (var a = 0; a < 5; a++) {
+    //   //定时器返回值是唯一的id   setTimeout()是异步代码
+    //   setTimeout(function () {
+
+    //     console.log(a);//5,5,5,5,5
+
+    //   }, 0)
+    //   /*       if (a < 5) {
+    //           console.log(i);//0,1,2,3,4
+    //         } */
+
+    // }
+
+
+    /* function employee(name, code) {
+      //构造函数的this指向实例化对象  是给这个newemp实例对象添加了属性
+      this.name = "wangli";
+
+      this.code = "A001";
+
+    }
+
+    var newemp = new employee("zhangming", 'A002');
+    console.log(newemp);
+
+    document.write("雇员姓名:" + newemp.name + " ");
+
+    document.write("雇员代号:" + newemp.code + " "); */
+
+    var User = {
+
+      count: 1,
+      getCount: function () {
+
+        return this.count;
+
+      }
+
+    }
+
+    console.log(User.getCount());
+
+    var func = User.getCount;
+
+    console.log(func());
+
+
+    /* var a = b = 10;
+    (function () {
+      var a = b = 20
+    }) ();
+
+    console.log(b);*/
+  </script>
+
+</body>
+
+</html>

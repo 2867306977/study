@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+   new Promise是一个异步容器 它是一个同步函数
+    有三种状态1.无定义 pending  2.成功 fulfilled  3.失败 rejected
+    返回的是一个Promise对象
+     */
+    let promise = new Promise(function (resolve, reject) {
+      setTimeout(() => {
+        let data = [1, 2, 3, 4]
+        // resolve(data)//传递实参  //只能改变一次状态
+        reject('失败')
+      }, 1000);
+    })
+    console.log(promise);
+    /* 
+    Promise.prototype.then方法是接收promise成功的回调
+    Promise.prototype.catch方法是接收失败的回调
+     */
+    promise.then(
+      //接收data参数  成功状态resolve传递的参数
+      (data) => {  //成功的回调
+        console.log(data);
+      },
+      //()里面参数就是 失败状态reject里面传的参数
+      (err) => {  //失败的回调
+        console.log(err);
+      }
+    )
+
+    //如果使用了catch方法 没必要使用then的第二个回调 
+
+    promise.then(
+      (data) => {  //成功的回调
+        console.log(data);
+      }
+    ).catch(
+      (err) => {  //失败的回调
+        console.log(err);
+      }
+    )
+  </script>
+</body>
+
+</html>

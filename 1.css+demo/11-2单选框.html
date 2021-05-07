@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 400px;
+      margin: 100px auto;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+      font-size: 0;
+    }
+
+    .box input[type="radio"][name="six"] {
+      display: none;
+    }
+
+    .box input[type="radio"][name="six"]+label {
+      display: block;
+      height: 30px;
+      line-height: 30px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+
+    .box input[type="radio"][name="six"]+label::before {
+      content: ' ';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      line-height: 20px;
+      margin: 0 15px;
+      vertical-align: middle;
+      border: 1px solid orange;
+    }
+
+    .box input[type="radio"][name="six"]:checked+label::before {
+      content: '!';
+      text-align: center;
+      background-color: orange;
+      color: red;
+    }
+
+    .box li:last-of-type input:checked+label::after {
+      content: '小伙子，你的思想很危险呀！';
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <ul>
+      <li><input type="radio" name="six" id="six1" /><label for="six1">静哥真帅！</label></li>
+      <li><input type="radio" name="six" id="six2" /><label for="six2">静哥真英俊！</label></li>
+      <li><input type="radio" name="six" id="six3" /><label for="six3">静哥又帅又英俊</label></li>
+      <li><input type="radio" name="six" id="six4" /><label for="six4">闫海静真丑！</label></li>
+    </ul>
+  </div>
+
+</body>
+
+</html>

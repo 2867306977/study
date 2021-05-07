@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">添加元素</button>
+  <ul id="outer">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+  </ul>
+  <script>
+    /*
+   新旧版本的选择器的区别： 旧版本选择器是动态的  新版本选择器是静态的
+    */
+    var oBtn = document.getElementById('btn');
+    var oOuter = document.getElementById('outer');
+    // var oLis = oOuter.getElementsByTagName('li');//动态
+    var oLis = document.querySelectorAll('#outer li');//静态
+    //解决方法:把循环次数(li的长度)保存在变量中
+    // var lisLength = oLis.length;//创建在外边变量不会变
+    //点击按钮添加新的元素
+    oBtn.onclick = function () {
+      //创建在里边,每点击一次赋值一个新的值
+      var lisLength = oLis.length;
+      //点击进入循环添加元素 li长度有多少就循环多少次,因为进入循环就添加元素,然后就无限循环
+      for (var i = 0; i < lisLength; i++) {
+        //先创建元素
+        var newLis = document.createElement('li');
+        //给元素添加内容
+        newLis.textContent = 'new';
+        //把创建的新元素添加到页面中
+        oOuter.appendChild(newLis);
+      }
+      console.log(lisLength);
+    }
+  </script>
+</body>
+
+</html>

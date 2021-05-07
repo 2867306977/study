@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 5000px;
+    }
+
+    #box {
+      width: 400px;
+      height: 200px;
+      overflow: auto;
+      border: 1px solid #000;
+    }
+
+    #box #con {
+      width: 1000px;
+      height: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">点击</button>
+  <button id="btn2">点击2</button>
+  <div id="box">
+    <div id="con"></div>
+  </div>
+  <script>
+    /* 
+    scrollLeft: 
+        设置和获取滚动条的位置
+*/
+    var oBox = document.getElementById('box');
+    var oCon = document.getElementById('con');
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function () {
+      //获取
+      // console.log(oBox.scrollLeft);
+      //设置
+      oBox.scrollLeft = 200;
+    }
+
+    /*
+      获取系统滚动条的位置：
+          - IE9以上:window.pageXOffset/window.pageYOffset
+          - IE6以上:Html元素的scrollTop或者scrollLeft属性
+          - IE6:Body元素的scrollTop
+      设置系统滚动条：
+          - IE6以上:给Html元素的scrollTop或者scrollLeft属性设置
+          - IE6:Body元素的scrollTop设置
+          - 全部兼容：window.scrollTo(x,y):设置系统滚动条，x是横向 y是竖向
+        */
+    var oBtn2 = document.getElementById('btn2');
+    oBtn2.onclick = function () {
+      // console.log(window.pageYOffset)
+      // console.log(document.documentElement.scrollTop)
+      // console.log(document.body.scrollTop)
+      // document.documentElement.scrollTop = 200;
+      window.scrollTo(0, 700)
+    }
+  </script>
+</body>
+
+</html>

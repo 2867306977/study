@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #imgData img {
+        width: 577px;
+        height: 433px;
+      }
+
+      #outer {
+        position: relative;
+        width: 577px;
+        height: 450px;
+        background-color: pink;
+      }
+
+      #imgData {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        width: 2500px;
+      }
+
+      #box {
+        position: relative;
+        overflow: auto;
+        width: 577px;
+        height: 450px;
+      }
+
+      #cross_prev,
+      #cross_next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 27px;
+        height: 44px;
+        cursor: pointer;
+      }
+
+      #cross_prev {
+        left: 10px;
+        background: url(./images/cross-prev.png) no-repeat center;
+        background-size: 27px 44px;
+      }
+
+      #cross_next {
+        right: 10px;
+        background: url(./images/cross-next.png) no-repeat center;
+        background-size: 27px 44px;
+      }
+
+      #navbtn {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      #navbtn a {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+
+      #navbtn a.navbtn_current {
+        background-color: blue;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="outer">
+      <div id="box">
+        <div id="imgData">
+          <img src="./images/01.jpg" alt="" />
+          <img src="./images/02.jpg" alt="" />
+          <img src="./images/03.jpg" alt="" />
+          <img src="./images/04.jpg" alt="" />
+          <img src="./images/05.jpg" alt="" />
+          <img src="./images/01.jpg" alt="" />
+        </div>
+      </div>
+      <div id="cross_prev"></div>
+      <div id="cross_next"></div>
+      <div id="navbtn">
+        <a href="#" class="navbtn_current"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+      </div>
+    </div>
+
+    <script>
+      //获取元素
+      var oBox = document.getElementById('box')
+      var oImg = document.querySelectorAll('#imgData img')
+      var oImgData = document.getElementById('imgData')
+      //获取导航点
+      var oNavBtn = document.querySelectorAll('#navbtn a')
+      //获取左右箭头
+      var oPrev = document.getElementById('cross_prev')
+      var oNext = document.getElementById('cross_next')
+      /*
+    每隔两秒换一张图片
+     */
+      //初始化下标  与导航点的按钮共用
+      var i = 0
+      var moveTimer = null
+      var toggleTimer = null
+
+      /*
+    点击右箭头,切换下一张图片
+    */
+      oNext.onclick = function () {
+        clearInterval(toggleTimer)
+        clearInterval(moveTimer)
+        i++
+        if (i >= oImg.length) {
+          i = 1
+          oBox.scrollLeft = 0
+        }
+        move()
+        setA()
+        toggle()
+      }
+      /*
+    点击左箭头,切换上一张图片
+    */
+      oPrev.onclick = function () {
+        clearInterval(toggleTimer)
+        clearInterval(moveTimer)
+        i--
+        if (i < 0) {
+          i = oImg.length - 2
+          oBox.scrollLeft = oImg.length * oImg[0].offsetWidth
+        }
+        move()
+        setA()
+        toggle()
+      }
+
+      toggle()
+      //封装一个函数
+      function toggle() {
+        // 创建一个两秒的计时器 自动切换图片
+        toggleTimer = setInterval(function () {
+          //清除计时器 两个计时器嵌套会出现问题 计时器在失焦时会出于性能考虑 改变时间间隔
+          clearInterval(moveTimer)
+          //每两秒换图片
+          i++
+          //判断临界值,如果超出了图片的长度则下标值变回0
+          if (i >= oImg.length) {
+            i = 1
+            //当达到临界值时瞬间把滚动条变成第一张图片位置
+            oBox.scrollLeft = 0
+          }
+          // //设置滚动条位置
+          // oBox.scrollLeft = i * oImg[0].offsetWidth;
+          move() //每隔两秒调用一次函数
+          setA()
+        }, 2000)
+      }
+      function move() {
+        //开始位置 滚动条开始位置
+        startLocation = oBox.scrollLeft
+        //结束位置 图片宽度乘以索引号
+        endLocation = i * oImg[0].offsetWidth
+        //开始步数
+        startStep = 0
+        //结束步数
+        endStep = 40
+        //每步走多少
+        everyStep = (endLocation - startLocation) / endStep
+        // 设置动画
+        moveTimer = setInterval(function () {
+          //开始位置加上每一步走多少距离
+          startLocation += everyStep
+          startStep++
+          if (startStep >= endStep) {
+            //清除定时器
+            clearInterval(moveTimer)
+          }
+
+          //赋值给滚动条
+          oBox.scrollLeft = startLocation
+        }, 20)
+      }
+
+      function setA() {
+        /*
+     每张图片对应着每个导航点 i可以共用
+      */
+        //清空所有导航点的样式
+        oNavBtn.forEach(function (item, index) {
+          item.classList.remove('navbtn_current')
+        })
+        //给当前导航点添加样式
+        //i不能是5
+        oNavBtn[i === 5 ? 0 : i].classList.add('navbtn_current')
+      }
+    </script>
+  </body>
+</html>

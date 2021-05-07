@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    var oBox = document.getElementById('box');
+    //当鼠标按下
+    oBox.onmousedown = function (e) {
+      //获取到当前盒子距离窗口的偏移量
+      var boxToWin = {
+        x: oBox.offsetLeft,
+        y: oBox.offsetTop
+      }
+      //获取鼠标距离当前精确目标边缘的距离
+      var mouseToWin = {
+        x: e.clientX,
+        y: e.clientY
+      };
+      //当鼠标移动 一直不断地刷新鼠标距离视口的距离,减去按下时鼠标距离视口的距离再加上移动前盒子距离视口的偏移量就是盒子移动后距离视口的偏移量
+      document.onmousemove = function (e) {
+        var oBoxLocation = {
+          left: e.clientX - mouseToWin.x + boxToWin.x,
+          top: e.clientY - mouseToWin.y + boxToWin.y
+        }
+        // 判断临界值 如果盒子最终位置小于0则等于0  如果大于等于窗口的宽度则等于距离窗口的距离
+        if (oBoxLocation.left <= 0) {
+          oBoxLocation.left = 0;
+        } else if (oBoxLocation.left >= document.documentElement.clientWidth - oBox.offsetWidth) {
+          oBoxLocation.left = document.documentElement.clientWidth - oBox.offsetWidth;
+        }
+        //上下临界值
+        if (oBoxLocation.top <= 0) {
+          oBoxLocation.top = 0;
+        } else if (oBoxLocation.top >= document.documentElement.clientHeight - oBox.offsetHeight) {
+          oBoxLocation.top = document.documentElement.clientHeight - oBox.offsetHeight;
+        }
+
+
+        //赋值 距离视口的偏移量 
+        oBox.style.left = oBoxLocation.left + 'px';
+        oBox.style.top = oBoxLocation.top + 'px';
+      }
+      //当鼠标抬起 移除鼠标移动事件
+      document.onmouseup = function () {
+        // 移除dom0事件 直接赋值null dom2事件remove
+        document.onmousemove = null;
+        //因为每次当鼠标按下时就创建一次鼠标抬起事件 上次的鼠标抬起事件并没有移除 为了内存考虑自杀式关闭抬起事件
+        document.onmouseup = null;
+      }
+    }
+  </script>
+</body>
+
+</html>

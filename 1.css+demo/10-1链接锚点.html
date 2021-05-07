@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;
+      width: 500px;
+      height: 630px;
+      margin: 0 auto;
+    }
+
+    .img img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 500px;
+      height: 500px;
+    }
+
+    .box .a_img {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -220px;
+    }
+
+    .a_img img {
+      width: 100px;
+      height: 100px;
+      margin: 0 5px;
+    }
+
+    .a_img a {
+      float: left;
+      display: block;
+    }
+
+    .img a:target img {
+      z-index: 1;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="img">
+      <a name="img1"><img src="./img/kof-01.jpg" alt=""></a>
+      <a name="img2"><img src="./img/kof-02.jpg" alt=""></a>
+      <a name="img3"><img src="./img/kof-03.jpg" alt=""></a>
+      <a name="img4"><img src="./img/kof-04.jpg" alt=""></a>
+    </div>
+    <div class="a_img">
+      <a href="#img1"><img src="./img/kof-01.jpg" alt=""></a>
+      <a href="#img2"><img src="./img/kof-02.jpg" alt=""></a>
+      <a href="#img3"><img src="./img/kof-03.jpg" alt=""></a>
+      <a href="#img4"><img src="./img/kof-04.jpg" alt=""></a>
+    </div>
+
+
+  </div>
+</body>
+
+</html>

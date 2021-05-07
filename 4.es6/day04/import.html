@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- <script src="./improt.js">
+    //如果是正常引入script代码 不是在块或者函数作用域的代码,就是全局代码,可以正常访问
+    //等上面的主线程代码执行完成,在执行下面的主线程代码
+    // const re = 3;
+    // console.log(re);
+  </script> -->
+  <script>
+    // console.log(2);
+    // setTimeout(() => {
+    //   console.log(3);
+    // }, 1000);
+    //返回的是一个promise对象
+    let promise = import('./import.js');
+    console.log(promise);
+    console.log(re);//import引入的代码里面的变量有自己的作用域  这里访问不到
+
+  </script>
+</body>
+
+</html>

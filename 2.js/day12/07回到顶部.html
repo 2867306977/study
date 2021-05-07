@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 5000px;
+    }
+
+    #box {
+      display: none;
+      position: fixed;
+      bottom: 30px;
+      right: 50px;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 20px;
+      font-weight: bold;
+      line-height: 100px;
+      text-align: center;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box">回到顶部</div>
+
+  <script>
+    var oBox = document.getElementById('box');
+    // var oScroll = window.pageYOffset;//设置外面后滚动条的位置就是一直不变的
+    window.onscroll = function () {
+      var oScroll = window.pageYOffset;
+      if (oScroll >= 500) {
+        oBox.style.display = "block";
+      } else {
+        oBox.style.display = "none";
+      }
+    }
+    var timer = null;
+    oBox.onclick = function () {
+      clearInterval(timer);
+      //一步到位
+      // document.documentElement.scrollTop = 0;
+      //增加动画
+      //初始位置
+      var startLocation = window.pageYOffset;
+      //结束位置
+      var endLocation = 0;
+      //初始速度
+      var startStep = 0;
+      //最终速度
+      var endStep = 30;
+      //每步走多少
+      var everyStep = (endLocation - startLocation) / endStep;
+      //设置定时器
+      timer = setInterval(function () {
+        startLocation += everyStep;
+        startStep++;
+        if (startStep >= endStep) {
+          clearInterval(timer);
+        }
+        document.documentElement.scrollTop = startLocation;
+      }, 15)
+    }
+  </script>
+</body>
+
+</html>

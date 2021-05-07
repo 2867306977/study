@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100px;
+      height: 100px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    var oBox = document.getElementById('box');
+    //当鼠标按下获取到当前鼠标距离精确目标box边缘位置
+    oBox.onmousedown = function (e) {
+      var mouseToBox = {
+        x: e.offsetX,
+        y: e.offsetY
+      };
+      //当鼠标移动
+      document.onmousemove = function (e) {
+        //获取鼠标距离视口的距离
+        var mouseToWin = {
+          left: e.clientX,
+          top: e.clientY
+        }
+        // 判断临界值 如果box距离视口小于0 那么鼠标距离元素边缘等于距离视口边缘距离
+        if (mouseToWin.left - mouseToBox.x < 0) {
+          mouseToWin.left = mouseToBox.x
+          //如果大于视口宽度 - 盒子总宽度,则鼠标距离视口的距离等于文档可见宽度 - (盒子总宽度 - 鼠标距离精确目标的距离)
+        } else if (mouseToWin.left - mouseToBox.x >= document.documentElement.clientWidth - oBox.offsetWidth) {
+          mouseToWin.left = document.documentElement.clientWidth - (oBox.offsetWidth - mouseToBox.x);
+        }
+        //上下临界值
+        if (mouseToWin.top - mouseToBox.y < 0) {
+          mouseToWin.top = mouseToBox.y
+        } else if (mouseToWin.top - mouseToBox.y >= document.documentElement.clientHeight - oBox.offsetHeight) {
+          mouseToWin.top = document.documentElement.clientHeight - (oBox.offsetHeight - mouseToBox.y);
+        }
+        //赋值 距离视口的偏移量 
+        oBox.style.left = mouseToWin.left - mouseToBox.x + 'px';
+        oBox.style.top = mouseToWin.top - mouseToBox.y + 'px';
+      }
+      //当鼠标抬起 移除鼠标移动事件
+      document.onmouseup = function () {
+        // 移除dom0事件 直接赋值null dom2事件remove
+        document.onmousemove = null;
+        //因为每次当鼠标按下时就创建一次鼠标抬起事件 上次的鼠标抬起事件并没有移除 为了内存考虑自杀式关闭抬起事件
+        document.onmouseup = null;
+      }
+    }
+  </script>
+</body>
+
+</html>

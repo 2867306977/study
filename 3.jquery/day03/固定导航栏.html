@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0
+    }
+
+    img {
+      vertical-align: top;
+    }
+
+    .main {
+      margin: 0 auto;
+      width: 1000px;
+      padding-top: 10px;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+  </style>
+  <script src="./js/jquery.js"></script>
+</head>
+
+<body>
+  <div class="top" id="topPart">
+    <img src="images/top.png" alt="" />
+  </div>
+  <div class="nav" id="navBar">
+    <img src="images/nav.png" alt="" />
+  </div>
+  <div class="main" id="mainPart">
+    <img src="images/main.png" alt="" />
+  </div>
+  <script>
+    //当滚轮移动到指定位置 给导航添加固定定位
+    $(window).scroll(function () {
+      var height = $('#topPart').height();
+      if ($('html,body').scrollTop() >= height) {
+        $('#navBar').addClass('fixed');
+        //添加固定定位后 导航脱离文档流  下面的内容会往上顶
+        //当添加固定定位后 添加marginTop值
+        $('#mainPart').css({
+          marginTop: $('#navBar').height()
+        })
+      } else {
+        //移除固定定位后 marginTop也清零
+        $('#navBar').removeClass('fixed');
+        $('#mainPart').css({
+          marginTop: 0
+        })
+      }
+    })
+  </script>
+</body>
+
+</html>

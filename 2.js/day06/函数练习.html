@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*     // 求1 - n之间所有数的和
+    
+        function num(n) {
+          var sum = 0;
+          for (var i = 1; i <= n; i++) {
+            sum += i;
+          }
+          return sum;
+        }
+        var result = num(9);
+        console.log(result);//45 */
+
+
+    /* 
+     // 求n - m之间所有数的和
+        function num(n, m) {
+          var sum = 0;
+          //如果n大于m则它们两调换位置
+          if (n > m) {
+            var a = m;
+            m = n;
+            n = a;
+          }
+          while (n <= m) {
+            sum += n;
+            n++;
+          }
+          return sum;
+        }
+        var result = num(9, 1);
+        console.log(result);//45 */
+
+
+    /*     // 圆的面积
+        function round(r) {
+          // Math.PI是Π，toFixed(2)取两位小数
+          return (Math.PI * r * r).toFixed(2);
+        }
+        console.log(round(12)); */
+
+
+    /*     // 求2个数中的最大值
+        function max(a, b) {
+          if (a > b) {
+            return a;
+          } else {
+            return b;
+          }
+        }
+        console.log(max(900, 500));//900 */
+
+
+    /*     // 求3个数中的最大值
+
+        function max(a, b, c) {
+          // 先假设最大值是索引值为0的实参
+          var max = arguments[0];
+          // 遍历所有的实参
+          for (var i = 0; i < arguments.length; i++) {
+            // 如果其中的实参比max大，则max就等于该实参
+            if (arguments[i] > max) {
+              max = arguments[i];
+            }
+          }
+          return max;
+        }
+        console.log(max(35, 3, 33));//35 */
+
+
+    /*     // 判断一个数是否是素数(又叫质数，只能被1和自身整数的数)
+    
+        function priNum(num) {
+          // 设置一个flag为true
+          var flag = true;
+          // 遍历可以除num的数
+          for (var i = 2; i < num; i++) {
+            // 如果能被整除说明不是质数，那flag为false
+            if (num % i == 0) {
+              flag = false;
+            }
+          }
+          // 如果是flag为true说明是质数，否则不是质数
+          if (flag) {
+            return num + "是质数"
+          } else {
+            return num + "不是质数"
+          }
+        }
+        console.log(priNum(8));//8不是质数 */
+
+
+    // 求任意个数的最大值
+    //形参可以不传，里面的arguments会返回给你实参
+    function max() {
+      var max = arguments[0];
+      console.log(arguments);
+      //遍历arguments就可以得到arguments里面所有的值
+      for (var i = 0; i < arguments.length; i++) {
+        if (arguments[i] > max) {
+          max = arguments[i];
+        }
+      }
+      return max;
+    }
+    console.log(max(2, 3, 4, 99, 6, 7, 33, 111));//111
+
+
+    // 求任意个数的和
+    function sum() {
+      var num = 0;
+      for (var i = 0; i < arguments.length; i++) {
+        num += arguments[i];
+      }
+      return num;
+
+    }
+    console.log(sum(3, 1, 6, 7, 21));//38
+  </script>
+
+</body>
+
+</html>

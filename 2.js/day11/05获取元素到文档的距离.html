@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 5000px;
+    }
+
+    #outer {
+      position: fixed;
+      width: 600px;
+      height: 500px;
+      margin: 70px;
+      border: 5px solid;
+      background-color: red;
+    }
+
+    #inner {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      margin: 70px;
+      border: 5px solid;
+      background-color: green;
+    }
+
+    #box {
+      width: 200px;
+      height: 200px;
+      margin: 70px;
+      border: 5px solid;
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <div id="inner">
+      <div id="box"></div>
+    </div>
+  </div>
+  <script>
+    /*
+    offsetLeft:获取元素的偏移量
+              如果最外层没有定位元素则获取的是相对根元素的距离
+              获取元素左边的边框外部到最近定位的父级的的边框内部距离
+    offsetParent:获取最近定位的父元素和祖先元素
+    clientLeft:获取左边框的宽度
+
+     */
+    var oOuter = document.getElementById('outer');
+    var oInner = document.getElementById('inner');
+    var oBox = document.getElementById('box');
+    var box = oBox;
+    var num = 0;
+    /*     while (box) {
+              //判断这个元素是不是要获取的元素，如果是就不加边框
+              if (box === oBox) {
+                num += box.offsetLeft;
+              } else {
+                //最近定位的父级需要添加边框算
+                num += box.offsetLeft + box.clientLeft;
+              }
+              //把元素变成最近定位的父级在进入判断,如果没有父级则不进入循环
+              box = box.offsetParent;
+            }
+            console.log(num);//228 */
+    //封装函数
+    function getEleToDoc(elm) {
+      //初始化值
+      var lf = 0;
+      var tp = 0;
+      var e = elm;
+      while (e) {
+        //判断这个元素是不是要获取的元素，如果是就不加边框
+        if (e === elm) {
+          lf += e.offsetLeft;
+          tp += e.offsetTop;
+        } else {
+          lf += e.offsetLeft + e.clientLeft;
+          tp += e.offsetTop + e.clientTop;
+        }
+
+        //把元素变成最近定位的父级在进入判断,如果没有父级则不进入循环
+        e = e.offsetParent;
+      }
+      return {
+        left: lf,
+        top: tp
+      }
+    }
+    var re = getEleToDoc(oBox);
+    console.log(re);
+  </script>
+</body>
+
+</html>

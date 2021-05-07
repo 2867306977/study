@@ -1,0 +1,133 @@
+{
+  "book_details_splitter_horizontal_state": [
+    true,
+    200
+  ],
+  "book_list_pin_splitter_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAACAAABAAAAAFUA/////wEAAAABAA=="
+  },
+  "cover_browser_splitter_vertical_state": [
+    false,
+    300
+  ],
+  "custom_colors_for_color_dialog": [
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ]
+  ],
+  "gpm_template_editor_font": "SimSun",
+  "grid view visible": false,
+  "library_usage_stats": {
+    "C:/Users/28673/Desktop/class0223/day02/Calibre Portable/Calibre Library": 3
+  },
+  "preferences dialog geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAHuAAAAewAABZEAAANxAAAB7wAAAKEAAAWQAAADcAAAAAAAAAAAB4AAAAHvAAAAoQAABZAAAANw"
+  },
+  "quick_start_guide_added": true,
+  "quickview visible": false,
+  "scheduler_dialog_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAIvAAAAtwAABVAAAAM1AAACMAAAAN0AAAVPAAADNAAAAAAAAAAAB4AAAAIwAAAA3QAABU8AAAM0"
+  },
+  "search bar visible": true,
+  "tag browser search box visible": false,
+  "tag_browser_splitter_horizontal_state": [
+    true,
+    200
+  ]
+}

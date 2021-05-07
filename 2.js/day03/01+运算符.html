@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    正常数字相加
+    出现字符串相加，则转为字符串
+    出现对象相加，转为字符串
+    null，undefined，Boolean则转为number
+     */
+    console.log("1" + 1);//'11'
+    console.log({} + 1);//'[object object]1'
+    console.log([] + 1);//'1'
+    console.log(null + 1);//1
+    console.log(undefined + 1);//NaN
+    console.log(true + 1);//2
+    // 递增，递减  ++a先自增再赋值  a++先赋值再自增
+    var a = 2;
+    var b = ++a + a++ + a + a + a++ + a++ + ++a + a;
+    //3 + 3 + 4 + 4 + 4 + 5 + 7 + 7 = 37
+    console.log(b);
+
+  </script>
+</body>
+
+</html>

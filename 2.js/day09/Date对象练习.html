@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    写一个函数，格式化日期对象，返回yyyy-MM-dd HH:mm:ss的形式
+     */
+    //先获取当前时间年月日，时分秒
+    function time() {
+      var now = new Date();
+      var year = now.getFullYear();
+      var month = now.getMonth() + 1;
+      var date = now.getDate();
+      var hours = now.getHours();
+      var minutes = now.getMinutes();
+      var seconds = now.getSeconds();
+      var ytd = year + '-' + month + '-' + date;
+      var clock = hours + ':' + minutes + ':' + seconds;
+      return ytd + ' ' + clock;
+    }
+    var re = time();
+    console.log(re);
+  </script>
+
+</body>
+
+</html>

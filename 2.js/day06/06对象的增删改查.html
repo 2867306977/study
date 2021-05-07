@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 对象的增删改查
+    var obj = {
+      name: '张三'
+    }
+    // 增加  添加一个属性进去
+    obj.age = 19;
+    // 删除  delete()使用这个方法可以删除对象中的属性
+    // delete (obj.name);
+    console.log(obj);//里面只有age属性没有name属性了
+    // 修改  覆盖原有的属性
+    obj.name = '李四';
+    console.log(obj.name);//李四
+
+    //查  就是获取属性返回当前属性值
+    console.log(obj.age);//19
+  </script>
+</body>
+
+</html>

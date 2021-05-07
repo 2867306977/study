@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index_work.css" />
+    <script type="text/javascript" src="script/jquery-1.7.2.js"></script>
+    <script type="text/javascript">
+      $(function () {
+        //微博发布
+        $('#fbBtn').click(function () {
+          var title = $('#title').val()
+          var author = $('#author').val()
+          var content = $('#content').val()
+          var tr = '<tr>'
+          tr += "<td><input type='checkbox' class='ck'></td>"
+          tr += '<td>' + title + '</td>'
+          tr += '<td>' + author + '</td>'
+          tr += '<td>' + content + '</td>'
+          tr += '<td>' + new Date().toLocaleString() + '</td>'
+          tr += "<td><input type='button' value='删除' class='deleteBtn'></td>"
+          tr += '</tr>'
+          $('#showWebo tr:eq(1)').after(tr)
+          $('#fbTable :text').val('')
+        })
+
+        //全选
+        $('#qx').click(function () {
+          $('.ck').prop('checked', true)
+        })
+
+        //全不选
+        $('#qbx').click(function () {
+          $('.ck').prop('checked', false)
+        })
+
+        //反选
+        $('#fx').click(function () {
+          $('.ck').map(function () {
+            /*if($(this).prop("checked")){
+                        $(this).prop("checked", false);
+                    }else{
+                        $(this).prop("checked", true);
+                    }*/
+            if (this.checked) {
+              this.checked = false
+            } else {
+              this.checked = true
+            }
+          })
+        })
+
+        //通过表头中的复选框控制所有复选框的选中或不选中
+        $('#selectAll').click(function () {
+          $('.ck').prop('checked', $(this).prop('checked'))
+        })
+
+        //将表头中的复选框和每个微博信息前的复选框的状态保持一致
+        $('#showWebo').on('click', '.ck', function () {
+          if ($('.ck').length == $('.ck:checked').length) {
+            $('#selectAll').prop('checked', true)
+          } else {
+            $('#selectAll').prop('checked', false)
+          }
+        })
+
+        //删除某个微博信息
+        $('#showWebo').on('click', '.deleteBtn', function () {
+          if (confirm('确认删除吗？')) {
+            $(this).parent().parent().remove()
+          }
+        })
+
+        //批量删除
+        $('#deleteMore').click(function () {
+          if (confirm('确认删除吗？')) {
+            $('.ck:checked').parent().parent().remove()
+          }
+        })
+
+        //收起展开
+        $('#testId').click(function () {
+          $('#showWebo tr:gt(0)').fadeToggle(1000)
+        })
+      })
+    </script>
+  </head>
+
+  <body>
+    <table id="fbTable">
+      <tr>
+        <th>微博发布</th>
+      </tr>
+      <tr>
+        <td>标题:<input type="text" id="title" /></td>
+      </tr>
+      <tr>
+        <td>作者:<input type="text" id="author" /></td>
+      </tr>
+      <tr>
+        <td>内容:<input type="text" id="content" /></td>
+      </tr>
+      <tr>
+        <td>
+          <input type="button" value="发布" id="fbBtn" />
+        </td>
+      </tr>
+    </table>
+
+    <table id="showWebo" style="margin-top: 20px">
+      <tr>
+        <th colspan="6">
+          微博信息（<input type="button" value="收起/展开" id="testId" />）
+        </th>
+      </tr>
+      <tr>
+        <th>
+          <input type="checkbox" id="selectAll" />
+        </th>
+        <th>标题</th>
+        <th>作者</th>
+        <th>内容</th>
+        <th>发布时间</th>
+        <th>操作</th>
+      </tr>
+      <tr>
+        <td colspan="6">
+          <input type="button" value="全选" id="qx" />
+          <input type="button" value="全不选" id="qbx" />
+          <input type="button" value="反选" id="fx" />
+          <input type="button" value="批量删除" id="deleteMore" />
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

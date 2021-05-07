@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    质数：只能被1和自身整除的数
+     */
+    // 定义一个数组保存一百以内的数
+    var arr = [];
+    //遍历100以内的数
+    for (var i = 2; i <= 100; i++) {
+      //设置一个开关，默认打开，（把开关设为循环里面，每循环一次就要开一次，不然开关一直关闭就不会打印了）
+      var flag = true;
+      for (var j = 2; j < i; j++) {
+        //如果i能被j整除则关闭开关
+        if (i % j == 0) {
+          flag = false;
+          break;
+        }
+      }
+      //如果开关关闭了，说明不是质数则不会打印
+      if (flag) {
+        console.log(i);
+      }
+    }
+
+    // for (var i = 2; i <= 100; i++) {
+    //   //每当遍历一次 就把i放进数组
+    //   arr.push(i);
+    //   //遍历2-i之间的数
+    //   for (var j = 2; j < i; j++) {
+    //     //如果i能被j整除，说明不是质数，则把他从数组中删除
+    //     if (i % j === 0) {
+    //       //删除后就跳出循环
+    //       arr.pop();
+    //       break;
+    //     }
+    //   }
+    // }
+    // console.log(arr);
+
+
+  </script>
+
+</body>
+
+</html>

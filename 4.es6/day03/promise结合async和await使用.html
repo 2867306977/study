@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script src="api.js"></script>
+  <script>
+    /*  //解决回调地狱问题  把promise写入异步函数中
+     async function gen() {
+       //返回的是一个promise对象  await遇到promise对象 会阻塞代码运行 先执行同步代码
+       await new Promise(function (resolve, reject) {
+         setTimeout(() => {
+           resolve('成功');
+           console.log('执行a');
+         }, 1000);
+       })
+       await console.log(123);
+       await new Promise(function (resolve, reject) {
+         setTimeout(() => {
+           resolve('err');
+           console.log('执行b');
+         }, 1000);
+       })
+       await new Promise(function (resolve, reject) {
+         setTimeout(() => {
+           resolve('成功');
+           console.log('执行c');
+         }, 1000);
+       })
+     }
+     console.log(124);
+     gen() */
+
+
+    //把promise对象封装起来最后实现的样子
+    async function gen() {
+      //返回的是一个promise对象  await遇到promise对象 会阻塞代码运行 先执行同步代码
+      await a()
+      await console.log(1);
+      await b()
+      await c()
+    }
+    console.log(2);
+    gen()
+  </script>
+</body>
+
+</html>

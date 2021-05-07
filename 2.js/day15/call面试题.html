@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fn() {
+      console.log(1);
+    }
+    function fn2() {
+      console.log(2);
+    }
+    fn.call(fn2);//把fn的this指向改为fn2函数  然后还是立即调用了fn函数
+    fn.call.call(fn2);
+    /* Function.prototype.call = function (context) {
+      //第一次先调用的call(fn2),此时context是fn2   第二次是undefined
+
+      //因为fn.call没有参数  所以context是undefined  然后context还是上一次的fn2
+
+      context ? context : fn2;//fn2
+      fn2.call(fn2);//所以最后调用的fn2
+
+      context.f = this;//这个this此时指向的是   fn.call = function(){call函数}
+
+    } */
+
+  </script>
+</body>
+
+</html>

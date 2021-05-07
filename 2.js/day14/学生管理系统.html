@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form action="###">
+    <div>
+      <label>
+        姓名: <input type="text" id="name">
+      </label>
+    </div>
+    <div>
+      <label>
+        年龄: <input type="text" id="age">
+      </label>
+    </div>
+    <div>
+      <label>
+        性别: <input type="text" id="sex">
+      </label>
+    </div>
+    <button type="button" id="btn">添加</button>
+  </form>
+
+  <table id="table" border="1" style="border-collapse: collapse;" width=500>
+    <caption>学生管理系统</caption>
+    <tr>
+      <th>姓名</th>
+      <th>年龄</th>
+      <th>性别</th>
+      <th>操作</th>
+    </tr>
+    <tr>
+      <td>张三</td>
+      <td>14</td>
+      <td>男</td>
+      <td><a href="#" id="del">删除</a></td>
+    </tr>
+  </table>
+  <script>
+    var oName = document.getElementById('name');
+    var oAge = document.getElementById('age');
+    var oSex = document.getElementById('sex');
+    var oBtn = document.getElementById('btn');
+    var oTable = document.getElementById('table');
+    //获取tbody元素
+    var oTbody = document.querySelector('#table tbody');
+    /* 需求:获取表单中的value值添加到表格中 */
+    //绑定点击按钮
+    oBtn.onclick = function () {
+      //每次点击获取表单中的value值
+      var name = oName.value;
+      var age = oAge.value;
+      var sex = oSex.value;
+      if (name && age && sex) {
+        //每点击一次按钮创建一个tr放在#table中的tbody末尾
+        var newTr = document.createElement('tr');
+        //在新的tr标签中插入内容
+        newTr.innerHTML = `<td>${name}</td>
+      <td>${age}</td>
+      <td>${sex}</td>
+      <td><a href="#">删除</a></td>`;
+        //把新创建的tr放入tbody中
+        oTbody.appendChild(newTr);
+      } else {
+        alert('重新输入!不能为空');
+      }
+      //每次点击按钮获取a标签
+      var del = document.querySelectorAll('a');
+      //遍历a标签
+      del.forEach(function (item) {
+        //点击a标签则删除当前点击的a标签的父节点的父节点
+        item.onclick = function () {
+          this.parentNode.parentNode.remove();
+        }
+      })
+    }
+  </script>
+</body>
+
+</html>

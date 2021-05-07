@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn1">单线程</button>
+  <button id="btn2">多线程</button>
+  <button>测试有没有假死</button>
+  <script>
+    var oBtn1 = document.getElementById('btn1')
+    var oBtn2 = document.getElementById('btn2')
+    oBtn1.onclick = function () {
+      var num = 0;
+      for (var i = 0; i < 1000000000; i++) {
+        num += Math.sqrt(i);
+      }
+      console.log(num);
+    }
+
+    oBtn2.onclick = function () {
+      var wk = new Worker("Worker.js");
+      wk.postMessage(100000000);
+      wk.onmessage = function (e) {
+        console.log(e.data);
+        // wk.terminate();//关闭分线程
+      }
+    }
+  </script>
+</body>
+
+</html>

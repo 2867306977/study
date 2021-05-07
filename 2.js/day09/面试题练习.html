@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+已知一个url地址
+    http://www.baidu.com?user=laowang&pass=123456&sex=nan;
+请把查询字符串的内容以对象的形式表示出来
+    得到：{
+        user:"laowang",
+        pass:"123456",
+        sex:"nan"
+    }
+    */
+    //提取字符串内容
+    var url = 'http://www.baidu.com?user=laowang&pass=123456&sex=nan'
+    var obj = {}
+    var str = url.split('?')[1];
+    var strArr = str.split('&');
+    strArr.forEach(function (item, index) {
+      obj[item.split('=')[0]] = item.split('=')[1];
+    })
+    console.log(obj)
+
+    /* 
+    已知一个查询字符串对象
+    {
+        user:"laowang",
+        pass:"123456",
+        sex:"nan"
+    }
+    已知url地址是http://www.baidu.com;
+    请把url地址和查询字符串组合 形成真正的地址：http://www.baidu.com?user=laowang&pass=123456&sex=nan;
+        
+*/
+    var obj = {
+      user: 'laowang',
+      pass: '123456',
+      sex: 'nan'
+    }
+    var url = "http://www.baidu.com";
+    var arr = ['?'];
+    //遍历对象拿到属性和属性值
+    for (var key in obj) {
+      //用&符号连接它们
+      arr.push(key + '=' + obj[key] + '&')
+    }
+    //把数组转为字符串并和已知url地址拼接
+    var str = arr.join('').slice(0, -1);
+    var newUrl = url + str;
+    console.log(newUrl);
+  </script>
+</body>
+
+</html>

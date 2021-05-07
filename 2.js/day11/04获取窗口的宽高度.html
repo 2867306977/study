@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    获取窗口的宽度和高度就是获取html和body的clientWidth和clientHeight
+    IE6以下认为根元素是body所以获取窗口是body的clientWidth和clientHeight
+    在非ie6情况下，认为根元素是html，所以使用的html的clientWidth
+     */
+    console.log(document.documentElement.clientHeight)
+
+    //兼容：
+    var winHeight = document.documentElement.clientHeight || document.body.clientHeight;
+    console.log(winHeight)
+  </script>
+</body>
+
+</html>

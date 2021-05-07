@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    变量对象：
+        1.它是当前代码段中，所有的变量（函数，形参，变量，arguments）集合的一个对象
+        2.它是执行上下文时被激活的，只有被激活了，才能使用所有的变量
+        3.变量对象分为全局变量对象和局部变量对象
+        4.window就是全局的变量对象，全局的变量和方法都是window对象的属性和方法
+        5.局部变量对象是在进入局部执行上下文时，创建的变量对象，里面包含了当前作用域中的所有变量（函数。变量，参数，arguments）
+        6.先检查局部变量对象中包含的所有的形参和实参
+        7.检查当前代码中的所有函数，把它们以键值对的方式保存在变量对象中，如果有相同的属性，则直接覆盖
+        8.检查所有声明的变量，在变量对象中创建键值对保存，如果和函数，参数同名，则不允许影响它们
+     */
+
+    var a = 1;
+
+    function fn(a, b, e) {
+      /* 
+      var VO = {
+        // a:1
+        a:function(){}
+        b:2
+        e:3
+        arguments:[1,2,3]
+        d:function(){}
+        a:undefined//变量
+        b:undefined
+        c:undefined
+        f:undefined
+      } 
+      */
+      console.log(arguments);//[1,2,3]
+      console.log(a);//function(){}
+      console.log(b);//2
+      console.log(c);//undefined
+      console.log(d);//function(){}
+      console.log(e);//3
+
+
+      var a = 1;
+      console.log(a);//1
+      var b = 2;
+      var c = 3;
+      // 函数声明提升
+      function a() {
+
+      }
+      // 函数声明提升
+      function d() {
+
+      }
+
+      console.log(f);//undefined
+      // 只提升变量，不提升函数体
+      var f = function () {
+
+      }
+
+      console.log(a);//1
+    }
+
+    fn(1, 2, 3);
+    console.log(window.a);//1
+    console.log(window.fn);//function
+
+
+
+  </script>
+
+</body>
+
+</html>

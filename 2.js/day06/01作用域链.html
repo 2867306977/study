@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    作用域链：
+          保证对执行环境有效访问的函数和变量的有序访问
+          函数被声明时，就已经创建了作用域链，但函数没有被调用，变量对象没有生成，所以作用域链并不完整
+          函数被调用时，创建了变量对象，把当前执行环境的变量对象推向了作用域链最前端，此时作用域链就完整了
+          作用域链最前端一定是当前执行环境的变量对象，作用域链的最末端一定是全局的变量对象
+          标识符的解析是根据作用域链一级一级往上寻找的过程，如果没找到，则会报错
+     */
+    var a = 3;
+    function outer() {
+      a = 4;
+      function inner() {
+        alert(a);//4
+      }
+      inner();
+    }
+    outer();
+    alert(a);//4
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+    }
+
+    .box {
+      width: 200px;
+      margin: 100px auto;
+    }
+
+    .box ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+
+    .box input[type="checkbox"][name="character[]"] {
+      display: none;
+    }
+
+    .box input[type="checkbox"][name="character[]"]+label {
+      display: block;
+      width: 200px;
+      height: 30px;
+      line-height: 30px;
+      margin-top: 20px;
+      color: #fff;
+      background-color: #add7f0;
+    }
+
+    .box input[type="checkbox"][name="character[]"]+label::before {
+      content: 'x';
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      margin: 0 10px;
+    }
+
+    .box input[type="checkbox"][name="character[]"]:checked+label::before {
+      content: '*';
+    }
+
+    .box input[type="checkbox"][name="character[]"]:checked+label {
+      background-color: #2489c5;
+    }
+  </style>
+
+</head>
+
+<body>
+  <div class="box">
+    <ul>
+      <li><input type="checkbox" name="character[]" id="character1" /><label for="character1">贤淑端庄</label></li>
+      <li><input type="checkbox" name="character[]" id="character2" /><label for="character2">温良贤惠</label></li>
+      <li><input type="checkbox" name="character[]" id="character3" /><label for="character3">乖巧玲珑</label></li>
+      <li><input type="checkbox" name="character[]" id="character4" /><label for="character4">高贵不群</label></li>
+      <li><input type="checkbox" name="character[]" id="character5" /><label for="character5">端庄严厉</label></li>
+      <li><input type="checkbox" name="character[]" id="character6" /><label for="character6">大气无畏</label></li>
+      <li><input type="checkbox" name="character[]" id="character7" /><label for="character7">清雅靓丽</label></li>
+    </ul>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="./css/checkDemo.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <div>
+      <input type="button" value="添加数据" id="j_btnAddData" class="btnAdd" />
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>课程名称</th>
+          <th>所属学院</th>
+          <th>已学会</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td>JavaScript</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>css</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>html</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+        <tr>
+          <td>jQuery</td>
+          <td>前端学院</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+  <div id="j_mask" class="mask"></div>
+  <div id="j_formAdd" class="form-add">
+    <div class="form-add-title">
+      <span>添加数据</span>
+
+      <div id="j_hideFormAdd">x</div>
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtLesson">课程名称：</label>
+      <input class="txt" type="text" id="j_txtLesson" placeholder="请输入课程名称">
+    </div>
+    <div class="form-item">
+      <label class="lb" for="j_txtBelSch">所属学院：</label>
+      <input class="txt" type="text" id="j_txtBelSch" placeholder="请输入所属学院">
+    </div>
+    <div class="form-submit">
+      <input type="button" value="添加" id="j_btnAdd">
+    </div>
+  </div>
+
+  <script>
+    // 点击添加数据 遮罩层和模态框显示
+    var oBtnAddData = document.getElementById('j_btnAddData');
+    var oMask = document.getElementById('j_mask')
+    var oForm = document.getElementById('j_formAdd')
+    var oBtnAdd = document.getElementById('j_btnAdd')
+    var oLesson = document.getElementById('j_txtLesson')
+    var oBelSch = document.getElementById('j_txtBelSch')
+    var oTb = document.getElementById('j_tb')
+
+    oBtnAddData.onclick = function () {
+      oMask.style.display = 'block';
+      oForm.style.display = 'block';
+    }
+    //点击添加数据 获取表单value值
+    oBtnAdd.onclick = function () {
+      var lesson = oLesson.value.trim();
+      var belSch = oBelSch.value.trim();
+      //判断输入的内容合法
+      if (!lesson || !belSch) {
+        alert('请输入正确字符')
+        return;
+      }
+      var str = `<tr>
+          <td>${lesson}</td>
+          <td>${belSch}</td>
+          <td><a href="javascript:;" class="get">GET</a></td>
+        </tr>`
+      //给表单添加该内容
+      oTb.innerHTML += str;
+      //添加完后隐藏模态框和遮罩层  并且清空表单内容
+      oMask.style.display = 'none';
+      oForm.style.display = 'none';
+      oLesson.value = '';
+      oBelSch.value = '';
+    }
+
+    //点击X隐藏模态框和遮罩层
+    var oHide = document.getElementById('j_hideFormAdd')
+    oHide.onclick = function () {
+      oMask.style.display = 'none';
+      oForm.style.display = 'none';
+    }
+    //点击get删除当前tr  因为需要给新添加的元素绑定事件 所以使用事件委托
+    oTb.onclick = function (e) {
+      if (e.target.nodeName.toLowerCase() === 'a') {
+        // e.target.parentNode.parentNode.innerHTML = '';
+        e.target.parentNode.parentNode.remove();
+      }
+    }
+
+
+
+  </script>
+
+
+</body>
+
+</html>

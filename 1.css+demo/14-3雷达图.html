@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      background-color: #000;
+      background-image: linear-gradient(to right, rgba(17, 255, 21, .5) 1px, transparent 1px),
+        linear-gradient(rgba(17, 255, 21, .5) 1px, transparent 1px);
+      background-size: 35px 35px;
+      box-sizing: border-box;
+      padding-top: 1px;
+    }
+
+    body>div {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      margin: 100px auto 0px;
+      border: 2px solid #01e02d;
+      border-radius: 50%;
+      background-image: linear-gradient(to right, transparent 0%, transparent 50%, #01e02d 50%, #01e02d 50.3%, transparent 50.3%), linear-gradient(transparent 0%, transparent 50%, #01e02d 50%, #01e02d 50.3%, transparent 50.3%);
+      overflow: hidden;
+    }
+
+    body>div div:nth-of-type(-n+3) {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 2px solid #01e02d;
+      border-radius: 50%;
+    }
+
+    body>div div:first-of-type {
+      width: 350px;
+      height: 350px;
+      transform: translate(-175px, -175px);
+    }
+
+    body>div div:nth-of-type(2) {
+      width: 200px;
+      height: 200px;
+      transform: translate(-100px, -100px);
+    }
+
+    body>div div:nth-of-type(3) {
+      width: 50px;
+      height: 50px;
+      transform: translate(-25px, -25px);
+    }
+
+    .scan {
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background-image:
+        linear-gradient(225deg, #03ee32 0%, transparent 60%),
+        radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 6%),
+        radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 6%),
+        radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 6%);
+      animation-name: rotate, rd;
+      animation-duration: 4s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+      transform-origin: right bottom;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes rd {
+      0% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%),
+          radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 5%);
+      }
+
+      10% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%);
+      }
+
+      20% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%),
+          radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 5%);
+      }
+
+      30% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%);
+      }
+
+      40% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%),
+          radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 5%);
+      }
+
+      50% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%);
+      }
+
+      60% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%),
+          radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 5%);
+      }
+
+      70% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%);
+      }
+
+      80% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%),
+          radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 5%);
+      }
+
+      90% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%);
+      }
+
+      100% {
+        background-image:
+          linear-gradient(225deg, #03ee32 0%, transparent 60%),
+          radial-gradient(at 100px 150px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 100px, #03ee32 0%, #03ee32 .2%, transparent 5%),
+          radial-gradient(at 120px 110px, #03ee32 0%, #03ee32 .2%, transparent 5%);
+      }
+    }
+  </style>
+  </style>
+</head>
+
+<body>
+  <div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div class="scan"></div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 500px;
+    }
+  </style>
+  <script>
+    //加载事件 onload 绑定给window元素,当前页面所有的资源加载完成后执行 也可以绑定给某个图片或音视频资源
+    window.onload = function () {
+      var oBox = document.querySelector('#box');
+      oBox.textContent = '123';
+    }
+  </script>
+</head>
+
+<body>
+  <div id="box"></div>
+  <img src="./images/01.jpg" alt="">
+  <script>
+    /* 
+    滚动条事件:onscroll
+    
+     */
+    document.onscroll = function () {
+      console.log('滚了');
+    }
+
+    /* 
+    resize事件:窗口重置,检测窗口大小变化,只能针对窗口绑定
+     */
+    window.onresize = function () {
+      console.log(document.documentElement.clientWidth);
+    }
+  </script>
+
+</body>
+
+</html>

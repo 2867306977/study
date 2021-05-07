@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var str = 'aa';
+    var newStr = str.concat('hh')
+    console.log(newStr);
+
+    /* //实际上后台创建了一个对应的基本包装类型的对象
+    var str = new String('aa');
+    //在这个实例对象上调用了concat方法并且赋值出去了
+    var str = str.concat('hh');
+    //添加之后就把实例对象删除了
+    str = null; */
+
+
+    /*
+    字符串拼串：1.+：使用加号拼串 2.join()：使用数组方法拼串 3.concat()：把多个参数可以添加指定的字符串的尾部
+     */
+    var str = 'nsoans';
+    var str2 = 'snakjsn';
+    console.log(str + str2);
+    var newStr = str.concat(str2);
+    console.log(newStr);
+
+    //随机打印十个字符串
+    var str = '0123456789qwertyuiopasdfghjklzxcvbnm';
+    var arr = [];
+    for (var i = 0; i < 10; i++) {
+      // [0-37)随机数
+      var ran = Math.floor(Math.random() * (str.length + 1));
+      //把单个字符串放进数组中
+      arr.push(str[ran]);
+    }
+    //把数组转为字符串
+    var newStr = arr.join('');
+    console.log(newStr);
+
+    /* 
+    字符串查找： 1.charAt(n):返回字符串中的第n个数组，如果超出参数或者小于参数，则返回空字符串
+    2.indexOf和lastIndexOf:可以根据指定字符串返回指定字符串的下标，两个方法都有两个参数，第一个是参数查找的目标，第二个是参数的起始位置，如果找不到则返回-1
+    3.search方法查找字符串的第一次出现的位置，只有一个参数：匹配的模式，没有反向检索和全局匹配 
+    4.match方法通常和正则一起使用，找出所有匹配的字符串并返回以新数组形式返回，如果匹配模式没有指定全局匹配则只进行1次匹配，没有找到则返回null
+     */
+    var str = 'hello,nihao,woshilaowang';
+    console.log(str.charAt(7));//i 返回下标为第七个字符串
+    console.log(str.charAt(99));//不符合字符串长度返回空字符串
+    console.log(str.indexOf('h', 3));//8 从下标为3时开始查找 查找第一次出现的字符串返回下标
+    console.log(str.lastIndexOf('l', 16));//3 下标为16的字符串倒着查找，返回第一个出现的字符串下标
+    var reg = /l/gi;
+    var re = str.search(reg);
+    console.log(re);//2  返回符合条件第一次出现的字符串的下标
+    var re = str.match(reg);
+    console.log(re);//['l','l','l'] 找出所有匹配的字符串以新数组形式返回
+
+
+    /* 
+    字符串截取：1.substring方法：和slice一样，有两个参数：1.开始截取的位置 2.结束位置的下标，如果不设置则截取到末尾
+    2.slice方法：指定长度来截取字符串，两个参数：1.截取的起始位置 2.结束位置的下标，如不设置则截取到末尾
+    3.如果为负数，则slice会从右到左截取，substring不会
+    4.都不包括结束位置
+    5.substr():截取字符串的长度 两参数1:开始截取的位置  2:截取的长度
+     */
+    var str = 'asdfghjkl';
+    var re = str.substring(2, 8);
+    console.log(re);
+    var re = str.slice(2, 8);
+    console.log(re);
+    var re = str.substring(3, -2);
+    console.log(re);//asd
+    var re = str.slice(3, -2);
+    console.log(re);//fghj
+
+    /* 
+    字符串大小写：toLowerCase:将字符串全部转为小写  toUpperCase:将字符串全部转为大写
+     */
+    var str = 'asdfghjkl';
+    console.log(str.toUpperCase());
+    console.log(str.toLowerCase());
+
+    /* 
+    字符串与数组转换：split方法可以根据指定的分割符把字符串切分成数组
+            如果传参，则整个字符串当成数组的一个元素
+            如果参数为空串，则把单个字符串切分，放入数组中
+        有第二个参数：表示数组的最大长度
+     */
+    var str = 'asdfghjkl';
+    var strArr = str.split();
+    console.log(strArr);//["asdfghjkl"]
+    var strArr = str.split('');
+    console.log(strArr);//["a", "s", "d", "f", "g", "h", "j", "k", "l"]
+    var strArr = str.split('g');
+    console.log(strArr);//["asdf", "hjkl"]  //以g为分割符把字符串切分成两个元素的数组
+    var strArr = str.split('g', 1);
+    console.log(strArr);//["asdf"]
+
+    /* 
+    清空两侧空字符串：trim方法：移除字符串前面和后面的空字符串和换行的终止符  （常用在表单）
+     */
+    var str = '   asdfghjkl    ';
+    console.log(str.trim());
+
+    /*
+    replace():和正则匹配，替换字符串，两个参数：1.匹配被替换的字符串 2.替换的内容
+     */
+  </script>
+</body>
+
+</html>

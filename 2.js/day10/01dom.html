@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="box">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <!-- <li>4</li> -->
+  </ul>
+  <script>
+    /*
+    dom:文档对象模型,是w3c制定的一套技术规范js脚本如何和html进行交互的web标准
+    加载页面时,浏览器自动生成树形结构,用来表示内部结构,称为dom树
+    dom规定了一系列的接口(方法),允许开发人员通过标准方式来操作页面,访问文档结构和控制样式和行为
+     */
+    //document 对象是window对象的一个属性,是dom的顶层对象
+    /*
+    网页中所有对象和内容都被称为节点
+    如文档节点,元素节点,注释节点,文本节点,属性节点等
+    节点(Node)是dom最基本的单元,并派生出不同类型的节点,他们共同构成了文档树形结构模型
+     */
+    /*
+    节点类型名称和值
+    1.nodeType 节点类型
+        文档节点:9
+        属性节点:3
+        元素节点:1
+        注释节点:8
+        文本节点:2
+    2.nodeName 节点名称
+        文档节点:#document
+        属性节点:key
+        元素节点:元素标签名大写
+        注释节点:#comment
+        文本节点:#text
+        
+    3.nodeValue 节点的值
+        文档节点:null
+        属性节点:value值
+        元素节点:null
+        注释节点:注释内容
+        文本节点:节点的内容
+
+     */
+    var oBox = document.getElementById('box');
+    //自己创建一个属性节点
+    var attr = document.createAttribute('hello');
+    //通过value添加属性值
+    attr.value = 'world';
+    console.log(oBox.childNodes);//childNodes 获取该元素的所有子节点
+    console.log(document.childNodes);
+
+    console.log(document.nodeType);//9
+    console.log(oBox.childNodes[0].nodeType);//3
+    console.log(oBox.childNodes[1].nodeType);//1
+    console.log(oBox.childNodes[7].nodeType);//8
+    console.log(attr.nodeType);//2
+
+    console.log(document.nodeName);//#document
+    console.log(oBox.childNodes[0].nodeName);//#text
+    console.log(oBox.childNodes[1].nodeName);//LI 大写的元素标签名
+    console.log(oBox.childNodes[7].nodeName);//#comment
+    console.log(attr.nodeName);//属性名
+
+    console.log(document.nodeValue);//null
+    console.log(oBox.childNodes[0].nodeValue);//
+    console.log(oBox.childNodes[1].nodeValue);//null
+    console.log(oBox.childNodes[7].nodeValue);//<li>4</li>
+    console.log(attr.nodeValue);//world
+  </script>
+</body>
+
+</html>

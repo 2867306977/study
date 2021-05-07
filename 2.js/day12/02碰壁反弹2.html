@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #outer {
+      position: relative;
+      width: 800px;
+      height: 500px;
+      margin: 50px auto;
+      background-color: #ccc;
+    }
+
+    #ball {
+      position: absolute;
+      top: 150px;
+      left: 40px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <div id="ball"></div>
+  </div>
+  <script>
+    var oOuter = document.getElementById('outer');
+    var oBall = document.getElementById('ball');
+    //初始化top和left值
+    var l = 40;
+    var t = 150;
+    //定义一个变量,如果碰到临界值则为负数,就反向移动
+    var baseY = 1;
+    var baseX = 1;
+    var moveTimer = null;
+    //设置定时器
+    moveTimer = setInterval(function () {
+      l += baseX;
+      t += baseY;
+      //判断临界值 (outer的宽度(不包含边框) - ball的宽度(包含边框))
+      if (l >= oOuter.clientWidth - oBall.offsetWidth || l <= 0) {
+        baseX *= -1;
+      }
+      if (t >= oOuter.clientHeight - oBall.offsetHeight || t <= 0) {
+        baseY *= -1;
+      }
+      oBall.style.left = l + 'px';
+      oBall.style.top = t + 'px';
+    }, 1)
+  </script>
+</body>
+
+</html>

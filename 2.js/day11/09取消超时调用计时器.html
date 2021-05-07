@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn">按钮</button>
+    <script>
+        // 计时器返回值：
+        // timerID：一个唯一的ID，一个句柄
+        // 取消超时调用计时器：windowclearTimeout();
+        //下面的计时器是3秒后同时按顺序执行的
+        var timer1 = setTimeout(function() {
+            alert(1);
+        }, 3000);
+        var timer2 = setTimeout(function() {
+            alert(2);
+        }, 3000);
+        var timer3 = setTimeout(function() {
+            alert(3);
+        }, 3000);
+        console.log(timer1, timer2, timer3); //1 2 3
+        var oBtn = document.getElementById('btn');
+        oBtn.onclick = function() {
+            clearTimeout(timer3);
+            clearTimeout(timer1);
+        }
+    </script>
+</body>
+
+</html>

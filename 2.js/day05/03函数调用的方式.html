@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //1. 直接调用
+    function fn() {
+      alert("我是fn");
+    }
+    fn();
+    // 2. 对象方法调用
+    var obj = {
+      name: "张三",
+      age: 18,
+      do: function () {
+        alert('我是对象方法do的函数');
+      }
+    }
+    obj.do();
+    // 给obj再添加一个方法
+    obj.eat = function () {
+      alert("我是对象添加的新方法里面的函数");
+    }
+    obj.eat();
+
+  </script>
+</body>
+
+</html>

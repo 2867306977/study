@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 数组去重方法
+
+    var arr = [2, 3, 4, 3, 6, 6, 6, 5, 3, 2, 1]
+    /* //indexOf 可以返回指定元素的位置  只返回第一次碰到的元素位置 没有就返回-1
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    //如果新数组中没有元素则添加进新数组,有则不会进入判断
+    if (newArr.indexOf(arr[i]) === -1)
+      newArr.push(arr[i]);
+  }
+  console.log(newArr); */
+
+    /*     var newArr = [];
+      for (var i = 0; i < arr.length; i++) {
+        //通过下标判断,如果该元素返回的索引号等于当前i,那么就添加进新数组中,indexOf返回的是第一次碰到的元素的下标
+        if (arr.indexOf(arr[i]) === i) {
+          newArr.push(arr[i]);
+        }
+      }
+      console.log(newArr); 
+    
+      */
+
+    /*     //排序去重
+      var newArr = []
+      arr.sort(function (a, b) {
+        return a - b;
+      })
+      console.log(arr);
+      arr.forEach(function (item, index) {
+        if (arr[index] != arr[index - 1]) {
+          newArr.push(item);
+        }
+      })
+      console.log(newArr); */
+
+    /* //双重for循环
+  var newArr = []
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      if (arr[i] === arr[j]) {
+        i++;
+        j = i;
+      }
+    }
+    newArr.push(arr[i]);
+  }
+  console.log(newArr); */
+
+    /*     var newArr = []
+      for (var i = 0; i < arr.length; i++) {
+        var bl = true
+        for (var j = 0; j < newArr.length; j++) {
+          if (arr[i] === newArr[j]) {
+            bl = false
+            break
+          }
+        }
+        if (bl) {
+          newArr.push(arr[i])
+        }
+      }
+      console.log(newArr) */
+
+    //过滤+indexOf
+    var newArr = arr.filter(function (item, index) {
+      //indexOf返回的一个元素第一次出现的索引值
+      return arr.indexOf(item) === index
+    })
+    console.log(newArr)
+
+    /* //方法六： 深度判断（数组和对象的去重）
+    const doubleArr = [123, [1, 2, 3], [1, '2', 3], [1, 2, 3], 'meili'] //--->[123, [1, "2", 3], [1, 2, 3], "meili"]
+    const objArr = [
+      123,
+      { a: 1 },
+      { a: { b: 1 } },
+      { a: '1' },
+      { a: { b: 1 } },
+      'meili',
+    ] //--->[123, {a: 1}, {a: {b: 1}}, {a: "1"}, "meili"]
+    function qc(arr) {
+      const res = []
+      arr.forEach((item) => {
+        if (!res.some((r) => JSON.stringify(r) === JSON.stringify(item))) {
+          res.push(item)
+        }
+      })
+      return res
+    }
+    console.log(qc(arr)) */
+  </script>
+</body>
+
+</html>

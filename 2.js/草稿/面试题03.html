@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    /* (function foo(i) {
+      console.log("一" + i);//0 1 2 3
+      if (i === 3) {
+        return;
+      } else {
+        foo(++i);//1 2 3
+        console.log("二" + i);//3 2 1
+      }
+      console.log("三" + i);
+    }(0)) */
+
+
+    /*         var a = 2;
+        
+            function bar() {
+              var i = 3;
+              function foo() {
+                var b = 4;
+                method();//abc
+              }
+              foo();
+              console.log("123");
+            }
+        
+            function method() {
+              console.log("abc");
+            }
+        
+            bar(); */
+
+
+    /*      var foo = 1;
+         function bar() {
+           console.log(foo);//undefined
+           if (!foo) {//!undefined  = true
+             var foo = 10;//不是局部函数
+           }
+           console.log(foo);//10
+         }
+         bar(); */
+
+
+    /* var a = 1;
+    function b() {
+      console.log(a);//因为函数a声明提升 function
+      a = 10;
+      return;
+      function a() { }
+    }
+    b();
+    console.log(a);//1
+*/
+
+    /*     var a = 1;
+        function b() {
+          console.log(a);
+          a = 10;
+        }
+        b();
+        console.log(a); */
+
+
+    /* console.log(foo);
+    var foo = "A";
+    console.log(foo);
+    var foo = function () {
+      console.log("B");
+    }
+    console.log(foo);
+    foo();
+    function foo() {
+      console.log("C");
+    }
+    console.log(foo);
+    foo(); */
+
+
+    /* var foo = 1;
+
+    function bar(a) {
+      //在a=foo之前把函数a赋值给了a1
+      var a1 = a;
+      console.log(a1);//fun
+      var a = foo;
+      console.log(a);//1
+      function a() {
+        console.log(a);
+      }
+      a1();//1
+    }
+    bar(3); */
+
+
+    /*     var value = 2019;
+        function fn() {
+          console.log(value);
+          var value = { name: "Time" };
+          console.log(value);
+        }
+        fn();
+        console.log(value); */
+
+
+    /* function Foo() {
+      getName = function () {
+        alert(1);
+      }
+      return this;
+    }
+
+    Foo.getName = function () {
+      alert(2);
+    }
+    Foo.prototype.getName = function () {
+      alert(3);
+    };
+    var getName = function () {
+      alert(4);
+    };
+
+    function getName() {
+      alert(5);
+    }
+
+    // 请写出以下输出结果
+    Foo.getName();//2
+    getName();//4
+    Foo().getName();//1  此刻调用了Foo(),然后里面的getName是全局变量  修改了全局变量
+    getName();//1
+    new Foo.getName();//2  //new没有参数优先级是比成员访问符号低  所以先执行 Foo.getName()
+    new Foo().getName();//3   //new有参数 所以先执行new.Foo() 实例化了一个对象,这个对象在调用了getName()
+ */
+
+    /* var a = {}
+    var obj1 = {
+      n: 2
+    }
+    var obj2 = {
+      m: 3
+    }
+    a[obj1] = 4//a['object Object'] = 4  扩展了一个属性
+    a[obj2] = 5//a['object Object'] = 5  属性必须是先转为字符串
+    console.log(a);//a = {[object Object]: 5}
+    console.log(a[obj1])//a[object Object]: 5 */
+
+    this.b = '2';
+    function abc() {
+      let b = 1;
+      ++b;
+      setTimeout(() => {
+        test('fun test') //fun test 
+      }, 0)
+      setTimeout(test('test fun'), 1000)
+      console.log(b);
+      function test(str) {
+        this.b++;
+        console.log(str);
+        console.log(this.b++);
+      }
+    }
+    abc()
+  </script>
+
+</body>
+
+</html>

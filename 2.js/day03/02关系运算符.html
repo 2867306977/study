@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    关系运算符
+    返回值一定是布尔值
+
+      如果一个number，一个字符串比较，则转为number类型  (NaN和任何类型比较都是false)
+      两个字符串比较则按照asc编码比较
+     */
+    // 字符串和其他类型比较
+    console.log("a" > 1);//false
+    // null,undefined和字符串比较则转为数字
+    // undefined和null相等
+    console.log(undefined == null);//true
+    console.log("a" > null);//false
+    console.log("a" <= null);//false
+    console.log(undefined <= "a");//false
+    console.log(undefined > "a");//false
+    // Boolean
+    console.log(true <= "a");//false
+    console.log(true > "a");//false
+    // object
+    console.log({} <= "a");//true
+    console.log({} > "a");//false
+    console.log([] > "a");//false
+    console.log([] <= "a");//true
+
+    // 布尔值和其他类型比较  转数字
+    console.log(true > {});//false
+    console.log(true <= {});//false
+    console.log(true > []);//true
+    console.log(true <= []);//false
+
+    // object之间比较转string
+    console.log({} > []);//true
+
+    /* 结论：object和除了字符串和自身比较 其他都转为number比较
+            string和除了对象和自身比较  其他都转为number比较
+            Boolean，number，null，undefined和其他类型比较都转为number   (null和undefined相等)
+     */
+
+  </script>
+
+</body>
+
+</html>

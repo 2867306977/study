@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script>
+    var oBox = document.getElementById('box');
+    /* 
+    滚轮事件: 谷歌/IE: onmousewheel
+                      wheelDelta: -150  向下滚
+                      wheelDelta: 150  向上滚
+              火狐: DOMMouseScroll
+                      detail: 3 向下滚
+                      detail: -3 向上滚
+     */
+    var l = 200;
+
+    // document.body.onmousewheel = function (e) {
+    //   console.log(e);
+    // }
+    // document.body.addEventListener('DOMMouseScroll', function (e) {
+    //   console.log(e);
+    // })
+    oBox.onmousewheel = scroll;
+    oBox.addEventListener('DOMMouseScroll', scroll)
+    //兼容滚轮
+    function scroll(e) {
+      if (e.wheelDelta) {
+        //谷歌/IE
+        if (e.wheelDelta < 0) {
+          l -= 10;
+        } else {
+          l += 10;
+        }
+      } else {
+        //火狐
+        if (e.detail < 0) {
+          l += 10;
+        } else {
+          l -= 10;
+        }
+      }
+      oBox.style.width = l + 'px';
+    }
+
+  </script>
+</body>
+
+</html>

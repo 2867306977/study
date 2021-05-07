@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="box">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <script>
+
+    var oBox = document.getElementById('box');
+    var oLis = document.querySelectorAll('#box li');
+
+    //children:获取一个元素所有的子元素节点   IE8及以下会获取注释节点
+    console.log(oBox.children);
+
+    //parentsNode:获取一个元素的父元素节点
+    console.log(oLis[2].parentNode);
+
+    /*  //firstChild:在IE8及以下获取一个元素的第一个子元素节点,现代浏览器中获取一个元素的第一个子节点
+     console.log(oBox.firstChild);
+ 
+     //firstElementChild:在现代浏览器中获取一个元素的第一个子元素节点,IE8及以下没有该方法
+     console.log(oBox.firstElementChild);
+ 
+     //lastChild:在IE8及以下获取一个元素的最后一个子元素节点,现代浏览器中获取一个元素的最后一个子节点
+     console.log(oBox.lastChild);
+ 
+     //lastElementChild:在现代浏览器中获取一个元素的最后一个子元素节点,IE8及以下没有该方法
+     console.log(oBox.lastElementChild);
+ 
+     //previousSibling:在IE8及以下是获取一个元素的上一个兄弟元素节点,在现代浏览器中获取一个元素的上一个兄弟节点
+     console.log(oLis[2].previousSibling);
+ 
+     //previousElementSibling:在现代浏览器中获取一个元素的上一个兄弟元素节点,IE8及以下没有该方法
+     console.log(oLis[2].previousElementSibling);
+ 
+     //nextSibling:在IE8及以下是获取一个元素的下一个兄弟元素节点,在现代浏览器中获取一个元素的下一个兄弟节点
+     console.log(oLis[2].nextSibling);
+ 
+     //nextElementSibling:在现代浏览器中获取一个元素的下一个兄弟元素节点,IE8及以下没有该方法
+     console.log(oLis[2].nextElementSibling); */
+
+    //兼容性封装
+    function firstChild(elm) {
+      //不支持firstElementChild就支持firstChild
+      return elm.firstElementChild || elm.firstChild;
+    }
+    console.log(firstChild(oBox));
+
+    function lastChild(elm) {
+      return elm.lastElementChild || elm.lastChild;
+    }
+    console.log(lastChild(oBox));
+
+    function prevSibling(elm) {
+      return elm.previousElementSibling || elm.previousSibling;
+    }
+    console.log(prevSibling(oLis[2]));
+
+    function nextSibling(elm) {
+      return elm.nextElementSibling || elm.nextSibling;
+    }
+    console.log(nextSibling(oLis[2]));
+
+    /*
+获取body html head元素
+ */
+    var oBody = document.body;
+    console.log(oBody);
+    var oHtml = document.documentElement;
+    console.log(oHtml);
+    var oHead = document.head;
+    console.log(oHead);
+  </script>
+</body>
+
+</html>

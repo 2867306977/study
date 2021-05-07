@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+  <meta charset="UTF-8" />
+  <title></title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrap {
+      width: 300px;
+      margin: 100px auto 0;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+      border: 1px solid #c0c0c0;
+    }
+
+    th,
+    td {
+      border: 1px solid #d0d0d0;
+      color: #404060;
+      padding: 10px;
+    }
+
+    th {
+      background-color: #09c;
+      font: bold 16px '微软雅黑';
+      color: #fff;
+    }
+
+    td {
+      font: 14px '微软雅黑';
+    }
+
+    tbody tr {
+      background-color: #f0f0f0;
+    }
+
+    tbody tr:hover {
+      cursor: pointer;
+      background-color: #fafafa;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            <input type="checkbox" id="j_cbAll" />
+          </th>
+          <th>课程名称</th>
+          <th>所属学院</th>
+        </tr>
+      </thead>
+      <tbody id="j_tb">
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>JavaScript</td>
+          <td>前端学院</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>css</td>
+          <td>前端学院</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>html</td>
+          <td>前端学院</td>
+        </tr>
+        <tr>
+          <td>
+            <input type="checkbox" />
+          </td>
+          <td>jQuery</td>
+          <td>前端学院</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script src="./js/jquery.js"></script>
+  <script>
+    //选中全选复选框 下面的内容的复选框全选中
+    $('#j_cbAll').click(function () {
+      //获取全选复选框的状态 然后赋值给内容复选框
+      var isAll = $(this).prop('checked');
+      $('#j_tb input').prop('checked', isAll);
+    })
+
+    //全部内容复选框都选中那么全选复选框也选中  一个不选中全选内容框就取消选中
+    $('#j_tb input').click(function () {
+      //获取到选中的复选框的长度是否等于总长度  相等就返回true 赋值给全选复选框
+      var isAll = $('#j_tb input:checked').length === $('#j_tb input').length;
+      $('#j_cbAll').prop('checked', isAll);
+    })
+
+  </script>
+</body>
+
+</html>

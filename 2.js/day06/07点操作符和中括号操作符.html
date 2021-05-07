@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /* 
+    对象属性进行操作时，有两种方式：点操作符和中括号操作符
+    1.点操作符
+        就是成员访问
+        obj.xxx只能把xxx当成字符串使用，不能是非法字符
+
+    2.中括号操作符
+        中括号操作符可以随意使用
+        如有一个属性xxx，因为属性名是字符串类型，所有获取方式是obj['xxx']
+        使用中括号场景
+           1.key是非法的
+           2.key是一个变量时
+     */
+    var obj = {
+      name: '张三',
+      age: 19,
+      do: function () {
+        console.log();
+      },
+      "Con-Type": "type"
+    }
+
+    var a = 'name';
+    console.log(obj.name);//张三
+    console.log(obj.a);//undefined 只是把当作了字符串，而不是变量a,获取的是obj.a属性但是没有对他赋值
+    // console.log(obj.Con - type);//报错  把-当成了减号
+
+    // 中括号
+    console.log(obj["name"]);//此时以字符串的形式用中括号括起来了
+    console.log(obj["Con-Type"]);//type
+
+    // 如果key是个变量的话是需要[]来获取，因为会先进行计算
+    console.log(obj[a]);//'张三'  a以变量方式获取，所以获取的就是obj['name']
+
+
+  </script>
+
+</body>
+
+</html>

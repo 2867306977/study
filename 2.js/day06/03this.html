@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 封装一个函数，打印this
+    // this指向的是其函数所调用者，如果没有调用者则指向window
+    function fn1() {
+      console.log(this);
+    }
+    fn1();//window
+
+    // 把函数写在对象中
+    var obj = {
+      name: '张三',
+      age: 19,
+      do: fn1,
+      eat: function () {
+        fn1();
+      }
+    }
+    obj.do(); //obj 是obj调用的函数
+    obj.eat();//window  fn1不是obj调用，而是自己调用的
+
+    // 隐式丢失
+    var f = obj.do;
+    f();//window  
+
+    document.onclick = fn1;//document  当document点击时调用的函数
+
+
+    function outer() {
+      function inner() {
+        console.log(this);
+      }
+      inner();
+    }
+    //调用最外层函数后，inner函数被调用了，inner函数是自行调用的，和outer函数无关
+    outer();//window
+
+  </script>
+</body>
+
+</html>

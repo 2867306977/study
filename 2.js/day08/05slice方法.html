@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    slice():截取数组的长度  可传两个参数：
+                            1.从哪里开始截取的下标（一般不为负数）
+                            2.在哪里结束的下标（截取的元素不包括结束下标位置的元素）超过了数组长度则后面的全部截取，如果为负数，则倒着数截取的位置
+        返回值是截取的元素组成的一个新数组  对原数组没有影响
+     */
+    var arr = [1, 2, 4, 5, 'a', 'e', 7];
+    var re = arr.slice(2, -2);
+    console.log(arr);
+    console.log(re);
+  </script>
+</body>
+
+</html>

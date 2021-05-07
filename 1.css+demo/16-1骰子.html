@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    #f {
+      display: flex;
+      width: 440px;
+      height: 283px;
+      margin: 100px auto;
+      border: 1px solid green;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #f>li {
+      display: flex;
+      width: 125px;
+      height: 125px;
+      padding: 5px;
+      border: 1px solid;
+      flex-wrap: wrap;
+    }
+
+    .red {
+      background-image: radial-gradient(red, #000);
+    }
+
+    .blue {
+      background-image: radial-gradient(blue, #000);
+    }
+
+    .red,
+    .blue {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .s1 {
+      justify-content: center;
+      align-items: center;
+    }
+
+    .s2 {
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-content: center;
+    }
+
+    /* 第三个骰子 */
+    .s3 {
+      flex-direction: column;
+      justify-content: space-evenly;
+    }
+
+    .s3 div:first-of-type {
+      align-self: flex-start;
+    }
+
+    .s3 div:nth-of-type(2) {
+      align-self: center;
+    }
+
+    .s3 div:nth-of-type(3) {
+      align-self: flex-end;
+    }
+
+    /* 第四个骰子 */
+    .s4,
+    .s6,
+    .s5 {
+      justify-content: space-around;
+    }
+
+    .s4>div,
+    .s6>div,
+    .s5>div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .s5>div:nth-last-of-type(2) {
+      /* 绝对定位不影响弹性盒子属性 */
+      position: absolute;
+      align-self: center;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="f">
+    <li class="s1">
+      <div class="red"></div>
+    </li>
+    <li class="s2">
+      <div class="blue"></div>
+      <div class="blue"></div>
+    </li>
+    <li class="s3">
+      <div class="blue"></div>
+      <div class="blue"></div>
+      <div class="blue"></div>
+    </li>
+    <li class="s4">
+      <div>
+        <div class="red"></div>
+        <div class="red"></div>
+      </div>
+      <div>
+        <div class="red"></div>
+        <div class="red"></div>
+      </div>
+    </li>
+    <li class="s5">
+      <div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+      </div>
+      <div class="blue"></div>
+      <div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+      </div>
+    </li>
+    <li class="s6">
+      <div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+      </div>
+      <div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+        <div class="blue"></div>
+      </div>
+    </li>
+  </ul>
+</body>
+
+</html>

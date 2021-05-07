@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+
+  <script>
+    /* 
+    string类型是由零个或多个字符组成，零个字符表空字符串
+    它外层单引号或者双引号表示
+     */
+    var a = "hello world";
+    var b = "hello world";
+    console.log(a === b);//true
+    // 换行是用/n表示
+    console.log("小王他\n昨天回家了");
+    // 可以使用转义符  \  把回车转译成空格
+    console.log("<ul>\
+         <li></li>\
+         <li></li>\
+         <li></li>\
+          </ul>");
+    // 转义符 双引号中嵌套双引号  \\只表示一个\
+    console.log("今天\"天气\"真\\不错");
+    //字符串的位置获取
+    var str = "abghjk";
+    console.log(str[4]);//j  （从零开始表示到第四个）
+    //想要取字符串的长度
+    console.log(str.length);//6
+    // 想取字符串的最后一个
+    console.log(str[str.length - 1]);//k
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,16 @@
+@in: red;
+@o: #inner;
+@url: "http://baidu.com";
+@url1: url(@url);
+@url2: url(http://baidu.com);
+#box {
+  width: 100px;
+  height: 100px;
+  background-color: @in;
+  @{o}{
+    width: 100px;
+    height: 100px;
+    background-color: #fff;
+  }
+  background: @url2;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="ipt">
+  <button id="btn">判断</button>
+
+  <script>
+    /* 点击按钮的时候，判断输入框是否为空，如果为空 则输入框变红，否则弹出输入的内容 */
+    // 获取元素
+    var oIpt = document.getElementById("ipt");
+    var oBtn = document.getElementById("btn");
+    // 绑定点击按钮
+    oBtn.onclick = function () {
+      // 获取输入框里面的内容
+      var oIptVal = oIpt.value;
+      // 判断输入框内容是否为空  字符串为空那么转为布尔值为false
+      if (oIptVal) {
+        alert(oIptVal);
+      } else {
+        oIpt.style.borderColor = "red";
+      }
+    }
+  </script>
+
+
+</body>
+
+</html>

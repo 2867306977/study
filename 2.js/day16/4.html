@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //创建了一个Person构造函数
+    function Person(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+      this.sayName = function () {
+        console.log(this.name);
+      }
+      console.log(this);
+    }
+    Object.prototype.f = 3
+    Person.prototype.sayName = function () {
+      console.log('jj');
+    }
+    var person1 = new Person('xiaoli', 18, 'nan');//new了一个Person实例
+    var person2 = new Person('laowang', 20, 'nv');
+
+    person1.sayName();
+    console.log(person1.constructor)//指向的Person
+    Person('oo', 11, 'nan');
+    // Person.sayName()//报错  Person作为函数调用  但是该方法是添加到window对象
+    window.sayName();
+
+    var o = new Object();
+    Person.call(o, 'na', 11, 'nan');
+    o.sayName();
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">按钮</button>
+  <script>
+    /*
+    逻辑运算符：&&与  ||或  !非
+     */
+    var a = 3;
+    console.log(a > 2 && (a = 4));//4
+    console.log(a > 1 || (a = 4));//true
+    console.log(a != 3);//true
+
+    /*  // 假设用户输入的长度 在10 到20 之间  那么就成功
+     var a = prompt("请输入");
+     if (a.length >= 10 && a.length <= 20) {
+       alert("成功");
+     } else {
+       alert("失败");
+     } */
+
+    //静哥喝两瓶或4瓶是可以的，其他都不行
+    var a = prompt("请输入静哥喝了几瓶酒");
+    if (a == 2 || a == 4) {
+      alert("好 可以走了")
+    } else {
+      alert("别走了，留下来继续陪华哥喝酒");
+    }
+
+    // 点击按钮把背景颜色切换
+    var oBtn = document.getElementById("btn");
+    var flag = true;
+    oBtn.onclick = function () {
+      if (flag) {
+        //默认true为红色，如果为true，则换成绿色
+        document.body.style.backgroundColor = "green";
+      } else {
+        document.body.style.backgroundColor = "red";
+      }
+      // 取反
+      flag = !flag;
+    }
+
+  </script>
+</body>
+
+</html>

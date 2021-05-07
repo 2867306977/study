@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    for...in 专门用来遍历对象
+     */
+
+    var obj = {
+      name: '张三',
+      age: 19,
+      sex: 'sex',
+      off: true
+    }
+
+    for (const key in obj) {
+      console.log(value);//name age sex off
+    }
+
+    /*
+    严格区分变量类型和数据类型：
+        变量类型：
+            1.基本类型：number,string,boolean...
+            2.引用类型：变量保存的是地址值
+        数据类型:
+            1.基本类型：number,string,boolean
+            2.对象类型：function,object,regexp,array
+     */
+    var i = 3;//该变量保存的是基本类型
+    var obj = {};//该变量保存的是地址值
+
+    var obj2 = {};
+    console.log(obj == obj2);//false  它们比较的是地址值
+  </script>
+
+</body>
+
+</html>

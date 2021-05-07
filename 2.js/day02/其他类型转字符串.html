@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    其他类型转字符串使用String()方法
+    1.number转字符串
+          先把数字转为正常写法或者十进制写法，再加引号
+    2.boolean转字符串
+          直接加引号
+    3.null和undefined转字符串直接加引号
+    4.object转为字符串
+          对象转字符串为[object Object]
+          数组转对象去掉中括号加上引号
+          函数转字符串加引号
+    toString方法  除了null和undefined,每个类型都有自己的toString方法
+     */
+    console.log(String(0x33));//51
+    console.log(String(NaN));//'NaN'
+    console.log(String(true));//'true'
+    console.log(String(false));//'false'
+    console.log(String(null));//'null'
+    console.log(String(undefined));//'undefined'
+    console.log(String({}));//[object Object]
+    console.log(String([2, 4]));//'2, 4'
+    console.log(String(function () { }));//'function () { }'
+
+    console.log(true.toString);
+    console.log(false.toString);
+    console.log({}.toString);
+    console.log([].toString);
+    console.log((function () { }).toString);
+  </script>
+
+</body>
+
+</html>

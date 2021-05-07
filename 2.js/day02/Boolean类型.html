@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    Boolean类型只有两个值：true和false
+    true为真，false为假
+     */
+    /*
+    其他类型转布尔值，使用Boolean()方法
+    1.字符串转布尔值
+      非空为true，空为false
+    2.数字转布尔值
+      1为true，0为false，NaN为false，其他为true
+    3.null和undefined转布尔值均为false
+    4.object转为布尔值，都为true
+     */
+    console.log(Boolean(""));//false
+    console.log(Boolean(" "));//true
+    console.log(Boolean("123"));//true
+    console.log(Boolean("abc"));//true
+    console.log(Boolean(0));//false
+    console.log(Boolean(1));//true
+    console.log(Boolean(NaN));//false
+    console.log(Boolean(Infinity));//true
+    console.log(Boolean(null));//false
+    console.log(Boolean(undefined));//false
+    console.log(Boolean([]));//true
+    console.log(Boolean({}));//true
+  </script>
+
+</body>
+
+</html>

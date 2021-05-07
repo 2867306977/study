@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    需求：请求a数据，再请求b数据，请求c数据
+  */
+    function* gen() {
+      yield setTimeout(() => {
+        console.log('数据a请求完毕');
+        it.next()//如果gen().next()  那么每次都得重新执行一次gen()
+      }, 1000);
+      yield setTimeout(() => {
+        console.log('数据b请求完毕');
+        it.next()
+      }, 1000);
+      yield setTimeout(() => {
+        console.log('数据c请求完毕');
+        it.next()
+      }, 1000);
+      yield setTimeout(() => {
+        console.log('数据d请求完毕');
+        it.next()
+      }, 1000);
+    }
+    let it = gen();
+    it.next();
+  </script>
+</body>
+
+</html>

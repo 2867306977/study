@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let name = 'zs'
+    let age = 16
+    let sex = 'nan'
+    const obj = {
+      name,
+      age,
+      sex,
+      do() {
+        console.log(this);
+      }
+    }
+    let { a, b, c, ...i } = {
+      a: 5,
+      b: 3,
+      c: 7,
+      d: 1,
+      e: 9,
+      t: 9
+    }
+    console.log(i);
+
+    //Object.is  判断对象是否相等  修改了null不等于自己的问题
+    console.log(Object.is(null, null));
+    console.log(Object.is({}, {}));
+    console.log(Object.is('3', '3'));
+
+    //Object.assign() 合并对象方法
+    const obj2 = {
+      a: 5,
+      b: 3,
+      c: 7,
+      d: 1,
+    }
+    console.log(Object.assign(obj, obj2));
+    //对象展开
+    console.log({ ...obj, ...obj2 });
+  </script>
+</body>
+
+</html>

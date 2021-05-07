@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    #outer {
+      width: 350px;
+      margin: 0 auto;
+    }
+
+    #btn {
+      height: 50px;
+      background-color: gray;
+      line-height: 50px;
+    }
+
+    #city {
+      display: none;
+      height: 100%;
+      background-color: red;
+      overflow: hidden;
+    }
+
+    #city>li {
+      float: left;
+      padding: 20px 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <h2>深圳</h2>
+    <div id="con">
+      <p id="btn">点击我选择城市</p>
+      <ul id="city">
+        <li>深圳</li>
+        <li>北京</li>
+        <li>广州</li>
+        <li>上海</li>
+        <li>长沙</li>
+        <li>南昌</li>
+        <li>武汉</li>
+        <li>焦作</li>
+        <li>郑州</li>
+        <li>太原</li>
+        <li>草围</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    var oBtn = document.getElementById('btn');
+    var oCity = document.getElementById('city');
+    var oH2 = document.querySelector('h2');
+    //点击btn显示ul
+    oBtn.onclick = function (e) {
+      //阻止文档的冒泡行为
+      e.stopPropagation();
+      oCity.style.display = 'block';
+    }
+    //给city绑定点击事件
+    oCity.onclick = function (e) {
+      //如果点击的目标节点名称是li,则把该li里面的内容放在h2标签中
+      if (e.target.nodeName.toLowerCase() === 'li') {
+        oH2.textContent = e.target.textContent;
+        //并且把city隐藏
+        oCity.style.display = 'none';
+      }
+    }
+    // 点击空白地方隐藏掉#city
+    document.onclick = function () {
+      oCity.style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>

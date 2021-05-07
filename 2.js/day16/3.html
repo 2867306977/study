@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+  </ul>
+  <script>
+
+    var Lis = document.querySelectorAll('ul li');
+    /* 
+    闭包:
+        函数嵌套函数 
+        内部函数引用了外部函数的数据
+        外部函数执行
+    闭包是什么:
+        1.函数套函数,内部的函数称为闭包
+        2.在内部函数作用域中,包含被引用变量的那个closure对象,我们称为闭包
+     */
+    for (var i = 0; i < 5; i++) {
+      (function (i) {
+        setTimeout(function () {
+          console.log(i);
+        }, 1000)
+      })(i)//每创建一个函数,函数里面有自己的i所以定时器中打印的i都是去最近的作用域中找的i
+    }
+
+    /* for (var i = 0; i < Lis.length; i++) {
+      Lis[i].index = i;
+      Lis[i].onclick = function () {
+        console.log(this.index);
+      }
+    } */
+
+    for (var i = 0; i < Lis.length; i++) {
+      (function (i) {
+        Lis[i].onclick = function () {
+          console.log(i);
+        }
+      })(i)
+
+    }
+  </script>
+</body>
+
+</html>

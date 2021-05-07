@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="outer">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+
+  <script>
+    // 对所有的li绑定点击事件 点击谁 让谁的背景颜色变成红色
+    // 获取元素
+    var oOuter = document.getElementById("outer");
+    var oLis = oOuter.getElementsByTagName("li");
+    // 给所有的li绑定事件
+    // 先遍历所有的li
+    for (var i = 0; i <= oLis.length; i++) {
+      // 绑定事件
+      oLis[i].onclick = function () {
+        // 点击谁  让谁变红色  this表示当前点击的li
+        this.style.backgroundColor = "red";
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

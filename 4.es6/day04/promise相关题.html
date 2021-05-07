@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let promise = Promise.resolve()
+      .then(() => {
+        // 使 .then() 返回一个 rejected promise
+        throw new Error('Oh no!');
+      })
+      .catch(error => {
+        console.error('onRejected function called: ' + error.message);
+      })
+      //因为上面的代码没有return 成功或者失败的promise, 所以默认是成功的promise
+      .then(() => {
+        console.log("I am always called even if the prior then's promise rejects");
+      });
+
+
+    // Promise.resolve()
+    //   .then(() => {
+    //     // 使 .then() 返回一个 rejected promise
+    //     // throw new Error('Oh no!');
+    //     return new Promise(() => {
+    //       reject('失败~')
+    //     })
+    //   })
+    //   .catch(() => {
+    //     console.log('失败');
+    //   })
+    //   .then(() => {
+    //     console.log('Not called.');
+    //   }, error => {
+    //     console.log('onRejected function called: ' + error);
+    //   });
+  </script>
+</body>
+
+</html>

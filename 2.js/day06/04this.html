@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*  var x = 1;
+     var obj = {
+       f: function () {
+         console.log(this.x)
+       },
+       x: 2
+     }
+     obj.f();//2  this指向的是obj
+     var f1 = obj.f;
+     f1();//1  this指向的是window */
+
+
+
+    var x = 1;
+    var obj = {
+      f: function () {
+        console.log(this.x);
+      },
+      x: 2
+    };
+
+    (a = obj.f)();//1  只是把地址赋值给a，里面的this指向window
+    (false || obj.f)();//1  this指向window
+    (obj.f, obj.f)();//1  this指向window
+    (obj.f)();//2  因为小括号是逻辑分割符，它不是运算符
+    obj.f();//2  this指向obj
+  </script>
+
+</body>
+
+</html>

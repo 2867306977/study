@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const promise = new Promise((resolve, reject) => {
+      let data = [1, 2, 3]
+      resolve(data)
+      // reject(data)
+    })
+    /* //只有成功和失败状态触发,pending不触发  其实接收不到data数据
+    promise.finally((data) => {
+      console.log(`finally(${data})`);
+    }) */
+
+
+    /* let promise1 = new Promise((resolve) => {
+      resolve()
+    })
+    let promise2 = new Promise((resolve, reject) => {
+      // resolve()
+      reject()
+    })
+    //传入n个promise对象,只有n个promise对象是成功的才返回一个成功的promise,一个为失败,则返回一个失败的promise
+    var res = Promise.all([promise, promise1, promise2])//未来会使用Promise.all()去同时发送多个异步请求
+    console.log(res); */
+
+    /* Promise.resolve()返回一个成功的promise
+    Promise.reject()返回一个失败的promise */
+
+    //传入n个promise对象,等n个对象全部发生变化,就返回一个所有结果的值
+    let res = Promise.allSettled([Promise.resolve(), Promise.reject(), Promise.resolve()])
+    console.log(res);
+  </script>
+</body>
+
+</html>

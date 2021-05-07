@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+      outline: none;
+    }
+  </style>
+</head>
+
+<body>
+
+  <input type="text" id="ipt">
+  <button id="btn">判断</button>
+
+  <script>
+    //获取元素
+    var oIpt = document.getElementById("ipt");
+    var oBtn = document.getElementById("btn");
+    //绑定点击事件
+    oBtn.onclick = function () {
+      //判断表单里的值是否为数字  如果是数字则欢迎登陆，否则弹出重新输入 里面包含了非数字字符
+      if (isNaN(oIpt.value)) {
+        alert("请重新登录，里面包含了非数字字符")
+      } else {
+        alert("欢迎登录");
+      }
+    }
+  </script>
+
+</body>
+
+</html>

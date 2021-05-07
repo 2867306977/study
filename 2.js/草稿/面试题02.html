@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 'use strict'
+    /* window.aa = 'my window'
+     let obj = {
+       aa: 'my obj',
+       fn() {
+         console.log(this.aa);
+       }
+     };
+     // ||  , = 运算符会导致this丢失  非严格模式下 this指向window 严格模式下this就是undefined
+     (obj.fn = obj.fn)();
+ 
+     Reference Type是一种规范类型
+     Reference Type本身是一个三个值的组合(base, name, strict) ，其中：
+     base 是对象。
+     name 是属性名。
+     strict 在 use strict 模式下为 true。（use strict：严格模式） 
+     
+     此时将obj.fn进行了赋值操作  将Reference Type作为一个整体丢失了 而是会取obj.fn的一个值继续传递  所以this丢失
+     
+     */
+
+
+
+    /* 
+    //封装一个函数 返回实参相加得数
+    function sum() {
+      var num = 0;
+      for (var i = 0; i < arguments.length; i++) {
+        //判断是不是字符串 因为不管什么类型和字符串相加都是字符串拼接
+        // if (typeof arguments[i] !== 'string') {
+        //   num += arguments[i];
+        // }
+        num += parseFloat(arguments[i]) || 0
+
+      }
+      return num.toFixed(3) * 1000 / 1000;
+    }
+    var re = sum(0.1, 0.2);
+    console.log(re);
+    var re1 = sum(5, null, -5);
+    console.log(re1);
+    var re2 = sum('1.0', false, 1, true, 1, 'A', 1, 'B', 1, 'C', 1, 'D', 1, 'E', 1, 'F', 1, 'G', 1);
+    console.log(re2);
+    var re3 = sum('1.0', false)
+    console.log(re3); */
+
+
+    function obj(name) {
+      //如果有name属性 那name属性就等于传的实参
+      if (name) {
+        this.name = name;
+      }
+      return this;
+    }
+    obj.prototype.name = "name2";
+    //a返回的是this 此刻this指向window  window有一个name: 'name1'
+    var a = obj("name1");//a.name = 'name1' 普通调用方式
+    var b = new obj;//创建了实例对象
+    //需求:
+    console.log(a.name);//'name1'
+    //因为自己有一个name属性 所以不会顺着原型链往上查找 使用自己的name属性  但自己的name属性并没有进行任何赋值  所以得判断 如果name属性没有值name就往上找  
+    console.log(b.name);//'name2' 
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn1">绿色</button>
+  <button id="btn2">蓝色</button>
+  <button id="btn3">粉色</button>
+  <button id="btn4">黄色</button>
+  <script>
+    // 点击按钮后切换不同颜色的背景
+    // 获取元素
+    var oBtn1 = document.getElementById('btn1');
+    var oBtn2 = document.getElementById('btn2');
+    var oBtn3 = document.getElementById('btn3');
+    var oBtn4 = document.getElementById('btn4');
+
+    // 给每个按钮绑定点击事件  
+    // 因为要做出同一样操作  所以封装一个函数
+    function setColor(color) {
+      // 注意color是变量
+      document.body.style.backgroundColor = color;
+    }
+    oBtn1.onclick = function () {
+      // 需要改变颜色则调用函数
+      setColor("green");
+    }
+    oBtn2.onclick = function () {
+      setColor("blue");
+    }
+    oBtn3.onclick = function () {
+      setColor("pink");
+    }
+    oBtn4.onclick = function () {
+      setColor("yellow");
+    }
+  </script>
+
+</body>
+
+</html>

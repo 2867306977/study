@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    li {
+      width: 500px;
+      height: 30px;
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <ul id="outer">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  <script>
+    /*
+    事件委托:
+    给父元素绑定事件
+    可以给新添加的元素绑定事件 因为新元素也是在父元素内
+     */
+    //创建新的li 按钮
+    var oOuter = document.getElementById('outer');
+    oOuter.onclick = function (e) {
+      if (e.target.nodeName.toLowerCase(y) === 'li') {
+        alert(1);
+      }
+    }
+  </script>
+
+</body>
+
+</html>

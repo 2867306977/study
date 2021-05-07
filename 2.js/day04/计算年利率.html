@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 用户输入一个钱数 年利率为1.15(去年的利息和本钱 是下一年的本金) 翻倍需要几年
+    var userMoney = +prompt("用户输入一个钱数 年利率为1.05(去年的利息和本钱 是下一年的本金) 翻倍需要几年");
+    // 年
+    var year = 0;
+    // 翻倍后的钱
+    var finallyMoney = userMoney * 2;
+    // 当用户的钱没有达到翻两倍的钱时，则进入循环
+    while (userMoney <= finallyMoney) {
+      // 每执行一次，钱乘1.15再赋值回去
+      userMoney *= 1.15;
+      // 每执行一次年数增加一次，直到不能进入循环
+      year++;
+    }
+    alert("需要" + year + "年");
+
+
+  </script>
+</body>
+
+</html>

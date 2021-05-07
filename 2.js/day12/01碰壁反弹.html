@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #outer {
+      position: relative;
+      width: 800px;
+      height: 500px;
+      margin: 50px auto;
+      background-color: gray;
+    }
+
+    #ball {
+      position: absolute;
+      top: 150px;
+      left: 40px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <div id="ball"></div>
+  </div>
+  <script>
+    var oOuter = document.getElementById('outer');
+    var oBall = document.getElementById('ball');
+    //初始化top和left值
+    var l = 40;
+    var t = 150;
+    //设置一个开关 如果开关为真则向右移动,如果开关为假则向左移动
+    var flagX = true;
+    var flagY = true;
+    //设置定时器
+    setInterval(function () {
+      if (flagX) {
+        //l,t自增
+        l++;
+        //判断临界值,如果到达outer不包括边框的边缘则返回 (outer宽度不包括边框 - ball的宽度包括边框)
+        if (l >= oOuter.clientWidth - oBall.offsetWidth) {
+          flagX = !flagX;
+        }
+      } else {
+        l--;
+        //判断临界值,如果小于0则开启开关,退出l--
+        if (l <= 0) {
+          flagX = !flagX;
+        }
+      }
+      if (flagY) {
+        t++;
+        if (t >= oOuter.clientHeight - oBall.offsetHeight) {
+          flagY = !flagY;
+        }
+      } else {
+        t--;
+        //判断临界值,如果小于0则开启开关,退出l--
+        if (t <= 0) {
+          flagY = !flagY;
+        }
+      }
+      // 赋值
+      oBall.style.left = l + 'px';
+      oBall.style.top = t + 'px';
+    }, 5)
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="gId">默认id排序</button>
+  <button id="price">价格降序</button>
+  <button id="hot">热度降序</button>
+  <ul id="list">
+  </ul>
+
+</body>
+<script>
+  // 获取元素
+  var oGId = document.getElementById('gId');
+  var oPrice = document.getElementById('price');
+  var oHot = document.getElementById('hot');
+  var oList = document.getElementById('list');
+  //创建一个数据添加进页面中
+  var data = [
+    { brand: '苹果手机', id: '1', price: '11988', hot: '199' },
+    { brand: '联想手机', id: '2', price: '1988', hot: '1199' },
+    { brand: '华为手机', id: '3', price: '12988', hot: '1299' },
+    { brand: '三星手机', id: '4', price: '7988', hot: '3199' },
+    { brand: '魅族手机', id: '5', price: '988', hot: '1099' },
+    { brand: '小米手机', id: '6', price: '1988', hot: '109' },
+    { brand: '锤子手机', id: '7', price: '88', hot: '199999' }
+  ];
+  function phoData() {
+    oList.innerHTML = '';
+    //遍历数据
+    data.forEach(function (items, index, data) {
+      //定义一个变量保存数据结构
+      var str = `<li>
+      <h2>${items.brand}</h2>
+      <p>价格${items.price}</p>
+      <p>热度${items.hot}</p>
+      <p>id${items.id}</p>
+    </li>`
+      //把这个字符串追加到html结构中
+      oList.innerHTML += str;
+    })
+  }
+  phoData();
+
+  //点击默认id排序则按照id排序
+  // 绑定点击事件
+  oGId.onclick = function () {
+    //获取数据的id进行排序
+    data.sort(function (a, b) {
+      /* if (a.id > b.id) {
+        return 1;
+      } else if (a.id < b.id) {
+        return -1;
+      } else {
+        return 0;
+      } */
+      return a.id - b.id;
+    })
+    //排序后得反映到页面上，再调用一次函数
+    phoData();
+  }
+
+  //点击价格降序
+  oPrice.onclick = function () {
+    data.sort(function (a, b) {
+      //价格降序
+      return b.price - a.price;
+    })
+    phoData();
+  }
+
+  //点击热度降序
+  oHot.onclick = function () {
+    data.sort(function (a, b) {
+      //价格降序
+      return b.hot - a.hot;
+    })
+    phoData();
+  }
+
+</script>
+
+</html>

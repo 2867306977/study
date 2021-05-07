@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 作用域：1.全局  2.局部
+         它是变量在程序中可访问的有效范围
+         全局变量：变量在全局中声明的是可以在整个页面都可以看见且访问到的
+         局部变量：变量在当前函数的内部声明只能在当前函数中可以看见且访问到的变量
+         作用域划分：它就是根据函数划分的
+    */
+    // 该变量是在全局中声明的，是全局变量
+    var a = 1;
+    //函数fn是全局中声明的，所以该函数也是全局函数
+    function fn() {
+      // b是在函数中声明的，所以是局部变量
+      var b = 2;
+      console.log(a, b);//1，2
+      // inner函数是在函数中声明的，所以是局部函数
+      function inner() {
+        var c = 1;//c是在inner中声明的，是局部变量
+        console.log(c);//1
+        console.log(b);//2  inner是在fn里声明的 可以访问到fn的变量 
+      }
+      inner();
+      console.log(c);//报错  没有找到c变量  c是在inner里面声明的变量  外面访问不到
+    }
+    fn();
+
+    console.log(a, b);//报错 找不到b b是在inner函数里面声明的变量 外面访问不到
+
+  </script>
+</body>
+
+</html>

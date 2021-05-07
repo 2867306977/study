@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //扩展运算符 其他应用
+    //复制数组
+    let arr = [1, 2, 3, 4]
+    let newArr = [...arr];
+    console.log(newArr);
+    //合并数组
+    let arr1 = [1, 2, 3, 4];
+    let concatArr = [...arr, ...arr1]
+    console.log(concatArr);
+    //解构赋值
+    let [a, b, ...arr2] = [1, 2, 3, 5, 56, 7]
+    console.log(a, b, ...arr2);
+    //扩展字符串  把字符串转成数组
+    let str = 'asdfgbh';
+    let strArr = [...str]
+    console.log(strArr);
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    删除数组： 1.pop()：删除栈顶元素
+              2.shift(): 删除最头部的元素
+              3.delete(): 参数为需要删除的元素，它是把被删除元素的值删除了，但并没有删除它的key值它的位置还保留着，变成了undefined
+              4.把length设为比原先长度小,超出这个长度的元素全部删除
+              5.splice():设置两个参数1.从哪里开始删(下标) 2.删除几个元素，改变原数组，返回值为被删除的元素组成的一个新数组
+     */
+    var arr = [1, 2, 3, 4, 6, 7];
+    arr.pop();
+    console.log(arr);
+    arr.shift();
+    console.log(arr);
+    delete (arr[1]);
+    console.log(arr);
+    arr.length = 3;
+    console.log(arr);
+    arr.splice(1, 1);
+    console.log(arr);
+  </script>
+
+</body>
+
+</html>

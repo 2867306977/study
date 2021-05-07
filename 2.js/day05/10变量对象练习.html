@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    //练习 
+
+    /*     function fn1(a) {
+    
+          // var vo = {
+          //   fn1:function(){}
+          //   a:1
+          //   arguments:[1]
+          //   a:undefined
+          // }
+    
+          console.log(a);//1
+          // 这个变量a不允许影响形参
+          var a = 2;
+          console.log(a);//2
+        }
+        fn1(1); */
+
+
+
+
+
+    /*     function fn2() {
+    
+          // var vo = {
+          // foo: function () { }
+          // foo: undefined // 这里的变量foo不影响上面的函数
+          // }
+    
+          console.log(foo);//function(){}
+          function foo() { }
+          var foo = 1;
+          console.log(foo);//1
+        }
+        fn2();
+     */
+
+
+
+    /*     // var vo = {
+        //   a:function(){}
+        //   a : undefined
+        // }
+    
+        function a() { }
+        var a;
+        console.log(typeof a);//function
+        console.log(typeof window.a);//function
+        a = 1;
+        console.log(typeof a);//number
+        console.log(typeof window.a);//number */
+
+
+
+/*     // vo = {
+    //   b:undefined
+    // }
+
+    if (false) {
+      // 全局变量对象 提升声明
+      var b = 1;
+    }
+    console.log(b);//undefined */
+
+
+
+    // 全局vo = {
+    //   c:function(){}      
+    //   c:undefined
+    // }
+    console.log(c);//function(){}
+    var c = 1;
+    function c(c) {
+      console.log(c);
+      var c = 3;
+    }
+    console.log(c);//1
+    //因为c被赋值为1了所以没有函数c
+    // c(2);//报错
+
+
+    /*
+        //全局 vo = {
+        //   fn: function () { }
+        //   a: undefined
+        // }
+    
+        var a = 1;
+        function fn() {
+    
+          //局部 vo = {
+          //   a:undefined
+          // }
+    
+          // 函数内部有声明a所以它用的是函数内部的a
+          alert(a);//undefined
+          a = 2;
+          alert(a);//2
+          var a = 3;
+          alert(a);//3
+        }
+        alert(a);//1
+        fn();
+        alert(a);//1 */
+  </script>
+
+</body>
+
+</html>

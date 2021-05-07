@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 300px;
+      height: 300px;
+      padding: 10px;
+      margin: 10px;
+      border: 10px solid;
+      background-color: green;
+      /* display: none; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <img src="./images/01.jpg" id="img">
+  <script>
+    /*
+    offsetWidth: 获取元素的宽度(border+padding+content)
+                  当元素隐藏时获取不到,图片没加载完成,没有设置宽度时也加载不到
+    offsetHeight:获取元素的高度,同上
+     */
+    var oBox = document.getElementById('box');
+    var oImg = document.getElementById('img')
+    console.log(oBox.offsetWidth);//340
+    console.log(oImg.offsetWidth);//图片没有设置高度为0
+    /*
+    clientWidth:获取元素的可视宽度(padding+content)
+                当元素隐藏时获取不到,图片没加载完成,没有设置宽度时也加载不到
+    clientHeight:获取元素的高度,同上
+     */
+    console.log(oBox.clientWidth);//320
+    console.log(oImg.clientWidth);//0
+    /* 
+    scrollWidth:获取元素包含内容的完整宽度
+     */
+    console.log(document.documentElement.scrollWidth);//1536 //包含内容
+    console.log(document.documentElement.scrollHeight);//730
+  </script>
+</body>
+
+</html>

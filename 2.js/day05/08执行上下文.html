@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    执行上下文：
+          1.js执行代码并不是真正的一行行解析的，而是一段段的解析的，分段就是根据函数分的
+          2.js执行某段代码时，它先会有一个准备工作，比如先开辟一个空间，确定作用域链，确定this，确定变量对象，而这个准备工作叫做执行上下文
+          3.js代码有三种类型：全局，局部，eval(不推荐使用)
+          4.执行代码时，先碰到全局，就会创建全局的执行上下文，碰到调用函数时，则会创建一个局部的执行上下文
+          5.执行代码时可能会出现许多个执行上下文，所以有一个执行上下文栈，专门放入执行上下文的
+          6.js执行时先碰到全局代码，把这个全局执行上下文压入执行上下文栈中，当页面关闭了才出栈
+          7.js执行时碰到到局部代码，就会把这个局部执行上下文压入执行函数上下文栈中，当执行完成才出栈
+     */
+
+    // function fun3() {
+    //   console.log("fun3");
+    // }
+
+    // function fun2() {
+    //   fun3();
+    // }
+
+    // function fun1() {
+    //   fun2();
+    // }
+    // fun1();
+    /*
+    伪代码展示：
+          var stack = []
+          先碰到全局，然后吗全局执行上下文压入栈中
+          [<globalContext>]
+          然后碰到调用fun1函数，创建fun1执行上下文，把它压入栈中
+          [<globalContext><fun1Context>]
+          执行fun2，创建fun2执行上下文，把它压入栈中
+          [<globalContext><fun1Context><fun2Context>]
+          执行fun3，创建fun3执行上下文，把它压入栈中
+          [<globalContext><fun1Context><fun2Context><fun3Context>]
+          fun3执行完毕，fun3出栈
+          [<globalContext><fun1Context><fun2Context>]
+          fun2执行完毕，fun2出栈
+          [<globalContext><fun1Context>]
+          fun1执行完毕，fun1出栈
+          [<globalContext>]
+          关闭页面全局上下文出栈
+          []
+     */
+
+    var scope = "hello";
+
+    function checkScope() {
+      var scope = "world";
+
+      function f() {
+        return scope;
+      }
+      return f();
+    }
+    checkScope();
+
+    /* 
+    [<globalContext>]
+    [<globalContext><checkScope>]
+    [<globalContext><checkScope><fContext>]
+    [<globalContext><checkScope>]
+    [<globalContext>]
+    []
+    
+     */
+
+
+
+
+    // begin:undefined,  foo begin1:1,  foo begin2:2,  foo begin3:3,  foo end1: 3,  foo end2: 2, foo end3: 1, gloEnd: 1
+    console.log('global begin: ' + i)//undefined
+    var i = 1
+    foo(1);
+    function foo(i) {
+      if (i === 4) {
+        return;
+      }
+      console.log('foo() begin:' + i);//1  2   3
+      foo(i + 1);
+      console.log('foo() end:' + i);//3  2  1
+    }
+    console.log('global end: ' + i);//1
+    /*
+    [<globalContext>]
+    [<globalContext>,<foo1Context>,<foo2Context>]
+    [<globalContext>,<foo1Context>,<foo2Context>,<foo3Context>]
+    [<globalContext>,<foo1Context>,<foo2Context>,<foo3Context>,<foo4Context>]
+    [<globalContext>,<foo1Context>,<foo2Context>,<foo3Context>]
+    [<globalContext>,<foo1Context>,<foo2Context>]
+    [<globalContext>,<foo1Context>]
+    [<globalContext>]
+    []
+     */
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // for (let i = 0; i < 5; i++) {
+    //   setTimeout(() => console.log(i))
+    // }
+    document.onclick = () => {
+      console.log(this);//window 箭头函数没有自己的this  箭头函数内部的this不是调用时指向的对象 而是定义时指向的对象
+      let f = () => {
+        console.log(this);
+      }
+      f();
+    }
+
+    //函数默认参数和剩余参数
+    /* //可以设置默认值
+    function fn(a = 5, b = 3) {
+      return {
+        a, b
+      }
+    }
+    // let re = fn();//{a: 5, b: 3}
+    // let re = fn(2, 4);//{a:2,b:4}
+    console.log(re); */
+    //剩余参数 ...rest
+    function fn(a, b, ...rest) {
+      // console.log(arguments);
+      console.log(...rest);
+    }
+    fn(2, 4, 1, 2, 4, 6, 7);//1 2 4 6 7   返回的剩下的参数
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <input type="text" id="ipt">
+  <script>
+    /* 
+    每一段时间内只能触发一次事件 
+     */
+    var oIpt = document.getElementById('ipt')
+    function core(e) {
+      console.log('1');
+      console.log(this);
+      console.log(e);
+    }
+    oIpt.oninput = debounce(core, 500);
+
+    function debounce(fn, time) {
+      var timer = null;
+      return function () {
+        clearTimeout(timer);
+        timer = setTimeout((function () {
+          fn.call(this, arguments[0]);
+        }).bind(this, arguments[0]), time);//把里面函数this指向外边函数this,并且向里面函数传外面函数arguments
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/jquery.js"></script>
+  <style>
+    ul {
+      display: flex;
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+
+    img {
+      height: 69px;
+    }
+
+    li {
+      position: relative;
+      width: 69px;
+      height: 69px;
+    }
+
+    li .small {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 69px;
+      height: 69px;
+      border-radius: 5%;
+    }
+
+    .big {
+      display: none;
+      width: 224px;
+      height: 69px;
+    }
+
+    li.current {
+      width: 224px;
+    }
+
+    li.current .small {
+      display: none;
+    }
+
+    li.current .big {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="current">
+      <img src="./images/126.jpg" alt="" class="small">
+      <img src="./images/126-freehover.png" alt="" class="big">
+    </li>
+    <li>
+      <img src="./images/139.jpg" alt="" class="small">
+      <img src="./images/139-freehover.png" alt="" class="big">
+    </li>
+    <li>
+      <img src="./images/174.jpg" alt="" class="small">
+      <img src="./images/174-freehover.png" alt="" class="big">
+    </li>
+    <li>
+      <img src="./images/191.jpg" alt="" class="small">
+      <img src="./images/191-freehover.png" alt="" class="big">
+    </li>
+    <li>
+      <img src="./images/197.jpg" alt="" class="small">
+      <img src="./images/197-freehover.png" alt="" class="big">
+    </li>
+    <li>
+      <img src="./images/504.jpg" alt="" class="small">
+      <img src="./images/504-freehover.png" alt="" class="big">
+    </li>
+    <li>
+      <img src="./images/506.jpg" alt="" class="small">
+      <img src="./images/506-freehover.png" alt="" class="big">
+    </li>
+  </ul>
+  <script>
+    $('li').mouseenter(function () {
+      $(this).stop().animate({
+        width: 224
+      }).find('.big').fadeIn().siblings().fadeOut().end().end().siblings().stop().animate({
+        width: 69
+      }).find('.small').fadeIn().siblings().fadeOut();
+    })
+  </script>
+</body>
+
+</html>

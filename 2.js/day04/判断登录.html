@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 用户输入的账号和密码,只要账号不是laowang ,密码不是 88888,我们就一直提示请重新输入,否则 提出输入成功
+    // 方法一
+    /*     var user = prompt("请输入账号：");
+        var pass = prompt("请输入密码：");
+        // 判断输入是否正确，如果正确则输入成功，不正确则一直提示重新输入
+        while (!(user === "laowang" && pass === "88888")) {
+          var user = prompt("请输入账号：");
+          var pass = prompt("请输入密码：");
+        }
+        alert("登录成功"); */
+
+    // 方法二：递归调用
+
+    function login() {
+      var user = prompt("请输入账号：");
+      var pass = prompt("请输入密码：");
+      // 如果输入不正确则继续调用自身函数
+      if (!(user === "laowang" && pass === "88888")) {
+        // 递归调用
+        login();
+      } else {
+        alert("登录成功");
+      }
+    }
+    login();
+  </script>
+</body>
+
+</html>

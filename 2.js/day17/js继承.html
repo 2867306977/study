@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    创建的子类构造函数都含有父类的属性和方法
+     */
+    function Person(name, age, sex) {
+      this.name = name;
+      this.age = age;
+      this.sex = sex;
+    }
+    Person.prototype.sayName = function () {
+      console.log(this.name);
+    }
+    //每个构造函数又有自己的属性和方法
+    function Student(classRoom, name, age, sex) {
+      this.classRoom = classRoom;
+      //构造函数继承
+      //让父类的this指向当前实例化对象
+      Person.call(this, name, age, sex);
+    }
+    //原型链继承
+    // Student.prototype = Person.prototype;//重写原型对象 这样会出现问题 它们是共用一个原型对象了 修改子类原型对象也会影响到父类 
+    Student.prototype = new Person();//把Student原型对象当成Person的实例化对象  那么也可以访问方法
+    //上面的会出现问题  Student实例化对象的构造器指向了Person 本应该还是指向Student
+    Student.prototype.constructor = Student;//把Student原型对象的构造器重新指向Student
+    Student.prototype.study = function () {
+      console.log('js');
+    }
+    var s1 = new Student('203', 'laowang', 20, 'nan');
+    console.log(s1);
+    console.log(s1.constructor);//Student
+    s1.sayName();
+    console.log(Student.prototype.constructor);//Student
+  </script>
+</body>
+
+</html>

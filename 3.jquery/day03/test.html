@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=\, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      border: 1px solid;
+    }
+
+    #bor {
+      width: 100px;
+      height: 100px;
+      border: 1px solid pink;
+    }
+
+    #son {
+      width: 100px;
+      height: 100px;
+      border: 1px solid green;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box">
+    11
+    <div id="son">22</div>
+  </div>
+  <div id="bor">33</div>
+
+  <script src="./js/jquery.js"></script>
+  <script>
+    var $span = $('<span>我是span</span>')
+    $('#box').append($span);
+    $('div').append($span)
+
+  </script>
+</body>
+
+</html>

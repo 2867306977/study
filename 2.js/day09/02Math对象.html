@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 算出你家花园的面积和周长
+    var r = 100;
+    //Math.floor方法向上取舍,Math.ceil向下取舍，Math.round四舍五入
+    var c = Math.floor(2 * Math.PI * r);//周长
+    var s = Math.floor(r * r * Math.PI);//面积
+    console.log(c);//628
+    console.log(s);//31415
+
+    console.log(Math.round(-1.5));//-1
+    console.log(Math.round(1.5));//2
+    console.log(Math.pow(2, 5));//2的5次方
+    console.log(Math.max(2, 5, 4, 5, 77, 89, 23));//这组数中最大的数
+    console.log(Math.min(2, 5, 4, 5, 77, 89, 23));//这组数中最小的数
+    //1度的弧度：2 * Math.PI / 360
+    console.log(Math.sin(30 * 2 * Math.PI / 360));//30度的弧度
+
+
+
+  </script>
+
+</body>
+
+</html>

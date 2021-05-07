@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+   手写call
+     call方法第一参数分3类:1.window(null,undefined)  2.基本类型(number,string,boolean) 3.对象
+    */
+    Function.prototype.myCall = function (context) {
+      //先判断context第一个参数是哪类
+      //判断是否是null和undefined直接用全等判断 它们只有一个值
+      if (context === null || context === undefined) {
+        context = window;
+      }
+      //判断是否为基本类型,基本类型太多了,直接反向判断 如果typeof检测出来不是对象不是函数则是基本类型,undefined在上边已经检测了把context变成了window 不会进入判断
+      if (typeof context != "object" && typeof context != "function") {
+        context = Object(context);
+      }
+      // 传参 arguments是伪数组,用不了slice()方法 转为数组 Array.from()
+      // console.log(arguments);
+      var argArr = Array.from(arguments).slice(1);
+      //call方法参数是依次传入,必须得把数组转为字符串
+      // console.log(argArr.toString());
+
+      //修改this指向
+      //当前myCall中的this是指向调用myCall的函数,把当前this所代表的函数中的this指向context
+      //把当前的myCall的this所代表的函数,给context对象的方法就可以了
+      var f = Date.now();//保证f的变量名唯一性
+      context[f] = this;//f是个变量得用[]
+      //eval()可以解析字符串代码并执行
+      //当context调用了f方法,那么这个this就指向了context,因为f和this所代表的函数是同一个函数,所以fn的this也指向了context
+      eval('context[f](' + argArr.toString() + ')');
+      //因为需要,所以给content扩展了f方法,现在不需要了则需要删除该方法
+      delete context[f];
+
+    }
+
+    // var arr = [1, 2, 3];
+
+    function fn(a, b, c) {
+      console.log(this);
+      console.log(a + b + c);
+    }
+    // fn.call([], 1, 2, 3);
+    fn.myCall([], 1, 2, 3);
+  </script>
+</body>
+
+</html>

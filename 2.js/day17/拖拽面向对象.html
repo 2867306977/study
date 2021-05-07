@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 100px;
+      height: 100px;
+      position: fixed;
+      top: 0;
+      left: 0;
+    }
+
+    #box1 {
+      background-color: pink;
+    }
+
+    #box2 {
+      background-color: green;
+    }
+
+    #box3 {
+      background-color: gray;
+    }
+
+    #box4 {
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box1">1</div>
+  <div id="box2">2</div>
+  <div id="box3">3</div>
+  <div id="box4">4</div>
+  <script>
+    function Drag(id) {
+      //外边的this指向的是实例化对象
+      var _this = this;
+      this.oBox = document.getElementById(id);
+      //给实例化对象绑定按下事件
+      this.oBox.onmousedown = function (e) {
+        //调用原型对象的方法,只有实例化对象获取得到原型对象的方法
+        _this.down(e);//把e传出去
+      }
+    }
+    //因为每个实例化对象都需要按下事件所以给其构造器的原型对象扩展方法
+    //event只能事件获取的到
+    Drag.prototype.down = function (e) {
+      var _this = this;
+      this.oBoxTo = {
+        //获取当前位置
+        x: e.offsetX,
+        y: e.offsetY
+      }
+      //给绑定移动事件
+      document.onmousemove = function (e) {
+        //可以封装函数在原型对象上
+        _this.move(e)
+      }
+    }
+    Drag.prototype.move = function (e) {
+      //移动的位置
+      this.oBoxLocation = {
+        left: e.clientX - this.oBoxTo.x,//oBoxTo.x不能直接获取得到 通过它们共有的this实例化对象
+        top: e.clientY - this.oBoxTo.y
+      }
+      this.oBox.style.left = this.oBoxLocation.left + 'px';
+      this.oBox.style.top = this.oBoxLocation.top + 'px';
+      document.onmouseup = function () {
+        document.onmousemove = null;
+        document.onmouseup = null
+      }
+    }
+    new Drag('box1');
+    new Drag('box2');
+    new Drag('box3');
+    new Drag('box4');
+  </script>
+</body>
+
+</html>

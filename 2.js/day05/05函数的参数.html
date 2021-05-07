@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 小括号里的a , b , c 是叫形参
+    function fn(a, b, c) {
+      console.log(a + b + c);
+    }
+    // 小括号里的1 , 2 , 3是叫实参
+    fn(1, 2, 3);//6
+    // 函数里当需要参数时但是没传，会返回undefined
+    function fn1(a, b, c) {
+      console.log(a + b + c);
+    }
+    // 因为c没有传参 则返回undefined，这里就转为数字相加了，所以返回NaN
+    fn1(1, 2);//NaN
+    // 可以传null
+    fn1(1, null, 2);//3
+
+    //封装一个计算n个数字相加的和
+    function fn2() {
+      var sum = 0;
+      // arguments是表示当前所在函数实参的集合（只能在函数中使用）
+      // arguments里面有length属性，表实参的长度
+      // 遍历arguments伪数组，拿到每个实参
+      for (var i = 0; i < arguments.length; i++) {
+        // 把arguments的每个实参累加起来
+        sum += arguments[i];
+      }
+      // 打印实参相加的和
+      console.log(sum);
+    }
+    fn2(7, 2, 3);//12
+    // 在全局中可以拿到函数形参的长度
+    console.log(fn2.length);
+
+  </script>
+
+</body>
+
+</html>

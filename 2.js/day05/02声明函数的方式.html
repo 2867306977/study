@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 函数声明
+    function fn1() {
+      alert("我是fn1");
+    }
+    fn1();
+    // 2. 函数表达式
+    var fn2 = function () {
+      alert("我是fn2");
+    };
+    fn2();
+    // 构造函数   new一个函数 函数里的参数和代码块用引号括起来
+    var fn3 = new Function("a,b,c", "alert('我是fn3'+a+b+c)");
+    fn3(1, 2, 3);
+  </script>
+</body>
+
+</html>

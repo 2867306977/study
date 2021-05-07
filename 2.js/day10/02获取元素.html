@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <ul id="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+  </ul>
+  <ol id="olst">
+    <li class="oli">1</li>
+    <li>2</li>
+    <li>3</li>
+  </ol>
+  <script>
+    /* 
+    Selectors API:(html5更新的)
+      - querySelectorAll  获取选择器选择的所有元素 类数组
+      - querySelector   获取选择器选择的元素的第一个(即便有多个也只返回第一个)
+     */
+    var oList = document.getElementById('list');
+    //获取文档中所有的li
+    var oLis = document.getElementsByTagName('li');
+    //获取ul里面的li
+    var oListLis = document.getElementsByTagName('li');
+    //新方法获取元素
+    var oListLis = document.querySelectorAll('#list li');
+    //只获取第一个元素
+    var oListLi = document.querySelector('#list li')
+    var oListLi2 = document.querySelector('#list li:nth-child(2)')
+    oListLis[3].style.backgroundColor = "red";
+    oListLi2.style.backgroundColor = "blue"
+    oListLi.style.backgroundColor = 'pink';
+
+    var ooli = document.getElementsByClassName('oli');//只有IE9及以上支持
+    ooli[0].style.backgroundColor = 'green';
+
+
+  </script>
+
+</body>
+
+</html>

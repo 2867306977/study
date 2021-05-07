@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    /*
+    封装一个函数，把十进制转为二进制
+     */
+    function to2B(num) {
+      //定义一个变量保存余数
+      var n = 0;
+      //定义一个数组 里面添加每次被2取模的余数
+      var arr = [];
+      //定义一个变量以字符串的形式保存二进制的值
+      var str = "";
+      //只要num大于0就进入循环，直到num被2取模为0
+      while (num > 0) {
+        n = num % 2;
+        //每次的余数添加进数组末尾
+        arr.push(n);
+        //保存每次被除以2的num 取整
+        num = parseInt(num / 2);
+      }
+      /*第一种方法：
+       //把数组中的元素倒过来 反转数组
+      arr.reverse();
+      // 把数组转化为字符串形式 返回出去
+      return arr.join(""); */
+
+      /* // 第二种方法: 反转数组并保存值
+      for (var i = arr.length - 1; i >= 0; i--) {
+        // 字符串相加为拼接
+        str += arr[i];
+      } */
+
+      //第三种方法：while  只要长度大于0就删除最后末尾元素 在字符串相加
+      while (arr.length > 0) {
+        str += arr.pop();
+      }
+      return str;
+
+    }
+    console.log(to2B(14));
+  </script>
+
+</body>
+
+</html>

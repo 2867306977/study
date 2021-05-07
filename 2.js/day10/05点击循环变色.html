@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #box {
+      width: 200px;
+      height: 200px;
+      background-color: rgb(0, 128, 0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="box"></div>
+
+  <script>
+    /*
+    onclick:左键单击事件,在当前元素按下,并且在当前元素抬起,算触发一次事件
+    ondblclick:左键双击事件,两次间隔需在300ms以内
+    oncontextmenu:右击事件
+     */
+
+    //  获取元素
+    var oBox = document.getElementById('box');
+    //给元素绑定点击事件
+    oBox.onclick = function () {
+      //获取[0-255)随机数
+      var r = parseInt(Math.random() * 256);
+      var g = parseInt(Math.random() * 256);
+      var b = parseInt(Math.random() * 256);
+      //点击一次盒子则随机换一种颜色
+      oBox.style.backgroundColor = `rgb(${r},${g},${b})`;
+    }
+
+  </script>
+
+</body>
+
+</html>

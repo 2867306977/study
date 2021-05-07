@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="btn">点击抽奖</button>
+  <script>
+    /*
+    执行Generator返回的是一个iterator(迭代对象),使用iterator遍历出generator的内部状态
+    不会立马执行内部代码,只有调用了next才会执行
+    generator碰到yield就会立马停止执行,直到运行next
+     */
+    /* function* gen() {
+      yield 1;
+      yield 2;
+      yield 3;
+      yield 4;
+    }
+    let it = gen()
+    console.log(it);//返回的是一个迭代器
+    console.log(it.next())//1
+    console.log(it.next())//2
+    console.log(it.next())//3
+    console.log(it.next())//4 false
+    console.log(it.next())//undefined true */
+
+    // 练习 使用生成器方法点击一次弹出剩余抽奖次数
+    function* gen() {
+      //3.遇到yield停止执行  开始执行draw()函数 
+      yield draw(5)//执行完毕 遇到下一个next才会执行
+      yield draw(4)
+      yield draw(3)
+      yield draw(2)
+      yield draw(1)
+    }
+    //1.这时候并没有执行 遇到next才执行
+    let it = gen()
+    function draw(count) {
+      //4.弹出对话框
+      alert(`还剩下${count - 1}次机会`)
+    }
+    btn.onclick = function () {
+      // 2.开始执行gen()代码   
+      //每点击一次就执行一次next()
+      it.next()
+    }
+  </script>
+</body>
+
+</html>

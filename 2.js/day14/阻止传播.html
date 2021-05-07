@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #outer {
+      width: 300px;
+      height: 300px;
+      background-color: red;
+      overflow: hidden;
+    }
+
+    #inner {
+      width: 150px;
+      height: 150px;
+      margin: 60px;
+      background-color: green;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="outer">
+    <div id="inner"></div>
+  </div>
+  <script>
+    var oOuter = document.getElementById('outer');
+    var oInner = document.getElementById('inner');
+    //绑定点击事件
+    /*     //on+事件  都是DOM0的基本事件模型  默认是冒泡
+        oOuter.onclick = function () {
+          console.log('outer');
+        }
+        oInner.onclick = function () {
+          console.log('inner');
+        }
+        document.onclick = function () {
+          console.log('doc');
+        } */
+
+    //DOM2基本事件模型都是通过事件监听绑定  可以设置是冒泡阶段还是捕获阶段 默认为false冒泡阶段
+    /* 
+    1.捕获阶段:由最不精确的目标到精确的目标阶段
+    2.目标阶段:执行精确目标的事件
+    3.冒泡阶段:由最精确的目标到最不精确的目标
+     */
+    oOuter.addEventListener('click', function (e) {
+      //outer的click发生了传播到了document上 此时把outer的传播给阻止了
+      e.stopPropagation();
+      console.log('outer');
+    }, false)//冒泡阶段
+    oInner.addEventListener('click', function () {
+      console.log('inner');
+    }, false)//冒泡阶段
+    document.addEventListener('click', function () {
+      console.log('document');
+    }, false)//捕获阶段
+
+    /*
+    阻止传播:主流浏览器 e.stopPropagation();
+            低版本IE:e.cancelBubble();
+     */
+  </script>
+</body>
+
+</html>

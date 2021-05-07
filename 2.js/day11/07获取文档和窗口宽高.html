@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            height: 5000px;
+        }
+        
+        #box {
+            width: 200px;
+            height: 100px;
+            background-color: red;
+            margin: 300px;
+            border: 1px solid #000;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <script>
+        /* 
+         获取文档的高度：HTML元素的offsetHeight
+         获取文档的宽度：其实是浏览器窗口的宽度，和HTML元素的clientWidth一样，因为横向不允许出现滚动条
+          */
+        console.log(document.documentElement.offsetHeight);
+        /* 
+        getBoundingClientRect():获取一个元素到视口的距离
+ 的是一个对象：
+ 1.left属性：获元素的左边缘到视左边缘的距离
+ 2.right属性：获元素的右边缘到视的左边缘的距离
+ 3.top属性：获取素的上边缘到视口上边缘的距离
+ 4.bottom属性：取元素的下边缘到口的上边缘的距离
+ 5.width和height性是conten+padding+border
+         */
+        var oBox = document.getElementById('box');
+        console.log(oBox.getBoundingClientRect());
+    </script>
+</body>
+
+</html>

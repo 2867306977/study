@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      需求：setTimeout模拟发送请求
+      请求a数据，请求成功在请求b数据，请求成功在请求c数据
+    */
+    /* new Promise((resolve) => {
+      return setTimeout(() => {
+        console.log('a数据请求成功');
+        resolve()
+      }, 1000);
+    }).then(() => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('b数据请求成功');
+          resolve() 
+        }, 1000);
+      })
+    }).then(() => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('c数据请求成功');
+          resolve()
+        }, 1000);
+      })
+    }).then(() => {
+      console.log('所有数据请求成功');
+    }) */
+
+    let promise = new Promise((resolve) => {
+      return setTimeout(() => {
+        console.log('a');
+        resolve()
+      }, 1000);
+    }).then(() => {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log('b');
+          //因为返回的是一个promise对象 所以如果不修改promise的状态 那么这个promise就是pending那么下面的代码也不执行
+        }, 1000);
+      })
+    })
+    console.log(promise);//pending
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+    // 为什么null和undefined相等？为什么0 == null不相等
+    /* 
+    等于判断：
+      ==：相等，值相等即可
+      ===：全等，值相等类型也相等，先比较类型
+      ！=：不相等，值不相等 返回true
+      ！==：不全等，值和类型只要有一个不相等，则返回true
+
+      相等判断： 
+     */
+    //number  如果有一个是number类型 正常情况下转为number
+    console.log(1 == "1");//true
+    console.log(1 == true);//true
+    console.log(0 == null);//false
+    console.log(0 == []);//true
+    // null   null除了自身和undefined  其他都不相等
+    console.log(null == null);//true
+    console.log(null == undefined);//true
+    console.log(null == 0);//false
+    // object  比较的都是地址值
+    console.log([] == []);//false
+    console.log({} == {});//false
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+    猴子找大王游戏
+    有一群猴子排成一圈,按1、2、3、…、n依次编号，然后从第1只开始数,数到第m只,则把它踢出圈,然后从它后面再开始数,当再次数到第m只,继续把它踢出去,以此类推,直到只剩下一只猴子为止,那只猴子就叫作大王。要求编程模拟此过程,输入m和n，输出最后那个大王的编号
+    n表示猴子个数，m表示踢出位置
+     */
+    function find(n, m) {
+      var arr = [];
+      var sum = 0;
+      //把所有的猴子放入数组
+      for (var i = 1; i <= n; i++) {
+        arr.push(i);
+      }
+      /*
+      //通过递归调用
+       function fn() {
+        for (var i = 1; i < m; i++) {
+          sum = arr.shift();
+          arr.push(sum);
+        }
+        arr.shift();
+        if (arr.length > 1) {
+          fn();
+        }
+      }
+      fn(); */
+
+      //当数组大于1的时候就进入循环 直到剩下最后一只猴子
+      while (arr.length > 1) {
+        //如果不符合淘汰的条件，就把不符合条件的往后排
+        for (var i = 1; i < m; i++) {
+          sum = arr.shift();
+          arr.push(sum);
+        }
+        //for循环结束后说明有需要淘汰的猴子，就删除这个猴子
+        arr.shift();
+      }
+      return arr;
+    }
+    var re = find(25, 3);
+    console.log(re);
+  </script>
+
+</body>
+
+</html>

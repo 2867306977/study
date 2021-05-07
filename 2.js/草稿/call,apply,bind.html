@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+    call,apply,bind
+    改变this指向
+    call: 依次传入参数  立即调用函数
+    apply: 可以传入数组  立即调用函数
+    bind : 和call类似  但是返回一个改变this之后的函数
+     */
+    /* document.onclick = function () {
+      console.log(this);//这个this指向的是document
+      setInterval(function () {
+        console.log(this);//这个this指向的window,一秒后window调用的计时器函数
+      }, 1000);
+    } */
+
+    /* document.onclick = function () {
+      console.log(this);//这个this指向的是document
+      setInterval((function () {
+        console.log(this);
+      }).call(this), 1000);//不会等待一秒后调用函数 立即调用 这个this指向的是document
+    } */
+
+    document.onclick = function () {
+      console.log(this);//这个this指向的是document
+      setInterval((function () {//用小括号括起来
+        console.log(this);
+      }).bind(this), 1000);//返回的一个改变this指向后的新函数 不会立即调用  这个this不是在计时器函数内的,而是在外层函数里面的
+    }
+
+    var obj = {
+      name: 'xiaoli',
+      fn: function () {
+        console.log(this);
+      }
+    }
+
+    // var newFn = obj.fn.bind(obj);//指向obj
+    var newFn = obj.fn.bind('1');//String {"1"}  string的包装对象
+    newFn();
+  </script>
+</body>
+
+</html>
