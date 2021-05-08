@@ -49,9 +49,9 @@
     //创建文档
     //集合中创建文档  model.create()它是一个异步回调,第一个参数是文档,第二个参数回调函数,
     testModel.create({
-      name: 'ls',
-      age: 29,
-      info: '我看完了瑞克和莫蒂'
+      name: 'xx',
+      age: 19,
+      gender: '女'
     }, (err, data) => console.log(err, data));//回调函数中有两个参数 1.err 2.data 插入成功err返回的是null,data则返回的插入的文档,失败则返回失败的信息
 
     console.log('成功');

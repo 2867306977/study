@@ -1,0 +1,26 @@
+{
+  "name": "study",
+  "version": "1.0.0",
+  "description": "",
+  "main": "2.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.6.0",
+    "mongoose": "^5.12.7",
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2867306977/study.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2867306977/study/issues"
+  },
+  "homepage": "https://github.com/2867306977/study#readme"
+}
