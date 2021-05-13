@@ -11,7 +11,7 @@ uiRouter.get('/home', async (req, res) => {
   //2.然后服务器在session空间中查找这个userId如果找到了(则下面代码就是true,)说明之前登录过,那么久把/home/index响应给浏览器
   //3.如果没找到说明之前没有登录过(或者sessionId过期),则下面要求重新登陆
   if (req.session.userId) {
-    console.log(req.session.userId);
+    // console.log(req.session.userId);
     //使用地址栏的id查询字符串,去数据库中查找对应的用户名
     const _id = req.query._id
     const user = await findUserById(_id)//数据库的增删改查都是返回promise对象异步回调
