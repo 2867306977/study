@@ -22,9 +22,9 @@ app.use(express.urlencoded({ extended: true }))
 //一般为了安全会隐藏X-Powered-By
 app.disable('x-powered-by') //隐藏x-powered-by信息
 //  /:page/:pageSize? 配置路由参数  ?表示可选
-app.get('/getUser/:page/:pageSize?', (req, res) => {
+app.get('/getUser', (req, res) => {
   // console.log(req.params);//返回路由参数
-  // console.log(req.query);//获取查询字符串
+  console.log(req.query);//获取查询字符串
   // console.log(req.get('user-agent'));//使用的浏览器的信息
 
   // res.send('get')//响应字符串
@@ -39,6 +39,6 @@ app.post('/getUser', (req, res) => {
   // console.log(req.body) //post请求主体的数据 配合中间件获取
   res.send('post')
 })
-app.listen(5000, () => {
+app.listen(5001, () => {
   console.log('成功');
 })
