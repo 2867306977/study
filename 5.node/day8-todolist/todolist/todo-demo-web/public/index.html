@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <div class="todo-container">
+    <div class="todo-wrap">
+      <div class="todo-header">
+        <input type="text" placeholder="请输入你的任务名称，按回车键确认" />
+      </div>
+      <h2 style="display: none;">恭喜你没有任务</h2>
+      <div class="container">
+        <ul class="todo-main">
+        </ul>
+        <div class="todo-footer">
+          <label>
+            <input type="checkbox" />
+          </label>
+          <span> <span>已完成<i>0</i></span> / 全部<i>3</i> </span>
+          <button class="btn btn-danger">清除已完成任务</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  <script src="./lib.js"></script>
+  <script>
+    //获取元素
+    const todoMain = document.querySelector('.todo-main');
+    const todoInput = document.querySelector('.todo-header input');
+    const todoFooter = document.querySelector('.todo-footer');
+    const tip = document.querySelector('h2');
+    const container = document.querySelector('.container');
+
+    //发送请求 渲染页面
+    async function send() {
+      const allData = await myAjax({
+        url: 'http://127.0.0.1:5000/findTodos',
+        type: 'get'
+      })
+      // console.log(allData);
+      render(allData)
+    }
+    send()
+
+    //按回车把表单内容添加到数据库中
+    todoInput.onkeydown = async function (e) {
+      if (e.keyCode === 13) {
+        //获取表单内容
+        const value = todoInput.value.trim()
+        //判断文本是否是空
+        if (!value) return
+        //把表单清空
+        todoInput.value = ''
+        // //把数据发送到服务器上面 在服务器传到数据库中
+        const data = await myAjax({
+          url: 'http://127.0.0.1:5000/addTodo',
+          data: {
+            todoName: value
+          },
+          type: 'post'
+        })
+        render(data)
+      }
+    }
+
+    //当点击表单复选框的按钮时 把当前表单按钮的状态发送给服务器
+    todoMain.onclick = async function (e) {
+      //当点击的是目标元素 把获取当前数据的id 把这个id发送给服务器 然后渲染到页面
+      if (e.target.nodeName.toLowerCase() === 'input') {
+        const checked = e.target.checked
+        //渲染的时候把id渲染上去 现在可以获取那个id
+        const ids = [e.target.id] //上传的时候要求是个数组
+        // console.log(checked, ids);
+        const data = await myAjax({
+          url: 'http://127.0.0.1:5000/updateTodos',
+          data: {
+            //上传的时候会自动添加一个toString方法把数组转为了字符串,所以得把这个数组转为json格式字符串在上传
+            ids: JSON.stringify(ids),
+            isDone: checked
+          },
+          type: 'post'
+        })
+        //拿到数据后渲染
+        render(data)
+      }
+    }
+
+    //点击删除按钮删除任务 事件委托 因为已经给todoMain绑定了点击按钮,在写todoMain.onclick会覆盖
+    //所以可以使用addEventListen,注意:如果以后需要解绑该事件不能写匿名函数
+    todoMain.addEventListener('click', async function (e) {
+      if (e.target.nodeName.toLowerCase() === 'button') {
+        //点击删除后,根据id把数据库的数据删除,然后渲染页面
+        //得给删除按钮添加_id
+        const ids = e.target.id
+        //把这个id发送给服务器
+        const data = await myAjax({
+          url: 'http://127.0.0.1:5000/deleteTodos',
+          type: 'post',
+          data: {
+            ids: JSON.stringify([ids])
+          }
+        })
+        render(data)
+      }
+    })
+
+
+  </script>
+  <!-- 使用jsonp来解决跨域 -->
+  <!--   <script src="http://127.0.0.1:5000/findTodos?callback=allTodos">
+    //响应之后这里就有
+    // allTodos(data)//调用了全局方法
+  </script> -->
+</body>
+
+</html>

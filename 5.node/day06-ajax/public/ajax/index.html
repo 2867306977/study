@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>首页</h1>
+  <!-- <form action="" method="post" enctype="application/x-www-form-urlencoded"></form> -->
+  <input type="text" name='data' id="input"><span id="span"></span>
+  <script>
+    input.oninput = function () {
+      let value = this.value
+      const xhr = new XMLHttpRequest()
+      //设置请求方式和请求地址
+      xhr.open('post', 'http://127.0.0.1:5000/findUser')
+      //设置响应头
+      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+      //设置请求体并发送请求
+      xhr.send('username=' + value)
+      //监听响应
+      xhr.onreadystatechange = function () {
+        //表示请求完成
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            //表示请求完成
+            console.log(xhr.responseText);
+            if (xhr.responseText === 'ok') {
+              span.style.color = 'red'
+              span.textContent = 'no'
+            } else {
+              span.style.color = 'green'
+              span.textContent = 'ok'
+            }
+          }
+        }
+      }
+    }
+
+
+  </script>
+</body>
+
+</html>

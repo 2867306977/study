@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Ajax</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+    }
+
+    h3 {
+      text-align: center;
+    }
+
+    .chatbox {
+      width: 500px;
+      height: 500px;
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 5px;
+    }
+
+    .messages {
+      height: 350px;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      border-bottom: 1px solid #ccc;
+      overflow: scroll;
+    }
+
+    .messages h5 {
+      font-size: 20px;
+      margin: 10px 0;
+    }
+
+    .messages p {
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .self {
+      text-align: right;
+    }
+
+    .other {
+      text-align: left;
+    }
+
+    .form {
+      height: 150px;
+    }
+
+    .form .input {
+      height: 110px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .form .btn {
+      height: 40px;
+      box-sizing: border-box;
+      border-top: 1px solid #ccc;
+    }
+
+    .form textarea {
+      display: block;
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      border: none;
+      resize: none;
+      outline: none;
+      font-size: 20px;
+    }
+
+    .form input {
+      display: block;
+      width: 100px;
+      height: 30px;
+      margin-top: 5px;
+      margin-right: 20px;
+      float: right;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>高级智能机器人</h3>
+  <div class="chatbox">
+    <!-- 聊天内容 -->
+    <div class="messages">
+      <!-- <div class="self">
+        <h5>我说</h5>
+        <p>你好</p>
+      </div>
+      <div class="other">
+        <h5>对方说</h5>
+        <p>你好</p>
+      </div> -->
+    </div>
+    <div class="form">
+      <div class="input">
+        <textarea></textarea>
+      </div>
+      <div class="btn">
+        <input type="button" value="发送" id="btn" />
+      </div>
+    </div>
+  </div>
+  <script>
+    const btn = document.getElementById('btn')
+    const textarea = document.querySelector('.input textarea');
+    const messages = document.querySelector('.messages');
+    btn.onclick = function () {
+      //获取表单的内容,并且去空格
+      const value = textarea.value.trim()
+      //判断表单是否为空
+      if (!value) return;
+      //输入并获取内容之后 把表单清空
+      textarea.value = ''
+
+      //可以通过给当前的内容添加id,通过id获取这个dom节点,给它添加scrollIntoView() 
+      let date = Date.now()
+      const myStr = `<div class="self" id="${date}">
+                      <h5>我说</h5>
+                      <p>${value}</p>
+                    </div>`
+      //把字符串添加到指定标签中 渲染页面上
+      messages.innerHTML += myStr;
+      const self = document.getElementById(date);
+      //scrollIntoView的方法是dom对象的方法 可以让谁进入可视区,谁就调用这个方法
+      self.scrollIntoView()
+
+      //将我说的内容发送到服务器上
+      const xhr = new XMLHttpRequest()
+      xhr.open('post', 'http://www.tuling123.com/openapi/api')
+      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded')
+      xhr.send(`key=3ccc70daca0f4940a5c373fe9884fab5&info=${value}&userid=335220`)
+      //根据响应的内容渲染到页面上
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+            //把获取的json字符串数据转为对象
+            const data = JSON.parse(xhr.responseText) //xhr.responseText获取的永远都是json字符串格式数据
+            let date = Date.now()
+            const otherStr = `<div class="other" id="${date}">
+                              <h5>对方说</h5>
+                              <p>${data.text}</p>
+                            </div> `
+            messages.innerHTML += otherStr
+            const other = document.getElementById(date);
+            other.scrollIntoView()
+          }
+        }
+      }
+    }
+  </script>
+</body>
+
+</html>

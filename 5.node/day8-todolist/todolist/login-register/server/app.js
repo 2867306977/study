@@ -1,8 +1,8 @@
 //后端代码 先创建数据库 再开启服务器
 ; (async function () {
   const express = require('express')
+  const cors = require('cors')
   const logicRouter = require('./router/logicRouters')
-  const uiRouter = require('./router/uiRouters')
   //引入cookie包
   const cookieParser = require('cookie-parser')
   //因为只使用cookie不安全,所以使用session, cookie是服务器发送给浏览器,session是浏览器发送给服务器(以前保存在服务器中,现在保存在数据库中)
@@ -13,8 +13,9 @@
   console.log('数据库连接成功');
 
   const app = express()
+
+  app.use(cors())
   //中间件 
-  app.use(express.static('../public'))
   app.use(express.urlencoded({ extended: true }))
 
   //调用cookieParser,并使用中间件
@@ -38,14 +39,6 @@
 
   //路由器中间件
   app.use(logicRouter)
-  app.use(uiRouter)
-
-  //配置ejs模板
-  //告诉express,当前我们当前服务器中用ejs模板引擎
-  app.set('view engine', 'ejs')
-  //告诉express,我们定义的模板在哪里
-  //所有的.ejs都是模板
-  app.set('views', '../views/home')
 
   //开启服务器
   app.listen(5000, (err) => {
