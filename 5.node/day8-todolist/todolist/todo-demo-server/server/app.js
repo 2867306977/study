@@ -3,8 +3,12 @@
   const cors = require('cors')
   //引入处理的路由
   const logicRouter = require('./routers/logicRouter')
+  const loginRouter = require('./routers/loginRouter')
   //引入数据库
-  await require('../db/db')
+  const { todoDb, loginDb } = require('../db/db')
+
+  await todoDb;
+  await loginDb;
 
   console.log('数据库连接成功');
   const app = express()
@@ -15,10 +19,12 @@
     next()
   }) */
   app.use(cors())
+  app.use(express.static('../../todo-demo-web/public'))
   //中间件
   app.use(express.urlencoded({ extended: true }))
   //路由器中间件
   app.use(logicRouter)
+  app.use(loginRouter)
 
 
 

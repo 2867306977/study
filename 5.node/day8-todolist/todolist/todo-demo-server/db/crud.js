@@ -1,4 +1,5 @@
-const todoModel = require('./model')
+const { todoModel, loginModel } = require('./model')
+// console.log(todoModel, loginModel);
 //查询所有数据
 function findTodo() {
   return todoModel.find()
@@ -18,7 +19,13 @@ function deleteTodosFn(ids) {
   return todoModel.deleteMany({ _id: { $in: ids } })
 }
 
+//根据用户名找数据
+function loginFind(username, password) {
+  return loginModel.findOne({ username, password })
+}
+
 module.exports.findTodo = findTodo
 module.exports.addTodoFn = addTodoFn
 module.exports.updateTodosFn = updateTodosFn
 module.exports.deleteTodosFn = deleteTodosFn
+module.exports.loginFind = loginFind

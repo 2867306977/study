@@ -17,10 +17,27 @@ const todoSchema = new Schema({
     default: Date.now()
   }
 })
+const loginSchema = new Schema({
+  username: {
+    type: String,
+    required: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+  date: {
+    type: Date,
+    default: Date.now()
+  }
+})
+// console.log(todoSchema, loginSchema);
 const todoModel = mongoose.model('todos', todoSchema)
+const loginModel = mongoose.model('users', loginSchema)
 // await todoModel.create({
 //   todoName: '玩游戏',
 //   isDone: true
 // })
-module.exports = todoModel
+module.exports.todoModel = todoModel
+module.exports.loginModel = loginModel
 // })()

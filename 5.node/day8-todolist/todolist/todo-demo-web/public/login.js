@@ -19,20 +19,6 @@ function inputCheck(reg, tip) {
 }
 //当用户表单失去焦点时,校验表单内容
 username.oninput = inputCheck(/^\w{8,16}$/, userTip)
-// username.oninput = function () {
-//   //获取表单内容
-//   let userVal = this.value.trim()
-//   //创建正则规则校验表单 用户名规则:可以字母数字下划线(8~16)
-//   const userReg = /^\w{8,16}$/
-//   //如果符合规则那么添加提示'输入正确',不符合就添加提示不符合规则
-//   if (userReg.test(userVal)) {
-//     userTip.textContent = '输入正确'
-//     userTip.style.color = 'green'
-//   } else {
-//     userTip.textContent = '输入错误'
-//     userTip.style.color = 'red'
-//   }
-// }
 //当密码框失去焦点,校验表单
 password.oninput = inputCheck(/^[A-Z]+\w{7,15}$/, passTip)
 //当点击登录按钮,检验表单内容是否符合规范
