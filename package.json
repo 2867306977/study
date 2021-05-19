@@ -16,8 +16,16 @@
     "uniq": "^1.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.2",
+    "babel-loader": "^8.2.2",
     "babel-preset-es2015": "^6.24.1",
-    "browserify": "^17.0.0"
+    "browserify": "^17.0.0",
+    "eslint": "^7.26.0",
+    "eslint-loader": "^4.0.2",
+    "gulp": "^4.0.2",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -31,5 +39,10 @@
   "bugs": {
     "url": "https://github.com/2867306977/study/issues"
   },
-  "homepage": "https://github.com/2867306977/study#readme"
+  "homepage": "https://github.com/2867306977/study#readme",
+  "browserslist": [
+    ">1%",
+    "last 2 version"
+  ]
+  
 }
