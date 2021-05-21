@@ -1,0 +1,24 @@
+//gulp配置文件
+//引入gulp模块
+const gulp = require('gulp')
+// gulp.task('任务名', function () {
+//   //将任务代码放在这
+// })
+//构建命令  gulp 任务名
+
+/*
+gulp插件 1.gulp-jshint js语法检查
+        2.gulp-babel 语法规范转换 注:经过babel转换后的ES6模块化语法变成了Commonjs语法,还需要browserify转换
+        3.gulp-browserify转换Commonjs模块化语法(让浏览器认识的语法)
+        4.gulp.task('default',gulp.series('任务名','任务名'))配置默认任务 让多个任务依次执行(按顺序)
+        5.gulp-uglify 可以压缩js
+        6.gulp-less编译less文件,及使用less-plugin-autoprefix扩展前缀
+        7.gulp-concat合并css文件
+        8.gulp-cssmin 压缩css文件
+        9.gulp-htmlmin 压缩html文件
+        10.自动化配置 注:必须要在src文件夹中修改index.html中引入样式和脚本的路径,gulp不会自动处理路径
+API: gulp-src:指向指定路径的所有文件,返回文件流对象 用于读取文件
+    gulp-dest: 指向指定的所有文件夹 用于向文件夹中输出文件
+    gulp-task:定义一个任务
+    gulp-watch:监视文件的变化
+*/

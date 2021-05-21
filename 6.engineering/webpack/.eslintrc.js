@@ -10,7 +10,7 @@ module.exports = {
     //关闭 off 0
     // semi: 'error',//必须使用分号结尾,不使用报错
     semi: 'off',
-    'no-console': 1,
+    // 'no-console': 1,
     eqeqeq: 2
   }
 }
