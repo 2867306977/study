@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    class MyComponent extends React.Component {
+      //state状态 props属性
+      constructor() {
+        super()
+        this.state = { isLike: true }//给state赋初值
+      }
+      //这里面的this指向组件实例对象
+      setIsLike = () => {
+        let { isLike } = this.state
+        //setState()是一个方法  修改state的属性必须使用setState()
+        this.setState({ isLike: !isLike })
+        // console.log(isLike);
+      }
+      render() {
+        // onClick点击事件
+        return <h1 onClick={this.setIsLike}>{this.state.isLike ? '我喜欢你' : '你喜欢我'}</h1>
+      }
+    }
+
+
+    ReactDOM.render(<MyComponent />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>

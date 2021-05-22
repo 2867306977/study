@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    //工厂函数
+    function MyComponent1() {
+      console.log('MyComponent1', this);//没有this babel严格模式下指向undefined
+      return (
+        //一个组件必须有且只有一个根标签
+        //html中的单标签必须写结束符'/'
+        <div>
+          <h1>我是MyComponent1</h1>
+          <input type="text" />
+        </div>
+      )
+    }
+    //ES6构建类 这个组件实例对象继承React.Component
+    class MyComponent2 extends React.Component {
+      //组件中必须写render函数
+      render() {
+        console.log(React.Component);
+        console.log('MyComponent2', this);//这个this指向的是组件实例对象
+        return <h1>我是MyComponent2</h1>
+      }
+
+    }
+    //组件必须以标签的方式书写 单标签(必须写结束符'/')/双标签
+    ReactDOM.render(<MyComponent1 />, document.getElementById('root'))
+    ReactDOM.render(<MyComponent2 />, document.getElementById('root'))
+
+  </script>
+</body>
+
+</html>
