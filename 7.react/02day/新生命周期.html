@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    /*
+    初始化挂载阶段:
+    constructor
+    getDerivedStateFromProps:
+    一般用于state需要依据props来修改(挂载前和更新前都会调用),但这种派生冗余严重,推荐使用其他方法来代替这个
+    render
+    DOM渲染
+    componentDidMount
+    更新:new props ,setState,forceUpdate(不经过shouldComponentUpdate阶段)
+    getDerivedStateFromProps
+    shouldComponentUpdate
+    render
+    getSnapshotBeforeUpdate:
+    一般用于需要在渲染DOM前捕捉一些数据(比如:滚动位置),返回的值则会传入到componentDidUpdate参数(snapshot)中
+    DOM渲染
+    componentDidUpdate
+    卸载:
+    componentWillUnmount
+     */
+  </script>
+</body>
+
+</html>

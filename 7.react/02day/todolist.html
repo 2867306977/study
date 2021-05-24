@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src="./js/prop-types.js"></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    /* 
+        把数据传递给父组件,然后父组件通过这个数据来修改state
+        1.父组件定义一个函数,这个函数用来修改state,把这个函数传递给子组件
+        2.通过子组件调用这个函数并把这个数据传给实参,然后就可以修改state来更新数据
+         */
+    /* 
+    清空表单逻辑: 直接修改state不能修改表单内容,所以得把表单内容和state中的todo建立关联
+            表单中value值是什么表单内容就是什么,可以把输入的state.todo赋值给value,
+            然后通过修改这个state来修改value值
+     */
+
+    //父组件
+    class App extends React.Component {
+      //初始化状态
+      state = {
+        //因为有多条数据,所以用数组保存
+        todos: ['吃饭', '睡觉', '打豆豆']
+      }
+      handleAddTodo = (value) => {
+        /* 
+        //react不推荐直接修改原数据state,因为react是根据原state和改变后的state进行对比,如果相同则不会渲染数据
+        //把这个value插入到state.todos中
+        this.state.todos.push(value)
+        // console.log(this.state.todos); */
+        //...this.state.todos是原来的数据,value就是需要添加的数据
+        //修改state 来更新重新渲染DOM
+        this.setState({
+          todos: [...this.state.todos, value]
+        })
+      }
+      render() {
+        //把函数和state长度传递给子组件
+        return (
+          <div>
+            <h1>TodoList</h1>
+            <AddTodo handleAddTodo={this.handleAddTodo} length={this.state.todos.length} />
+            <TodoList todos={this.state.todos} />
+          </div>
+        )
+      }
+    }
+    //添加组件
+    class AddTodo extends React.Component {
+      //对props进行类型限制和必要性限制
+      static propTypes = {
+        length: PropTypes.number.isRequired,
+        handleAddTodo: PropTypes.func.isRequired
+      }
+      state = {
+        value: ''
+      }
+      handleChange = (e) => {
+        //给修改state
+        this.setState({
+          value: e.target.value.trim()
+        })
+      }
+      handleAdd = () => {
+        this.props.handleAddTodo(this.state.value)
+        //当点击后清空表单内容
+        this.setState({
+          value: ''
+        })
+      }
+      render() {
+        const { value } = this.state
+        return (
+          <div>
+            <input type="text" onChange={this.handleChange} value={value} />
+            <button onClick={this.handleAdd}>Add #{this.props.length}</button>
+          </div>
+        )
+      }
+    }
+    //展示TodoList
+    class TodoList extends React.Component {
+      //给props进行类型限制和必要性限制
+      static propTypes = {
+        todos: PropTypes.array.isRequired
+      }
+      render() {
+        //获取todoList
+        const { todos } = this.props
+        // console.log(todoList);
+        return (
+          <ul>
+            {
+              //渲染这个todoList
+            }
+            {todos.map((item, index) => {
+              return <li key={index}>{item}</li>
+            })}
+          </ul>
+        )
+      }
+    }
+    //渲染DOM
+    ReactDOM.render(<App />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>

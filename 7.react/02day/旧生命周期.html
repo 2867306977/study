@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    /*
+    旧的生命周期:
+    初始化挂载阶段:
+    constructor
+    UNSAFE_componentWillMount
+    render
+    componentDidMount:
+    四个生命周期函数只有这个操作DOM,做一些发送请求,绑定事件,添加定时器等一次性事件
+    this.setState
+    更新阶段:
+    componentWillReceiveProps:
+    一般是父组件渲染,导致子组件需要更新
+    shouldComponentUpdate:
+    一般做优化,设置不必要的更新,return true为更新 false为不更新 this.forceUpdate强制更新
+    render
+    componentDidUpdate
+    卸载阶段:
+    componentWillUnmount
+    卸载会把关于React所有的都给清除,其他例如定时器 绑定window的事件不会清除
+     */
+    class Life extends React.Component {
+      //构造函数
+      constructor() {
+        super()
+        console.log('constructor');
+      }
+      state = {
+        name: 'zs'
+      }
+      //将要挂载
+      UNSAFE_componentWillMount() {
+        console.log('componentWillMount');
+      }
+      //挂载后
+      componentDidMount() {
+        console.log('componentDidMount');
+      }
+      //更新 当state或者props发生改变后 react会通过返回的新元素和原来的元素进行比较,如果不相等,那么就会更新重新调用一次render
+      //如果相等就不会更新 或者shouldComponentUpdate返回的是false也不更新
+
+      //点击修改state
+      handleClick = () => {
+        this.setState({
+          name: 'ls'
+        })
+        //点击卸载组件ReactDOM中有个方法,在root节点中卸载组件
+        ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+      }
+
+
+      //组件是否应该更新 默认为true 强制更新不经过shouldComponentUpdate
+      shouldComponentUpdate() {
+        console.log('shouldComponentUpdate');
+        return true
+      }
+
+      //更新后
+      componentDidUpdate() {
+        console.log('componentDidUpdate');
+      }
+
+      //将要卸载,一般里面处理要卸载前处理的事,比如清除定时器,清除绑定事件等
+      componentWillUnmount() {
+        console.log('componentWillUnmount');
+      }
+
+      //shouldComponentUpdate调用后返回true或者强制更新调用render
+      //渲染 返回的是元素
+      render() {
+        console.log('render');
+        return (<div><h1 onClick={this.handleClick}>render</h1><Child name={this.state.name} /></div>)
+      }
+    }
+
+    class Child extends React.Component {
+      constructor() {
+        super()
+        console.log('Child constructor');
+      }
+      state = {}
+      //将要挂载
+      UNSAFE_componentWillMount() {
+        console.log('Child componentWillMount');
+      }
+      //挂载后
+      componentDidMount() {
+        console.log('Child componentDidMount');
+      }
+
+
+      // handleClick = () => {
+      //   // this.setState({})
+      //   this.props.name
+      // }
+
+
+      //组件将要接收新的props 不安全的 父组件渲染导致子组件更新
+      UNSAFE_componentWillReceiveProps() {
+        console.log('Child UNSAFE_componentWillReceiveProps');
+      }
+
+      //组件是否应该更新 默认为true 强制更新不经过shouldComponentUpdate
+      shouldComponentUpdate() {
+        console.log('Child shouldComponentUpdate');
+        return true
+      }
+
+      //更新后
+      componentDidUpdate() {
+        console.log('Child componentDidUpdate');
+      }
+
+      //将要卸载,一般里面处理要卸载前处理的事,比如清除定时器,清除绑定事件等
+      componentWillUnmount() {
+        console.log('Child componentWillUnmount');
+      }
+      render() {
+        console.log('child render ');
+        return <h1>child {this.props.name}</h1>
+      }
+    }
+    ReactDOM.render(<Life name='zs' />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>

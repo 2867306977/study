@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .hide {
+      display: none;
+    }
+
+    .show {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div id='root'></div>
+  <div style="display: none;"></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    /*
+      需求: 自定义组件
+        1. 让指定的文本做显示/隐藏的动画 
+            //做隐藏/显示的动画需要在渲染之后执行componentDidMount
+        2. 切换时间为2S
+          //设置一个计时器 两秒后修改state 更新render,
+        3. 点击按钮从界面中移除组件界面
+
+       */
+
+    class Test extends React.Component {
+      state = {
+        isShow: true//默认设置为展示
+      }
+      //渲染后做的一些事情
+      componentDidMount = () => {
+        // 两秒后让文本进行隐藏/显示
+        this.timer = setInterval(() => {
+          //每两秒修改state true为展示 false为隐藏
+          this.setState({
+            isShow: !this.state.isShow//和上次的值取反
+          })
+        }, 2000)
+      }
+      //当点击按钮把组件从界面中移除
+      handleClick = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+      }
+      //当卸载这个组件之前清除掉设置的计时器
+      componentWillUnmount = () => {
+        clearInterval(this.timer)
+        // console.log('卸载掉了' + this.timer);
+        // console.log(this.handleClick);
+      }
+      render() {
+        return (
+          <div>
+            <h1 className={this.state.isShow ? 'show' : 'hide'}>文本</h1 >
+            <button onClick={this.handleClick}>按钮</button>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Test />, document.getElementById('root'))
+
+  </script>
+</body>
+
+</html>

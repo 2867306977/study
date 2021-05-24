@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src="./js/prop-types.js"></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    class App extends React.Component {
+      state = {
+        todos: ['睡觉', '吃饭', '打豆豆']
+      }
+
+      handleAddTodo = (value) => {
+        //把这个value添加到state中 不能直接修改数据
+        this.setState({
+          todos: [...this.state.todos, value]
+        })
+      }
+      render() {
+        return (
+          <div>
+            <h1>TodoList</h1>
+            <AddTodo handleAddTodo={this.handleAddTodo} length={this.state.todos.length} />
+            <TodoList todos={this.state.todos} />
+          </div>
+        )
+      }
+    }
+    class AddTodo extends React.Component {
+      state = {
+        value: ''
+      }
+      //对props进行限制
+      static propTypes = {
+        handleAddTodo: PropTypes.func.isRequired,
+        length: PropTypes.number.isRequired
+      }
+      handleChange = (e) => {
+        //发生变化就修改state
+        this.setState({
+          value: e.target.value.trim()
+        })
+      }
+      handleAdd = () => {
+        this.props.handleAddTodo(this.state.value)
+        //点击之后清空表单 state和表单内容没有直接关系,可以操作表单value属性,value什么值state.todo就是什么值,反之
+        //可以直接修改state属性来修改value值
+        this.setState({
+          value: ''
+        })
+      }
+      render() {
+        return (
+          <div>
+            <input type="text" onChange={this.handleChange} value={this.state.value} />
+            <button onClick={this.handleAdd}>Add #{this.props.length}</button>
+          </div>
+        )
+      }
+    }
+    class TodoList extends React.Component {
+      static propTypes = {
+        todos: PropTypes.array.isRequired
+      }
+      render() {
+        return (
+          <ul>
+            {this.props.todos.map((item, index) => {
+              return <li key={index}>{item}</li>
+            })}
+          </ul>
+        )
+      }
+    }
+    ReactDOM.render(<App />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>

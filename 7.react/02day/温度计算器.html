@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src="./js/prop-types.js"></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    class BoilingVerdict extends React.Component {
+      render() {
+        if (this.props.temperature >= 100) {
+          return <h1>水会沸腾</h1>
+        } else {
+          return <h1>水不会沸腾</h1>
+        }
+      }
+    }
+
+    class Calculator extends React.Component {
+      state = {
+        temperature: ''
+      }
+
+      handleJudge = (value) => {
+        this.setState({
+          temperature: value
+        })
+      }
+
+      render() {
+        return (
+          <div>
+            <h2>输入温度:</h2>
+            {
+              //<input type="text" onChange={this.handleChange} />
+            }
+            <TemperatureInput handleJudge={this.handleJudge} />
+            <BoilingVerdict temperature={this.state.temperature} />
+          </div>
+        )
+      }
+    }
+    //把温度的输入框提取出来
+    class TemperatureInput extends React.Component {
+      handleChange = (e) => {
+        this.temperature = e.target.value.trim()
+      }
+      handleClick = () => {
+        this.props.handleJudge(this.temperature)
+      }
+      render() {
+        return (
+          <div>
+            {
+              // 把输入框的数据传递到父组件中
+            }
+            <input type="text" onChange={this.handleChange} />
+            <button onClick={this.handleClick}>判断</button>
+          </div>
+        )
+      }
+    }
+    ReactDOM.render(<Calculator />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>
