@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='./js/react.js'></script>
+  <script src='./js/react-dom.js'></script>
+  <script src='./js/babel.min.js'></script>
+  <script type='text/babel'>
+    class Test extends React.Component {
+      //创建ref 初始化
+      myRef = React.createRef()
+      //必须是给组件实例对象直接添加的方法 里面的this才是指向组件实例对象
+      blur = () => {
+        const value = this.myRef.current.value;
+        console.log(this);
+        alert(value)
+      }
+      render() {
+        {
+          //把创建的ref属性赋值给ref 它会将该虚拟DOM对象生成真实的DOM元素把这个元素自动挂载到ref容器current中
+        }
+        return (
+          <input type="text" ref={this.myRef} onBlur={this.blur} />
+        )
+      }
+    }
+    ReactDOM.render(<Test />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>

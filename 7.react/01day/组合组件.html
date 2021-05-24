@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    function Test(props) {
+      return (
+        <h1>我是{props.name}</h1>
+      )
+    }
+    function App() {
+      return (
+        <div>
+          <Test name='zs' />
+          <Test name='ff' />
+          <Test name='ls' />
+        </div>
+      )
+    }
+    ReactDOM.render(<App />, document.getElementById('root'))
+    /*
+    调用了ReactDOM.render,并将App组件作为参数
+    App又使用了Test组件 并把{name='xx'}作为props传递
+    Test将<h1>我是zs</h1>作为元素等返回出去
+    React将DOM(根标签root中)更新为<h1>我是zs</h1>
+     */
+  </script>
+</body>
+
+</html>

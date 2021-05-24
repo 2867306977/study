@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="./js/react.js"></script>
+  <script src="./js/react-dom.js"></script>
+  <script src="./js/babel.min.js"></script>
+  <script type="text/babel">
+    // function tick() {
+    //   const element = (
+    //     <div>
+    //       <h1>Hello, world!</h1>
+    //       <h2>It is {new Date().toLocaleTimeString()}.</h2>
+    //     </div>
+    //   );
+    //   ReactDOM.render(element, document.getElementById('root'));
+    // }
+
+    // setInterval(tick, 1000);
+    // //尽管每一秒调用一次React DOM,并且创建一个新的React元素,但是它只会更新实际改变了的内容(也就是那个文本内容)
+
+    //定义了一个组件
+    function Test(props) {
+      console.log(props);
+      return (
+        <h1>hello world+{props.name}</h1>
+      )
+    }
+    //下面的会把这个JSX接收的子组件以及属性转换为单个对象(props)传递给上面的组件
+    const element = <Test name='zs' age='18' />
+    console.log(element);//先打印这个 下面的代码才调用了组件
+    ReactDOM.render(element, document.getElementById('root'))
+    /*
+    上面的代码做了什么事情:
+    1.我们调用了ReactDOM.render()函数,并传入了<Test name='zs' age='18' />为参数
+    2.React调用了Test组件,并把{ name='zs' age='18'}作为props传入
+    3.Test组件将<h1>hello world+zs</h1>作为元素返回
+    4.React DOM将DOM高效的更新为<h1>hello world+zs</h1>
+
+    注意: React会将小写开头的组件当做DOM原生标签解析(<div />),而大写开头的作为一个组件解析
+     */
+  </script>
+</body>
+
+</html>
