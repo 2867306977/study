@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id='root'></div>
+  <script src='../js/react.js'></script>
+  <script src='../js/react-dom.js'></script>
+  <script src='../js/babel.min.js'></script>
+  <script type='text/babel'>
+    class Test extends React.Component {
+      state = {
+        opacity: 1
+      }
+      //生命周期函数中this都指向组件实例对象
+      componentDidMount() {
+        this.timer = setInterval(() => {
+          let { opacity } = this.state
+          opacity -= 0.1
+          //判断如果小于等于0 那么就逐渐变成1
+          if (opacity <= 0) opacity = 1
+          //每200ms修改state
+          this.setState({
+            opacity
+          })
+        }, 200)
+      }
+
+      handleClick = () => {
+        ReactDOM.unmountComponentAtNode(document.getElementById('root'))
+      }
+      //清除定时器
+      componentWillUnmount() {
+        clearInterval(this.timer)
+      }
+      render() {
+        const { opacity } = this.state
+        //React中设置样式 style={{样式}}
+        return (
+          <div>
+            <h1 style={{ opacity }}>文本</h1>
+            <button onClick={this.handleClick}>点我</button>
+          </div>
+        )
+      }
+    }
+
+    ReactDOM.render(<Test />, document.getElementById('root'))
+  </script>
+</body>
+
+</html>

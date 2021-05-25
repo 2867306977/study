@@ -83,7 +83,7 @@
         const { value } = this.state
         return (
           <div>
-            <input type="text" onChange={this.handleChange} value={value} />
+            <input type="text" onInput={this.handleChange} value={value} />
             <button onClick={this.handleAdd}>Add #{this.props.length}</button>
           </div>
         )
