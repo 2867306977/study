@@ -30,6 +30,8 @@ export default class App extends Component {
   };
   /* 绑定一个删除数据的方法 */
   handleDeleteComment = id => {
+    //删除前判断是否确定要删除
+    if (!window.confirm('确定要删除该评论吗?')) return;
     //根据id来删除指定内容,如果指定id等于this.state.comments中的id,那么就把这个对象删除
     const { comments } = this.state;
     const newComments = comments.filter(item => {

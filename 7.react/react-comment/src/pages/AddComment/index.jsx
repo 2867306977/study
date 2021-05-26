@@ -9,13 +9,20 @@ export default class AddComment extends Component {
   //把表单值和state关联起来
   state = {
     id: 2,
-    nameVal: '',
-    commentVal: '',
+    username: '',
+    content: '',
   };
   /* 
-  获取表单内容(使用受控组件)
+  获取表单内容(使用受控组件), 使用高阶函数来 把获取用户名表单和内容表单封装起来
    */
-  //获取用户名表单
+  handleChange = key => {
+    return e => {
+      this.setState({
+        [key]: e.target.value.trim(),
+      });
+    };
+  };
+  /* //获取用户名表单
   handleNameChange = e => {
     this.setState({
       nameVal: e.target.value.trim(),
@@ -26,12 +33,12 @@ export default class AddComment extends Component {
     this.setState({
       commentVal: e.target.value.trim(),
     });
-  };
+  }; */
   /* 点击提交, 调用handleAddComment方法, 清空表单内容 */
   handleSubClick = () => {
-    const { nameVal, commentVal } = this.state;
+    const { username, content } = this.state;
     //判断表单中是否有内容
-    if (!nameVal || !commentVal) {
+    if (!username || !content) {
       alert('请输入内容');
       return;
     }
@@ -44,20 +51,20 @@ export default class AddComment extends Component {
     //传递对象出去
     const valObj = {
       id,
-      username: nameVal,
-      content: commentVal,
+      username,
+      content,
     };
     this.props.handleAddComment(valObj);
     //清空表单
     this.setState({
       id,
-      nameVal: '',
-      commentVal: '',
+      username: '',
+      content: '',
     });
   };
 
   render() {
-    const { nameVal, commentVal } = this.state;
+    const { username, content } = this.state;
     return (
       <form className="form-horizontal">
         <div className="form-group">
@@ -66,8 +73,8 @@ export default class AddComment extends Component {
             type="text"
             className="form-control"
             placeholder="用户名"
-            onChange={this.handleNameChange}
-            value={nameVal}
+            onChange={this.handleChange('username')}
+            value={username}
           />
         </div>
         <div className="form-group">
@@ -76,8 +83,8 @@ export default class AddComment extends Component {
             className="form-control"
             rows="6"
             placeholder="评论内容"
-            onChange={this.handleCommentChange}
-            value={commentVal}></textarea>
+            onChange={this.handleChange('content')}
+            value={content}></textarea>
         </div>
         <div className="form-group">
           <div className="col-sm-offset-2 col-sm-10">
