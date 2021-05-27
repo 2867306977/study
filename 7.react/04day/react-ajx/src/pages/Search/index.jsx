@@ -36,6 +36,7 @@ export default class Search extends Component {
     });
     //发送请求之后在获取数据
     const userList = res.data.items.map(item => {
+      //只返回需要的数据
       return {
         login: item.login,
         id: item.id,
