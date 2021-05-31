@@ -11,6 +11,7 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
+    "hello-react": "file:7.react/06day/react-redux",
     "jquery": "^3.6.0",
     "md5": "^2.3.0",
     "mongoose": "^5.12.7",
