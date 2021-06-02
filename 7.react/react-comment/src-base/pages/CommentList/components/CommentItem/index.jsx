@@ -1,19 +1,14 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { delComment } from '../../../../redux/actions';
-
-class CommentItem extends Component {
+export default class CommentItem extends Component {
   static propTypes = {
     comment: PropTypes.object.isRequired,
-    delComment: PropTypes.func.isRequired,
   };
   /* 点击按钮调用App组件删除的方法 */
   handleDeleteClick = () => {
-    this.props.delComment(this.props.comment.id);
+    this.props.handleDeleteComment(this.props.comment.id);
   };
   render() {
-    console.log(this.props.comment);
     const { username, content } = this.props.comment;
     return (
       <li className="list-group-item">
@@ -29,4 +24,3 @@ class CommentItem extends Component {
     );
   }
 }
-export default connect(null, { delComment })(CommentItem);

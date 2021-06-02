@@ -1,12 +1,10 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addComment } from '../../redux/actions';
 
-class AddComment extends Component {
+export default class AddComment extends Component {
   //限制
   static propTypes = {
-    addComment: PropTypes.func.isRequired,
+    handleAddComment: PropTypes.func.isRequired,
   };
   //把表单值和state关联起来
   state = {
@@ -24,6 +22,18 @@ class AddComment extends Component {
       });
     };
   };
+  /* //获取用户名表单
+  handleNameChange = e => {
+    this.setState({
+      nameVal: e.target.value.trim(),
+    });
+  };
+  //获取内容表单
+  handleCommentChange = e => {
+    this.setState({
+      commentVal: e.target.value.trim(),
+    });
+  }; */
   /* 点击提交, 调用handleAddComment方法, 清空表单内容 */
   handleSubClick = () => {
     const { username, content } = this.state;
@@ -44,7 +54,7 @@ class AddComment extends Component {
       username,
       content,
     };
-    this.props.addComment(valObj);
+    this.props.handleAddComment(valObj);
     //清空表单
     this.setState({
       id,
@@ -90,5 +100,3 @@ class AddComment extends Component {
     );
   }
 }
-
-export default connect(null, { addComment })(AddComment);
