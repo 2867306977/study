@@ -10,8 +10,8 @@
     <div id="app">
       <input type="text" v-model="val" />
       <span>{{val}}</span>
-      <ul v-for="item in message">
-        <li>{{item}}</li>
+      <ul>
+        <li v-for="item in message">{{item}}</li>
       </ul>
       <button @click="handleClick">按钮</button>
       <span>{{count}}</span><br />
@@ -28,7 +28,9 @@
 
       v-for
 
-      v-if
+      v-if/v-else-if/v-else
+
+      v-show
 
       @+事件名
        */

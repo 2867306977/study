@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .ikb {
+        color: rgb(0, 47, 167);
+      }
+      .red {
+        color: rgb(144, 0, 33);
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- :class="[xxx,yyy,ccc]" -->
+      <!-- :class="{xxx,xxx,xxx}" -->
+      <h1 :class="isIKB?'ikb':'red'">小尾巴~~~~~~</h1>
+      <!-- 给属性添加绑定vue中的数据 通常使用v-bind -->
+      <!-- :style="{color:'red',fonSize:'20px'}" 属性值可以是变量-->
+      <h1
+        :style="{
+        color
+      }"
+      >
+        小尾巴~~~~~~
+      </h1>
+      <button @click="handleClick">我变!</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      /* 
+      若样式可以写死,那么通常使用class
+      若样式是动态的:
+        样式是有限的使用class 因为多种变化,不可能定义多个类来切换
+        样式是无限的使用style,eg: 多个颜色变化
+       */
+      const app = new Vue({
+        el: '#app',
+        data: {
+          isIKB: true,
+          color: '#002fa7',
+        },
+        methods: {
+          handleClick() {
+            this.isIKB = !this.isIKB;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
