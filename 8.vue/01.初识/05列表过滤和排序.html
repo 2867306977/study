@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input
+        type="text"
+        v-model="val"
+        @input="change"
+        placeholder="搜索指定用户名"
+      />
+      <!-- 之前把v-if放在了li上面导致 修改了is li全部隐藏,下面的li也没有显示-->
+      <ul v-if="is">
+        <li v-for="item,index in msg">
+          {{index}}--{{item.name}}--{{item.age}}
+        </li>
+      </ul>
+      <ul v-else="is">
+        <li v-for="item,index in inpMsg">
+          {{index}}--{{item.name}}--{{item.age}}
+          <!-- {{inpMsg}} -->
+        </li>
+      </ul>
+      <button @click="ascend">年龄升序</button>
+      <button @click="descend">年龄降序</button>
+      <button @click="order">原本顺序</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          //不能直接修改原来的数据 创建了一个空数组 当表单输入内容给这个空数组添加数据
+          msg: [
+            { id: 1, name: 'Tom', age: 20 },
+            { id: 2, name: 'Jack', age: 14 },
+            { id: 3, name: 'Bob', age: 19 },
+            { id: 4, name: 'Jennie', age: 16 },
+            { id: 5, name: 'Lisa', age: 15 },
+            { id: 6, name: 'Rose', age: 18 },
+          ],
+          inpMsg: [],
+          val: '',
+          is: true,
+        },
+        methods: {
+          isVal() {
+            this.IsMsg = this.msg;
+            if (this.val) {
+              this.IsMsg = this.inpMsg;
+            }
+          },
+          //年龄升序
+          ascend() {
+            this.isVal();
+            //遍历数据 根据年龄排序
+            this.IsMsg.sort((a, b) => {
+              return b.age - a.age;
+            });
+          },
+          //年龄降序
+          descend() {
+            this.isVal();
+            this.IsMsg.sort((a, b) => {
+              return a.age - b.age;
+            });
+          },
+          //原本顺序
+          order() {
+            this.isVal();
+            this.IsMsg.sort((a, b) => {
+              return a.id - b.id;
+            });
+          },
+          change() {
+            //当表单发生变化,就修改显示找到的数据,隐藏全部数据
+            if (!this.val) {
+              this.is = true;
+              return;
+            }
+            this.is = false;
+
+            //根据输入框的内容,找到指定用户 不能直接修改原数组
+            const newMsg = this.msg.filter((item, index) => {
+              //includes()查找字符串中是否含有指定字符  有则返回true
+              const i = item.name.includes(this.val);
+              if (i) {
+                return item;
+              }
+            });
+            this.inpMsg = newMsg;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

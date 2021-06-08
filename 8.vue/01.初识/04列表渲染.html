@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>测试:v-for遍历数组</h1>
+      <ul>
+        <li v-for="(item,index) in arr" :key="item.id">
+          {{index}}--{{item.name}}--{{item.age}}--<button
+            @click="handleDel(index)"
+          >
+            删除</button
+          >--<button @click="handleUpdate(index)">更新</button>
+        </li>
+      </ul>
+      <h1>测试:v-for遍历对象</h1>
+      <ul>
+        <li v-for="value,key in obj">{{key}}:{{value}}</li>
+      </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          obj: {
+            id: 1,
+            name: 'jack',
+            age: 18,
+          },
+          arr: [
+            { id: 1, name: 'lisa', age: 19 },
+            { id: 2, name: 'jannie', age: 20 },
+            { id: 3, name: 'rose', age: 21 },
+          ],
+        },
+        methods: {
+          handleDel(index) {
+            //点击删除 删除当前下标的数组元素
+            // const newArr = this.arr.filter((item, i) => {
+            //   return index !== i;
+            // });
+            // this.arr = newArr;
+            this.arr.splice(index, 1);
+          },
+          handleUpdate(index) {
+            //点击更新修改数据
+            const data = this.arr.find((value, i) => i === index);
+            console.log(data);
+            data.name = 'coco';
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
