@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="val" />
+      <span>{{val}}</span>
+      <ul v-for="item in message">
+        <li>{{item}}</li>
+      </ul>
+      <button @click="handleClick">按钮</button>
+      <span>{{count}}</span><br />
+      <span :title="title">鼠标悬停几秒查看信息</span>
+      <h1 v-if="isShow" @click="handleShow">点我</h1>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      /*
+      v-model: 双向数据绑定,只能绑定给有value值的元素 (input,select,textarea)
+
+      v-bind: 单项数据绑定(视图层数据不会流向数据层)
+
+      v-for
+
+      v-if
+
+      @+事件名
+       */
+      const app = new Vue({
+        el: '#app',
+        data: {
+          message: ['海绵宝宝', '派大星', '蟹老板', '章鱼哥'],
+          val: '',
+          title: Date.now(),
+          count: 0,
+          isShow: true,
+        },
+        methods: {
+          handleClick() {
+            const _this = this;
+            setInterval(function () {
+              _this.count += 1;
+            }, 1000);
+          },
+          handleShow() {
+            this.isShow = !this.isShow;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

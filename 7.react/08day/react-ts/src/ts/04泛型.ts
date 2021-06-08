@@ -1,10 +1,8 @@
 export default 1;
-//
-function fn(length: number, value: any): Array<any> {
-  let res = [];
-  for (var i = 0; i < length; i++) {
-    res[length] = value;
-  }
-  return res;
+//接口定义函数类型
+interface Fn {
+  (x: number, y: number): number;
 }
-fn(3, '2');
+
+const fn: Fn = (x: number, y: number) => x + y;
+fn(1, 2);
