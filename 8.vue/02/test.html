@@ -8,19 +8,54 @@
   </head>
   <body>
     <div id="app">
-      <ul>
-        <li></li>
+      <ul v-if="isShow">
+        <li v-for="item in users" :key="item.id">{{item.name}}</li>
       </ul>
-      <ol>
-        <li></li>
+      <ol v-else="isShow">
+        <!-- v-else used on element <li> without corresponding v-if. -->
+        <li v-for="item in users" :key="item.id">{{item.age}}</li>
       </ol>
+      <h1>{{show}}</h1>
+      <button @click="handleClick">按钮</button>
     </div>
 
     <script src="../js/vue.js"></script>
     <script>
       const app = new Vue({
         el: '#app',
-        data: {},
+        data: {
+          users: [
+            { id: 1, name: 'Tom', age: 20 },
+            { id: 2, name: 'Jack', age: 14 },
+            { id: 3, name: 'Bob', age: 19 },
+            { id: 4, name: 'Jennie', age: 16 },
+            { id: 5, name: 'Lisa', age: 15 },
+            { id: 6, name: 'Rose', age: 18 },
+          ],
+          isShow: true,
+          count: 0,
+        },
+        methods: {
+          handleClick() {
+            //该show的值是get()的返回值
+            this.show += 1;
+            // console.log(this.count);
+          },
+        },
+        computed: {
+          show: {
+            //修改了show 会传入一个val值
+            set(val) {
+              console.log('set');
+              //this.count被修改了, 然后get()方法就触发了
+              this.count = val;
+            },
+            get() {
+              console.log('get');
+              return this.count;
+            },
+          },
+        },
       });
     </script>
   </body>

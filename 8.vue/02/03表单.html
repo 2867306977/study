@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      账号:<input type="text" v-model="user.username" /><br />
+      密码:<input type="password" v-model="user.password" /><br />
+      性别:<label for="nv">
+        <input type="radio" id="nv" v-model="user.sex" value="女" />女
+      </label>
+      <label for="nan">
+        <input type="radio" id="nan" v-model="user.sex" value="男" />男 </label
+      ><br />
+      爱好:<input type="checkbox" v-model="user.hobby" value="pinpang" />乒乓
+      <input type="checkbox" v-model="user.hobby" value="lanqiu" />篮球
+      <input type="checkbox" v-model="user.hobby" value="zuqiu" />足球
+      <h4>info:</h4>
+      <textarea cols="30" rows="10" v-model="user.info"></textarea>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          user: {
+            username: '',
+            password: '',
+            sex: '女',
+            hobby: [],
+            info: '',
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

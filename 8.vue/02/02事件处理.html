@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="handleClick1">按钮1</button>
+      <button @click="handleClick2()">按钮2</button>
+      <button @click="handleClick3(a,$event)">按钮3</button>
+      <a href="http://baidu.com" @click.prevent>连接</a>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          a: 1,
+        },
+        methods: {
+          handleClick1(...e) {
+            console.log(...e);
+          },
+          handleClick2(...args) {
+            console.log(args);
+          },
+          handleClick3(a, e) {
+            console.log(a, e);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
