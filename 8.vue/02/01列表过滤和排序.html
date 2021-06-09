@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="searchName" />
+      <ul>
+        <li v-for="item in handleUsers" :key="item.id">
+          {{item.id}}--{{item.name}}--{{item.age}}
+        </li>
+      </ul>
+      <button @click="sort('asc')">年龄升序</button>
+      <button @click="sort('desc')">年龄降序</button>
+      <button @click="sort('origin')">原本顺序</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: '#app',
+        data: {
+          users: [
+            { id: 1, name: 'Tom', age: 20 },
+            { id: 2, name: 'Jack', age: 14 },
+            { id: 3, name: 'Bob', age: 19 },
+            { id: 4, name: 'Jennie', age: 16 },
+            { id: 5, name: 'Lisa', age: 15 },
+            { id: 6, name: 'Rose', age: 18 },
+          ],
+          searchName: '',
+          orderType: 'origin',
+        },
+        methods: {
+          //点击调用该方法 修改排序的方式
+          sort(orderType) {
+            this.orderType = orderType;
+          },
+        },
+        computed: {
+          handleUsers() {
+            const { users, searchName, orderType } = this;
+            const filterName = users.filter(item => {
+              return item.name.includes(searchName);
+            });
+            //判断是什么排序
+            if (orderType === 'origin') filterName;
+            if (orderType === 'asc') {
+              filterName.sort((a, b) => a.age - b.age);
+            }
+            if (orderType === 'desc') {
+              filterName.sort((a, b) => b.age - a.age);
+            }
+            return filterName;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

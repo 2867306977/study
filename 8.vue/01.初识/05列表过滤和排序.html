@@ -16,12 +16,12 @@
       />
       <!-- 之前把v-if放在了li上面导致 修改了is li全部隐藏,下面的li也没有显示-->
       <ul v-if="is">
-        <li v-for="item,index in msg">
+        <li v-for="item,index in msg" :key="item.id">
           {{index}}--{{item.name}}--{{item.age}}
         </li>
       </ul>
       <ul v-else="is">
-        <li v-for="item,index in inpMsg">
+        <li v-for="item,index in inpMsg" :key="item.id">
           {{index}}--{{item.name}}--{{item.age}}
           <!-- {{inpMsg}} -->
         </li>
