@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p ref="p">{{msg}}</p>
+      <p v-lower-case="info">{{info}}</p>
+      <button @click="handleClick">按钮</button>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+      //全局自定义指令
+      Vue.directive('lower-case', function (el, binding) {
+        console.log(binding);
+        //binding.expression 绑定元素的表达式
+        //binding.value 绑定元素的表达式的值
+        el.textContent = binding.value.toLowerCase();
+      });
+      const app = new Vue({
+        el: '#app',
+        data: {
+          msg: 'hello',
+          info: 'He heHE',
+        },
+        methods: {
+          handleClick() {
+            console.log(this.$refs.p);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

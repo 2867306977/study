@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/dayjs/1.10.5/dayjs.min.js"></script>
+    <script src="../js/vue.js"></script>
+    <script>
+      //过滤器: 对显示的数据进行格式化
+      const app = new Vue({
+        el: '#app',
+        data: {
+          time: Date.now(),
+        },
+        filters: {
+          formatTime(time, str) {
+            return dayjs(time).format(str);
+          },
+        },
+        computed: {
+          formatedTime() {
+            return dayjs(this.time).format('YYYY/MM/DD');
+          },
+        },
+        methods: {
+          formatDate(str) {
+            return dayjs(this.time).format(str);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
