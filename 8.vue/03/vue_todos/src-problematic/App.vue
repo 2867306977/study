@@ -2,13 +2,12 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <Header :addTodo="addTodo" />
-      <List :todos="todos" :delTodo="delTodo" v-if="hasTodo" :checkedTodo="checkedTodo" />
+      <List :todos="todos" :delTodo="delTodo" v-if="hasTodo" />
       <Footer
+        :todos="todos"
         :delCheckedTodo="delCheckedTodo"
-        v-if="hasTodo"
-        :checkedNum="checkedNum"
-        :total="todos.length"
         :checkedAll="checkedAll"
+        v-if="hasTodo"
       />
       <h1 v-if="!hasTodo">没有待办事项</h1>
     </div>
@@ -57,15 +56,11 @@ export default {
       });
       this.todos = newTodos;
     },
-    //item的选中和没选中状态
-    checkedTodo(id) {
-      const todo = this.todos.find((todo) => todo.id === id);
-      todo.isDone = !todo.isDone;
-    },
-    //全选
-    checkedAll(checked) {
-      //因为要修改所有的值 使用foreach
-      this.todos.forEach((todo) => (todo.isDone = checked));
+    //点击全选,选中所有todo
+    checkedAll(isChecked) {
+      this.todos.forEach((todo) => {
+        todo.isDone = isChecked;
+      });
     },
   },
   //计算是否还有todo
@@ -76,14 +71,6 @@ export default {
       } else {
         return false;
       }
-    },
-    //计算被选中的todo有多少个
-    checkedNum() {
-      //统计求和使用reduce
-      const num = this.todos.reduce((p, c) => {
-        return p + (c.isDone ? 1 : 0);
-      }, 0);
-      return num;
     },
   },
 };

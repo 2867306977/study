@@ -1,9 +1,7 @@
 <template>
-  <li @mouseenter="isShow = true" @mouseleave="isShow = false">
+  <li @mouseenter="handleMove" @mouseleave="handleLeave">
     <label>
-      <!-- 下面的方法是直接修改了props,不建议修改props -->
-      <!-- <input type="checkbox" v-model="todo.isDone" /> -->
-      <input type="checkbox" v-model="isDone" />
+      <input type="checkbox" v-model="todo.isDone" />
       <span>{{todo.name}}</span>
     </label>
     <transition name="fade">
@@ -23,7 +21,7 @@ export default {
   props: {
     todo: Object,
     delTodo: Function,
-    checkedTodo: Function,
+    isChecked: Function,
   },
   data() {
     return {
@@ -31,21 +29,16 @@ export default {
     };
   },
   methods: {
-    //删除
+    handleMove() {
+      this.isShow = true;
+    },
+    handleLeave() {
+      this.isShow = false;
+    },
     handleDel(id) {
       if (!confirm('确定删除此待办事项吗')) return;
       //点击删除,删除当前点击的数据 根据id删除
       this.delTodo(id);
-    },
-  },
-  computed: {
-    isDone: {
-      set() {
-        this.checkedTodo(this.todo.id);
-      },
-      get() {
-        return this.todo.isDone;
-      },
     },
   },
 };
