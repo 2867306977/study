@@ -5,7 +5,12 @@ import About from "../views/About/index.vue";
 //安装插件
 Vue.use(VueRouter);
 const router = new VueRouter({
-  mode: "hash",
+  //配置对象
+  //前端路由模式
+  // mode: "hash",
+  mode: "history",
+
+  //route路由配置项
   routes: [
     {
       path: "/home",
