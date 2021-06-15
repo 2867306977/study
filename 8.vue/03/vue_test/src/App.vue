@@ -1,42 +1,26 @@
 <template>
-  <div id="app">
-    <!-- 使用组件 -->
-    <!-- 使用props,传递数据  需要使用单向绑定才能是data中的数据-->
-    <HelloWorld :name="name" :age="age" :count="count" :handleClick="handleClick" />
+  <div>
+    <div class="row">
+      <div class="col-xs-offset-2 col-xs-8">
+        <div class="page-header">
+          <h2>Vue Router Demo</h2>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-2">
+        <div class="list-group">
+          <router-link active-class="active" class="list-group-item" to="/about">About</router-link>
+          <router-link class="list-group-item" active-class="active" to="/home">Home</router-link>
+        </div>
+      </div>
+      <router-view />
+    </div>
   </div>
 </template>
-
 <script>
-//引入组件
-import HelloWorld from './components/HelloWorld.vue';
-
-//向外暴露组件配置对象
 export default {
-  name: 'App',
-  //局部注册组件
-  components: {
-    //组件名
-    HelloWorld,
-  },
-  //要求data是一个函数
-  data() {
-    //返回值一个对象
-    return {
-      name: 'bob',
-      age: 28,
-      count: 0,
-    };
-  },
-  methods: {
-    handleClick() {
-      this.count++;
-    },
-  },
-  // mounted() {
-  //   setInterval(() => {
-  //     this.count++;
-  //   }, 1000);
-  // },
+  name: "App",
 };
 </script>
 
@@ -47,6 +31,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
 }
 </style>
